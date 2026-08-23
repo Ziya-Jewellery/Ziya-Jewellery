@@ -7,29 +7,39 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
  margin:0;
  font-family:Arial,sans-serif;
  background:linear-gradient(135deg,#fff0f6,#eee7ff);
  color:#29152e
 }
-.container{max-width:1150px;margin:auto;padding:20px}
+
+.container{
+ max-width:1200px;
+ margin:auto;
+ padding:20px
+}
+
 .login,.panel{
  background:#fff;
  border-radius:24px;
  box-shadow:0 15px 45px #5d326622
 }
+
 .login{
  max-width:440px;
  margin:70px auto;
  padding:35px 25px;
  text-align:center
 }
+
 .logo{
  font-size:32px;
  font-weight:800;
  color:#d92878
 }
+
 .google{
  width:100%;
  padding:14px;
@@ -40,7 +50,12 @@ body{
  font-weight:bold;
  cursor:pointer
 }
-.panel{display:none;padding:25px}
+
+.panel{
+ display:none;
+ padding:25px
+}
+
 .header{
  display:flex;
  justify-content:space-between;
@@ -48,31 +63,47 @@ body{
  gap:15px;
  margin-bottom:25px
 }
-.header h1{margin:0 0 5px}
-.email{font-size:14px;color:#777}
-.logout,.delete{
+
+.header h1{
+ margin:0 0 5px
+}
+
+.email{
+ font-size:14px;
+ color:#777
+}
+
+.logout,.delete,.statusBtn{
  border:0;
  border-radius:10px;
- padding:10px 15px;
+ padding:10px 14px;
  cursor:pointer;
  font-weight:bold
 }
-.logout{background:#ffe5ed;color:#a00038}
+
+.logout{
+ background:#ffe5ed;
+ color:#a00038
+}
+
 .grid{
  display:grid;
  grid-template-columns:1fr 1fr;
  gap:20px
 }
+
 .card{
  background:#fff8fc;
  border-radius:20px;
  padding:22px
 }
+
 label{
  display:block;
  font-weight:bold;
  margin-top:10px
 }
+
 input,select,textarea{
  width:100%;
  padding:12px;
@@ -81,7 +112,12 @@ input,select,textarea{
  border-radius:10px;
  font-size:15px
 }
-textarea{min-height:100px;resize:vertical}
+
+textarea{
+ min-height:100px;
+ resize:vertical
+}
+
 .add{
  width:100%;
  padding:14px;
@@ -93,10 +129,12 @@ textarea{min-height:100px;resize:vertical}
  font-weight:bold;
  cursor:pointer
 }
+
 .product{
  padding:15px 0;
  border-bottom:1px solid #eaddea
 }
+
 .product img{
  width:75px;
  height:75px;
@@ -105,8 +143,19 @@ textarea{min-height:100px;resize:vertical}
  float:left;
  margin-right:12px
 }
-.product:after{content:"";display:block;clear:both}
-.delete{background:#ffe5e9;color:#a00038;margin-top:10px}
+
+.product:after{
+ content:"";
+ display:block;
+ clear:both
+}
+
+.delete{
+ background:#ffe5e9;
+ color:#a00038;
+ margin-top:10px
+}
+
 .share{
  display:inline-block;
  background:#e8fff0;
@@ -116,14 +165,24 @@ textarea{min-height:100px;resize:vertical}
  text-decoration:none;
  margin-top:10px
 }
+
 .msg{
  display:none;
  padding:12px;
  border-radius:10px;
  margin-bottom:15px
 }
-.error{background:#fff0f3;color:#a00030}
-.success{background:#e8fff0;color:#08743d}
+
+.error{
+ background:#fff0f3;
+ color:#a00030
+}
+
+.success{
+ background:#e8fff0;
+ color:#08743d
+}
+
 .preview{
  width:100%;
  max-height:220px;
@@ -132,9 +191,179 @@ textarea{min-height:100px;resize:vertical}
  border-radius:12px;
  margin-bottom:10px
 }
+
+/* ORDERS */
+
+.orders-section{
+ margin-top:25px
+}
+
+.order-card{
+ background:white;
+ border-radius:18px;
+ padding:18px;
+ margin-bottom:15px;
+ box-shadow:0 6px 20px #5d326612;
+ border:1px solid #f0e4ef
+}
+
+.order-top{
+ display:flex;
+ justify-content:space-between;
+ gap:15px;
+ flex-wrap:wrap;
+ border-bottom:1px solid #eee;
+ padding-bottom:13px;
+ margin-bottom:13px
+}
+
+.order-id{
+ font-weight:bold;
+ color:#74154f
+}
+
+.order-date{
+ font-size:12px;
+ color:#777;
+ margin-top:5px
+}
+
+.status{
+ display:inline-block;
+ padding:7px 12px;
+ border-radius:20px;
+ background:#f4e8f2;
+ color:#721550;
+ font-weight:bold;
+ font-size:12px
+}
+
+.customer-box,
+.address-box{
+ background:#faf6fa;
+ border-radius:12px;
+ padding:13px;
+ margin:10px 0;
+ line-height:1.6;
+ font-size:14px
+}
+
+.order-item{
+ display:flex;
+ gap:12px;
+ padding:12px 0;
+ border-bottom:1px solid #eee
+}
+
+.order-item img{
+ width:60px;
+ height:60px;
+ border-radius:9px;
+ object-fit:cover;
+ background:#f4eaf3
+}
+
+.order-item-info{
+ flex:1
+}
+
+.order-total{
+ text-align:right;
+ font-size:19px;
+ font-weight:bold;
+ color:#8b1657;
+ margin-top:14px
+}
+
+.status-actions{
+ display:flex;
+ gap:8px;
+ flex-wrap:wrap;
+ margin-top:15px
+}
+
+.statusBtn{
+ color:white
+}
+
+.confirm{
+ background:#08743d
+}
+
+.dispatch{
+ background:#1565c0
+}
+
+.delivered{
+ background:#6a1b9a
+}
+
+.cancel{
+ background:#b00020
+}
+
+.refresh{
+ background:#eee3f1;
+ color:#641449;
+ border:0;
+ padding:10px 15px;
+ border-radius:10px;
+ cursor:pointer;
+ font-weight:bold
+}
+
+.order-empty{
+ text-align:center;
+ padding:35px;
+ color:#777
+}
+
+.tabs{
+ display:flex;
+ gap:8px;
+ flex-wrap:wrap;
+ margin-bottom:18px
+}
+
+.tab{
+ border:0;
+ padding:9px 13px;
+ border-radius:18px;
+ background:#eee5f1;
+ color:#641449;
+ cursor:pointer;
+ font-weight:bold
+}
+
+.tab.active{
+ background:#721550;
+ color:white
+}
+
 @media(max-width:750px){
- .grid{grid-template-columns:1fr}
- .header{align-items:flex-start}
+
+ .grid{
+  grid-template-columns:1fr
+ }
+
+ .header{
+  align-items:flex-start;
+  flex-direction:column
+ }
+
+ .order-top{
+  flex-direction:column
+ }
+
+ .status-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr
+ }
+
+ .statusBtn{
+  width:100%
+ }
+
 }
 </style>
 </head>
@@ -147,14 +376,16 @@ textarea{min-height:100px;resize:vertical}
 
 <div id="loginBox" class="login">
 
- <div class="logo">✨ Ziya Jewellery</div>
+ <div class="logo">
+  ✨ Ziya Jewellery
+ </div>
 
  <h2>Secure Admin Panel</h2>
 
  <p>Authorized administrator only</p>
 
  <button id="loginBtn" class="google">
-   🔐 Continue with Google
+  🔐 Continue with Google
  </button>
 
  <div id="loginMsg" class="msg error"></div>
@@ -162,14 +393,14 @@ textarea{min-height:100px;resize:vertical}
 </div>
 
 
-<!-- ADMIN -->
+<!-- ADMIN PANEL -->
 
 <div id="panel" class="panel">
 
  <div class="header">
 
   <div>
-   <h1>✨ Ziya Jewellery</h1>
+   <h1>✨ Ziya Jewellery Admin</h1>
    <div id="adminEmail" class="email"></div>
   </div>
 
@@ -182,218 +413,291 @@ textarea{min-height:100px;resize:vertical}
  <div id="status" class="msg"></div>
 
 
- <div class="grid">
+<!-- ADD PRODUCT -->
 
-  <!-- ADD PRODUCT -->
+<div class="grid">
 
-  <div class="card">
+<div class="card">
 
-   <h2>➕ Add Jewellery</h2>
+<h2>➕ Add Jewellery</h2>
 
-   <form id="productForm">
+<form id="productForm">
 
-    <label>Product Name</label>
-    <input id="name" required
-      placeholder="Example: 22K Gold Ring">
-
-
-    <label>Metal Type</label>
-
-    <select id="metal" required>
-      <option value="">Select Metal</option>
-      <option>Gold</option>
-      <option>Silver</option>
-      <option>Other Metal</option>
-    </select>
+<label>Product Name</label>
+<input id="name" required placeholder="Example: 22K Gold Ring">
 
 
-    <label>Purity / Material</label>
+<label>Metal Type</label>
 
-    <select id="purity" required>
-      <option value="">Select Purity / Material</option>
-      <option>24K Gold</option>
-      <option>22K Gold</option>
-      <option>18K Gold</option>
-      <option>14K Gold</option>
-      <option>999 Fine Silver</option>
-      <option>925 Sterling Silver</option>
-      <option>Other Silver</option>
-      <option>Stainless Steel</option>
-      <option>Brass</option>
-      <option>Copper</option>
-      <option>Alloy</option>
-      <option>Titanium</option>
-      <option>Mixed Metal</option>
-    </select>
+<select id="metal" required>
+
+<option value="">Select Metal</option>
+<option>Gold</option>
+<option>Silver</option>
+<option>Other Metal</option>
+
+</select>
 
 
-    <label>Main Category</label>
+<label>Purity / Material</label>
 
-    <select id="category" required>
-      <option value="">Select Category</option>
+<select id="purity" required>
 
-      <option>Rings</option>
-      <option>Earrings</option>
-      <option>Necklaces</option>
-      <option>Bracelets</option>
-      <option>Bangles</option>
-      <option>Chains</option>
-      <option>Pendants</option>
-      <option>Anklets / Payal</option>
-      <option>Nose Jewellery</option>
-      <option>Bridal Jewellery</option>
-      <option>Jewellery Sets</option>
-      <option>Men's Jewellery</option>
-      <option>Couple Jewellery</option>
-      <option>Gift Collection</option>
-      <option>Other</option>
-    </select>
+<option value="">Select Purity / Material</option>
 
+<option>24K Gold</option>
+<option>22K Gold</option>
+<option>18K Gold</option>
+<option>14K Gold</option>
 
-    <label>Sub Category / Item</label>
+<option>999 Fine Silver</option>
+<option>925 Sterling Silver</option>
+<option>Other Silver</option>
 
-    <select id="subcategory">
-      <option value="">Select Item</option>
+<option>Stainless Steel</option>
+<option>Brass</option>
+<option>Copper</option>
+<option>Alloy</option>
+<option>Titanium</option>
+<option>Mixed Metal</option>
 
-      <option>Gold Ring</option>
-      <option>Silver Ring</option>
-      <option>Diamond Ring</option>
-      <option>Couple Ring</option>
-      <option>Engagement Ring</option>
-      <option>Wedding Ring</option>
-
-      <option>Stud Earrings</option>
-      <option>Jhumka</option>
-      <option>Hoop Earrings</option>
-      <option>Drop Earrings</option>
-      <option>Chandbali</option>
-      <option>Bali</option>
-
-      <option>Gold Necklace</option>
-      <option>Silver Necklace</option>
-      <option>Pendant Necklace</option>
-      <option>Chain Necklace</option>
-      <option>Choker</option>
-      <option>Mangalsutra</option>
-
-      <option>Gold Bracelet</option>
-      <option>Silver Bracelet</option>
-      <option>Charm Bracelet</option>
-      <option>Couple Bracelet</option>
-      <option>Kada</option>
-
-      <option>Gold Bangle</option>
-      <option>Silver Bangle</option>
-      <option>Bridal Bangles</option>
-
-      <option>Gold Chain</option>
-      <option>Silver Chain</option>
-      <option>Figaro Chain</option>
-      <option>Rope Chain</option>
-      <option>Box Chain</option>
-
-      <option>Gold Pendant</option>
-      <option>Silver Pendant</option>
-      <option>Heart Pendant</option>
-      <option>Name Pendant</option>
-      <option>Couple Pendant</option>
-
-      <option>Silver Payal</option>
-      <option>Designer Payal</option>
-      <option>Pair Payal</option>
-
-      <option>Nose Pin</option>
-      <option>Nose Ring</option>
-      <option>Nath</option>
-
-      <option>Maang Tikka</option>
-      <option>Matha Patti</option>
-      <option>Bridal Set</option>
-
-      <option>Men's Ring</option>
-      <option>Men's Chain</option>
-      <option>Men's Bracelet</option>
-      <option>Men's Kada</option>
-    </select>
+</select>
 
 
-    <label>Price ₹</label>
-    <input id="price" type="number" min="0"
-      placeholder="999" required>
+<label>Main Category</label>
+
+<select id="category" required>
+
+<option value="">Select Category</option>
+
+<option>Rings</option>
+<option>Earrings</option>
+<option>Necklaces</option>
+<option>Bracelets</option>
+<option>Bangles</option>
+<option>Chains</option>
+<option>Pendants</option>
+<option>Anklets / Payal</option>
+<option>Nose Jewellery</option>
+<option>Bridal Jewellery</option>
+<option>Jewellery Sets</option>
+<option>Men's Jewellery</option>
+<option>Couple Jewellery</option>
+<option>Gift Collection</option>
+<option>Other</option>
+
+</select>
 
 
-    <label>Weight</label>
-    <input id="weight"
-      placeholder="Example: 4.5 g">
+<label>Sub Category / Item</label>
+
+<select id="subcategory">
+
+<option value="">Select Item</option>
+
+<option>Gold Ring</option>
+<option>Silver Ring</option>
+<option>Diamond Ring</option>
+<option>Couple Ring</option>
+<option>Engagement Ring</option>
+<option>Wedding Ring</option>
+
+<option>Stud Earrings</option>
+<option>Jhumka</option>
+<option>Hoop Earrings</option>
+<option>Drop Earrings</option>
+<option>Chandbali</option>
+<option>Bali</option>
+
+<option>Gold Necklace</option>
+<option>Silver Necklace</option>
+<option>Pendant Necklace</option>
+<option>Chain Necklace</option>
+<option>Choker</option>
+<option>Mangalsutra</option>
+
+<option>Gold Bracelet</option>
+<option>Silver Bracelet</option>
+<option>Charm Bracelet</option>
+<option>Couple Bracelet</option>
+<option>Kada</option>
+
+<option>Gold Bangle</option>
+<option>Silver Bangle</option>
+<option>Bridal Bangles</option>
+
+<option>Gold Chain</option>
+<option>Silver Chain</option>
+<option>Figaro Chain</option>
+<option>Rope Chain</option>
+<option>Box Chain</option>
+
+<option>Gold Pendant</option>
+<option>Silver Pendant</option>
+<option>Heart Pendant</option>
+<option>Name Pendant</option>
+<option>Couple Pendant</option>
+
+<option>Silver Payal</option>
+<option>Designer Payal</option>
+<option>Pair Payal</option>
+
+<option>Nose Pin</option>
+<option>Nose Ring</option>
+<option>Nath</option>
+
+<option>Maang Tikka</option>
+<option>Matha Patti</option>
+<option>Bridal Set</option>
+
+<option>Men's Ring</option>
+<option>Men's Chain</option>
+<option>Men's Bracelet</option>
+<option>Men's Kada</option>
+
+</select>
 
 
-    <label>Size / Variant</label>
-    <input id="size"
-      placeholder="Example: 18 / 20 / Adjustable">
+<label>Price ₹</label>
+<input id="price" type="number" min="0" required placeholder="999">
 
 
-    <label>Stock</label>
-    <input id="stock" type="number" min="0"
-      placeholder="10">
+<label>Weight</label>
+<input id="weight" placeholder="Example: 4.5 g">
 
 
-    <label>SKU</label>
-    <input id="sku"
-      placeholder="ZJ-RING-001">
+<label>Size / Variant</label>
+<input id="size" placeholder="Example: 18 / 20 / Adjustable">
 
 
-    <label>Product Photo</label>
-
-    <input id="photo"
-      type="file"
-      accept="image/*">
-
-    <img id="preview" class="preview">
+<label>Stock</label>
+<input id="stock" type="number" min="0" placeholder="10">
 
 
-    <label>Image URL</label>
-
-    <input id="imageUrl"
-      type="url"
-      placeholder="https://example.com/image.jpg">
+<label>SKU</label>
+<input id="sku" placeholder="ZJ-RING-001">
 
 
-    <label>Description</label>
+<label>Product Photo</label>
 
-    <textarea id="description"
-      placeholder="Write genuine product details..."></textarea>
+<input id="photo" type="file" accept="image/*">
 
-
-    <label>
-      <input id="featured"
-        type="checkbox"
-        style="width:auto">
-      ⭐ Featured Product
-    </label>
+<img id="preview" class="preview">
 
 
-    <button class="add" type="submit">
-      Add Product ✨
-    </button>
+<label>Image URL</label>
 
-   </form>
+<input
+id="imageUrl"
+type="url"
+placeholder="https://example.com/image.jpg"
+>
 
-  </div>
+
+<label>Description</label>
+
+<textarea
+id="description"
+placeholder="Write genuine product details..."
+></textarea>
 
 
-  <!-- PRODUCT LIST -->
+<label>
 
-  <div class="card">
+<input
+id="featured"
+type="checkbox"
+style="width:auto"
+>
 
-   <h2>📦 Products</h2>
+⭐ Featured Product
 
-   <div id="products">
-    Loading products...
-   </div>
+</label>
 
-  </div>
 
- </div>
+<button class="add" type="submit">
+Add Product ✨
+</button>
+
+</form>
+
+</div>
+
+
+<!-- PRODUCT LIST -->
+
+<div class="card">
+
+<h2>📦 Products</h2>
+
+<div id="products">
+Loading products...
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ORDERS -->
+
+<div class="orders-section">
+
+<div class="card">
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+flex-wrap:wrap;
+">
+
+<h2>📦 Customer Orders</h2>
+
+<button id="refreshOrders" class="refresh">
+🔄 Refresh Orders
+</button>
+
+</div>
+
+
+<div class="tabs">
+
+<button class="tab active" data-filter="all">
+All
+</button>
+
+<button class="tab" data-filter="New">
+New
+</button>
+
+<button class="tab" data-filter="Confirmed">
+Confirmed
+</button>
+
+<button class="tab" data-filter="Dispatched">
+Dispatched
+</button>
+
+<button class="tab" data-filter="Delivered">
+Delivered
+</button>
+
+<button class="tab" data-filter="Cancelled">
+Cancelled
+</button>
+
+</div>
+
+
+<div id="orders">
+Loading orders...
+</div>
+
+</div>
+
+</div>
 
 </div>
 
@@ -404,8 +708,10 @@ textarea{min-height:100px;resize:vertical}
 
 import {
  initializeApp
-} from
+}
+from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
 
 import {
  getAuth,
@@ -413,8 +719,10 @@ import {
  signInWithPopup,
  signOut,
  onAuthStateChanged
-} from
+}
+from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
 
 import {
  getFirestore,
@@ -423,62 +731,122 @@ import {
  getDocs,
  deleteDoc,
  doc,
+ updateDoc,
  serverTimestamp
-} from
+}
+from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
-/* FIREBASE CONFIG */
+/* FIREBASE */
 
-const firebaseConfig = {
- apiKey:"AIzaSyBmapJhIb0QixjcUbLqB1X9l7EuPMqEUEQ",
- authDomain:"ziya-jewellery-d420f.firebaseapp.com",
- projectId:"ziya-jewellery-d420f",
- storageBucket:"ziya-jewellery-d420f.firebasestorage.app",
- messagingSenderId:"292032564389",
- appId:"1:292032564389:web:69b11699d8f790db5c114c"
+const firebaseConfig={
+
+apiKey:
+"AIzaSyBmapJhIb0QixjcUbLqB1X9l7EuPMqEUEQ",
+
+authDomain:
+"ziya-jewellery-d420f.firebaseapp.com",
+
+projectId:
+"ziya-jewellery-d420f",
+
+storageBucket:
+"ziya-jewellery-d420f.firebasestorage.app",
+
+messagingSenderId:
+"292032564389",
+
+appId:
+"1:292032564389:web:69b11699d8f790db5c114c"
+
 };
 
 
-/* AUTHORIZED ADMIN */
-
-const ADMIN_EMAIL =
+const ADMIN_EMAIL=
 "gifthamperlovers@gmail.com";
 
 
-const app =
+const app=
 initializeApp(firebaseConfig);
 
-const auth =
+const auth=
 getAuth(app);
 
-const db =
+const db=
 getFirestore(app);
 
-const provider =
+const provider=
 new GoogleAuthProvider();
 
 
-const loginBox =
+const loginBox=
 document.getElementById("loginBox");
 
-const panel =
+const panel=
 document.getElementById("panel");
 
-const products =
+const productsBox=
 document.getElementById("products");
 
-const status =
+const ordersBox=
+document.getElementById("orders");
+
+const statusBox=
 document.getElementById("status");
+
+
+let allOrders=[];
+
+let orderFilter="all";
 
 
 /* MESSAGE */
 
 function message(el,text,type){
 
- el.textContent=text;
- el.className="msg "+type;
- el.style.display="block";
+el.textContent=text;
+
+el.className=
+"msg "+type;
+
+el.style.display="block";
+
+}
+
+
+/* ESCAPE */
+
+function escapeHTML(value){
+
+return String(value??"")
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+
+/* DATE */
+
+function formatDate(timestamp){
+
+if(!timestamp)return "Date unavailable";
+
+try{
+
+return timestamp
+.toDate()
+.toLocaleString("en-IN");
+
+}
+catch{
+
+return "Date unavailable";
+
+}
 
 }
 
@@ -487,85 +855,91 @@ function message(el,text,type){
 
 document
 .getElementById("loginBtn")
-.addEventListener("click",async()=>{
+.addEventListener(
+"click",
+async()=>{
 
- try{
+try{
 
-  const result =
-  await signInWithPopup(
-   auth,
-   provider
-  );
+const result=
+await signInWithPopup(
+auth,
+provider
+);
 
-  const email =
-  (result.user.email||"")
-  .toLowerCase();
+const email=
+(result.user.email||"")
+.toLowerCase();
 
-  if(
-   email !==
-   ADMIN_EMAIL.toLowerCase()
-  ){
 
-   await signOut(auth);
+if(
+email !==
+ADMIN_EMAIL.toLowerCase()
+){
 
-   message(
-    document.getElementById("loginMsg"),
-    "Access denied. This Gmail is not authorized.",
-    "error"
-   );
+await signOut(auth);
 
-  }
+message(
+document.getElementById("loginMsg"),
+"Access denied. This Gmail is not authorized.",
+"error"
+);
 
- }
- catch(error){
+}
 
-  console.error(error);
+}
+catch(error){
 
-  message(
-   document.getElementById("loginMsg"),
-   "Login failed: "+error.message,
-   "error"
-  );
+console.error(error);
 
- }
+message(
+document.getElementById("loginMsg"),
+"Login failed: "+error.message,
+"error"
+);
+
+}
 
 });
 
 
-/* LOGIN STATE */
+/* AUTH */
 
 onAuthStateChanged(
- auth,
- user=>{
+auth,
+user=>{
 
-  if(
-   user &&
-   (user.email||"")
-   .toLowerCase()
-   ===
-   ADMIN_EMAIL.toLowerCase()
-  ){
+if(
+user &&
+(user.email||"")
+.toLowerCase()
+===
+ADMIN_EMAIL.toLowerCase()
+){
 
-   loginBox.style.display="none";
-   panel.style.display="block";
+loginBox.style.display="none";
 
-   document.getElementById(
-    "adminEmail"
-   ).textContent=
-   "Logged in: "+user.email;
+panel.style.display="block";
 
-   loadProducts();
+document.getElementById(
+"adminEmail"
+).textContent=
+"Logged in: "+user.email;
 
-  }
-  else{
+loadProducts();
 
-   loginBox.style.display="block";
-   panel.style.display="none";
+loadOrders();
 
-  }
+}
+else{
 
- }
-);
+loginBox.style.display="block";
+
+panel.style.display="none";
+
+}
+
+});
 
 
 /* LOGOUT */
@@ -573,8 +947,8 @@ onAuthStateChanged(
 document
 .getElementById("logout")
 .addEventListener(
- "click",
- ()=>signOut(auth)
+"click",
+()=>signOut(auth)
 );
 
 
@@ -583,24 +957,24 @@ document
 document
 .getElementById("photo")
 .addEventListener(
- "change",
- function(){
+"change",
+function(){
 
-  const file=this.files[0];
+const file=this.files[0];
 
-  if(!file)return;
+if(!file)return;
 
-  const url=
-  URL.createObjectURL(file);
+const url=
+URL.createObjectURL(file);
 
-  const preview=
-  document.getElementById("preview");
+const preview=
+document.getElementById("preview");
 
-  preview.src=url;
-  preview.style.display="block";
+preview.src=url;
 
- }
-);
+preview.style.display="block";
+
+});
 
 
 /* ADD PRODUCT */
@@ -608,315 +982,669 @@ document
 document
 .getElementById("productForm")
 .addEventListener(
- "submit",
- async event=>{
+"submit",
+async event=>{
 
-  event.preventDefault();
+event.preventDefault();
 
-  const user=auth.currentUser;
+const user=
+auth.currentUser;
 
-  if(!user)return;
-
-
-  const photo=
-  document.getElementById("photo")
-  .files[0];
+if(!user)return;
 
 
-  /*
-   IMPORTANT:
-   Abhi Firebase Storage enable nahi kiya hai.
-   Isliye selected photo sirf preview hogi.
-   Product ke liye Image URL use kiya ja sakta hai.
-  */
+try{
+
+await addDoc(
+collection(db,"products"),
+{
+
+name:
+document.getElementById("name").value.trim(),
+
+metal:
+document.getElementById("metal").value,
+
+purity:
+document.getElementById("purity").value,
+
+category:
+document.getElementById("category").value,
+
+subcategory:
+document.getElementById("subcategory").value,
+
+price:
+Number(
+document.getElementById("price").value
+)||0,
+
+weight:
+document.getElementById("weight").value.trim(),
+
+size:
+document.getElementById("size").value.trim(),
+
+stock:
+Number(
+document.getElementById("stock").value
+)||0,
+
+sku:
+document.getElementById("sku").value.trim(),
+
+image:
+document.getElementById("imageUrl").value.trim(),
+
+description:
+document.getElementById("description").value.trim(),
+
+featured:
+document.getElementById("featured").checked,
+
+createdBy:
+user.email,
+
+createdAt:
+serverTimestamp()
+
+});
+
+event.target.reset();
+
+document.getElementById(
+"preview"
+).style.display="none";
+
+message(
+statusBox,
+"Product added successfully ✨",
+"success"
+);
+
+loadProducts();
+
+}
+catch(error){
+
+console.error(error);
+
+message(
+statusBox,
+"Product save failed: "+error.message,
+"error"
+);
+
+}
+
+});
 
 
-  try{
-
-   await addDoc(
-    collection(db,"products"),
-    {
-
-     name:
-      document.getElementById(
-       "name"
-      ).value.trim(),
-
-     metal:
-      document.getElementById(
-       "metal"
-      ).value,
-
-     purity:
-      document.getElementById(
-       "purity"
-      ).value,
-
-     category:
-      document.getElementById(
-       "category"
-      ).value,
-
-     subcategory:
-      document.getElementById(
-       "subcategory"
-      ).value,
-
-     price:
-      document.getElementById(
-       "price"
-      ).value,
-
-     weight:
-      document.getElementById(
-       "weight"
-      ).value.trim(),
-
-     size:
-      document.getElementById(
-       "size"
-      ).value.trim(),
-
-     stock:
-      document.getElementById(
-       "stock"
-      ).value,
-
-     sku:
-      document.getElementById(
-       "sku"
-      ).value.trim(),
-
-     image:
-      document.getElementById(
-       "imageUrl"
-      ).value.trim(),
-
-     description:
-      document.getElementById(
-       "description"
-      ).value.trim(),
-
-     featured:
-      document.getElementById(
-       "featured"
-      ).checked,
-
-     createdBy:
-      user.email,
-
-     createdAt:
-      serverTimestamp()
-
-    }
-   );
-
-
-   event.target.reset();
-
-   document.getElementById(
-    "preview"
-   ).style.display="none";
-
-
-   message(
-    status,
-    "Product added successfully ✨",
-    "success"
-   );
-
-
-   loadProducts();
-
-  }
-  catch(error){
-
-   console.error(error);
-
-   message(
-    status,
-    "Product save failed: "+
-    error.message,
-    "error"
-   );
-
-  }
-
- });
-
-
-/* LOAD PRODUCTS */
+/* PRODUCTS */
 
 async function loadProducts(){
 
- try{
+try{
 
-  const snap=
-  await getDocs(
-   collection(
-    db,
-    "products"
-   )
-  );
+const snap=
+await getDocs(
+collection(db,"products")
+);
 
+if(snap.empty){
 
-  if(snap.empty){
+productsBox.innerHTML=
+"<p>No products yet.</p>";
 
-   products.innerHTML=
-   "<p>No products yet.</p>";
+return;
 
-   return;
+}
 
-  }
+productsBox.innerHTML="";
 
 
-  products.innerHTML="";
+snap.forEach(item=>{
+
+const p=item.data();
+
+const div=
+document.createElement("div");
+
+div.className="product";
 
 
-  snap.forEach(item=>{
-
-   const p=item.data();
-
-   const div=
-   document.createElement("div");
-
-   div.className="product";
-
-
-   const img=
-   p.image
-   ?
-   `<img src="${escapeHTML(p.image)}"
-      alt="${escapeHTML(p.name||"Jewellery")}">`
-   :
-   "";
+const img=
+p.image
+?
+`
+<img
+src="${escapeHTML(p.image)}"
+alt="${escapeHTML(p.name||"Jewellery")}"
+>
+`
+:"";
 
 
-   const shareText=
-   encodeURIComponent(
-    `✨ ${p.name||"Ziya Jewellery Product"}
-    
+const shareText=
+encodeURIComponent(
+
+`✨ ${p.name||"Ziya Jewellery Product"}
+
 Metal: ${p.metal||""}
 Purity: ${p.purity||""}
 Price: ₹${p.price||""}
 
 Ziya Jewellery`
-   );
+
+);
 
 
-   div.innerHTML=`
+div.innerHTML=`
 
-    ${img}
+${img}
 
-    <strong>
-     ${escapeHTML(
-      p.name||"Product"
-     )}
-    </strong>
+<strong>
+${escapeHTML(
+p.name||"Product"
+)}
+</strong>
 
-    <br>
+<br>
 
-    <small>
-     ${escapeHTML(
-      p.metal||""
-     )}
-     •
-     ${escapeHTML(
-      p.purity||""
-     )}
-     • ₹${escapeHTML(
-      String(p.price||"")
-     )}
-    </small>
+<small>
+${escapeHTML(
+p.metal||""
+)}
+•
+${escapeHTML(
+p.purity||""
+)}
+•
+₹${escapeHTML(
+String(p.price||"")
+)}
+</small>
 
-    <br>
+<br>
 
-    <small>
-     Category:
-     ${escapeHTML(
-      p.category||""
-     )}
-    </small>
+<small>
+Category:
+${escapeHTML(
+p.category||""
+)}
+</small>
 
-    <br>
+<br>
 
-    <a
-     class="share"
-     target="_blank"
-     href="https://wa.me/?text=${shareText}">
-     📲 Share on WhatsApp
-    </a>
+<a
+class="share"
+target="_blank"
+href="https://wa.me/?text=${shareText}"
+>
+📲 Share on WhatsApp
+</a>
 
-    <br>
+<br>
 
-    <button
-     class="delete"
-     data-id="${item.id}">
-     🗑️ Delete
-    </button>
+<button
+class="delete"
+data-product-id="${item.id}"
+>
+🗑️ Delete
+</button>
 
-   `;
-
-
-   div
-   .querySelector(".delete")
-   .addEventListener(
-    "click",
-    async()=>{
-
-     if(
-      confirm(
-       "Delete this product?"
-      )
-     ){
-
-      await deleteDoc(
-       doc(
-        db,
-        "products",
-        item.id
-       )
-      );
-
-      loadProducts();
-
-     }
-
-    }
-   );
+`;
 
 
-   products.appendChild(div);
+div
+.querySelector("[data-product-id]")
+.addEventListener(
+"click",
+async()=>{
 
-  });
+if(
+confirm(
+"Delete this product?"
+)
+){
 
- }
- catch(error){
+await deleteDoc(
+doc(
+db,
+"products",
+item.id
+)
+);
 
-  console.error(error);
+loadProducts();
 
-  products.innerHTML=
-  "<p>Unable to load products.</p>";
+}
 
- }
+});
+
+
+productsBox.appendChild(div);
+
+});
+
+}
+catch(error){
+
+console.error(error);
+
+productsBox.innerHTML=
+"<p>Unable to load products.</p>";
+
+}
 
 }
 
 
-/* ESCAPE HTML */
+/* LOAD ORDERS */
 
-function escapeHTML(value){
+async function loadOrders(){
 
- return String(value)
- .replaceAll("&","&amp;")
- .replaceAll("<","&lt;")
- .replaceAll(">","&gt;")
- .replaceAll('"',"&quot;")
- .replaceAll("'","&#039;");
+ordersBox.innerHTML=
+"Loading orders...";
+
+
+try{
+
+const snap=
+await getDocs(
+collection(db,"orders")
+);
+
+
+allOrders=[];
+
+
+snap.forEach(item=>{
+
+allOrders.push({
+
+id:item.id,
+
+...item.data()
+
+});
+
+});
+
+
+allOrders.sort(
+(a,b)=>{
+
+const aTime=
+a.createdAt?.seconds||0;
+
+const bTime=
+b.createdAt?.seconds||0;
+
+return bTime-aTime;
+
+});
+
+
+renderOrders();
+
+}
+catch(error){
+
+console.error(error);
+
+ordersBox.innerHTML=`
+
+<div class="order-empty">
+
+❌ Unable to load orders.
+
+<br><br>
+
+${escapeHTML(
+error.message
+)}
+
+</div>
+
+`;
 
 }
 
-</script>
+}
 
-</body>
-</html>
+
+/* RENDER ORDERS */
+
+function renderOrders(){
+
+let list=
+[...allOrders];
+
+
+if(orderFilter!=="all"){
+
+list=
+list.filter(
+order=>
+(order.status||"New")
+===
+orderFilter
+);
+
+}
+
+
+if(!list.length){
+
+ordersBox.innerHTML=`
+
+<div class="order-empty">
+
+📦
+
+<h3>
+No orders found
+</h3>
+
+<p>
+Orders will appear here when customers place them.
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+ordersBox.innerHTML="";
+
+
+list.forEach(
+order=>{
+
+const customer=
+order.customer||{};
+
+
+const status=
+order.status||"New";
+
+
+const items=
+Array.isArray(order.items)
+?
+order.items
+:
+[];
+
+
+let itemsHTML="";
+
+
+items.forEach(item=>{
+
+itemsHTML+=`
+
+<div class="order-item">
+
+${
+item.image
+?
+`
+<img
+src="${escapeHTML(item.image)}"
+alt=""
+>
+`
+:
+`
+<div style="
+width:60px;
+height:60px;
+border-radius:9px;
+background:#f4eaf3;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:27px;
+">
+💎
+</div>
+`
+}
+
+<div class="order-item-info">
+
+<strong>
+${escapeHTML(
+item.name||"Jewellery"
+)}
+</strong>
+
+<br>
+
+<small>
+Metal:
+${escapeHTML(
+item.metal||""
+)}
+</small>
+
+<br>
+
+<small>
+Quantity:
+${Number(
+item.quantity||1
+)}
+</small>
+
+<br>
+
+<strong>
+₹${Number(
+item.price||0
+).toLocaleString(
+"en-IN"
+)}
+</strong>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+
+const card=
+document.createElement("div");
+
+card.className="order-card";
+
+
+card.innerHTML=`
+
+<div class="order-top">
+
+<div>
+
+<div class="order-id">
+
+Order ID:
+${escapeHTML(
+order.orderId||order.id
+)}
+
+</div>
+
+<div class="order-date">
+
+${formatDate(
+order.createdAt
+)}
+
+</div>
+
+</div>
+
+<div class="status">
+
+${escapeHTML(status)}
+
+</div>
+
+</div>
+
+
+<div class="customer-box">
+
+<strong>👤 Customer</strong>
+
+<br>
+
+Name:
+${escapeHTML(
+customer.name||"Not provided"
+)}
+
+<br>
+
+Mobile:
+${escapeHTML(
+customer.phone||"Not provided"
+)}
+
+<br>
+
+Email:
+${escapeHTML(
+customer.email||"Not provided"
+)}
+
+</div>
+
+
+<div class="address-box">
+
+<strong>
+🏠 Shipping Address
+</strong>
+
+<br>
+
+${escapeHTML(
+customer.name||""
+)}
+
+<br>
+
+${escapeHTML(
+customer.house||""
+)}
+
+<br>
+
+${escapeHTML(
+customer.area||""
+)}
+
+<br>
+
+${escapeHTML(
+customer.city||""
+)},
+${escapeHTML(
+customer.state||""
+)}
+-
+${escapeHTML(
+customer.pin||""
+)}
+
+${
+customer.landmark
+?
+`
+<br>
+Landmark:
+${escapeHTML(
+customer.landmark
+)}
+`
+:""
+}
+
+<br>
+
+📱
+${escapeHTML(
+customer.phone||""
+)}
+
+</div>
+
+
+<div>
+
+<strong>
+💎 Ordered Items
+</strong>
+
+${itemsHTML}
+
+</div>
+
+
+<div class="order-total">
+
+Total:
+₹${Number(
+order.total||0
+).toLocaleString(
+"en-IN"
+)}
+
+</div>
+
+
+<div class="status-actions">
+
+<button
+class="statusBtn confirm"
+data-order-status="Confirmed"
+data-order-id="${order.id}"
+>
+✅ Confirm
+</button>
+
+
+<button
+class="statusBtn dispatch"
+data-order-status="Dispatched"
+data-order-id="${order.id}"
+>
+🚚 Dispatch
+</button>
+
+
+<button
+class="statusBtn delivered"
+data-order-status="Delivered"
+data-order-id="${order.id}"
+>
+📦 Delivered
+</button>
+
+
+<button
+class="statusBtn cancel"
+data-order-status="Cancelled"
+data-order-id="${order.id}"
+>
+❌
