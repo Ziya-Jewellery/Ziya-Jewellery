@@ -3,41 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>Ziya Jewellery | Admin Panel</title>
 
 <style>
-*{box-sizing:border-box}
+
+*{
+box-sizing:border-box;
+}
 
 body{
 margin:0;
 font-family:Arial,sans-serif;
 background:linear-gradient(135deg,#fff0f6,#eee7ff);
-color:#29152e
+color:#29152e;
 }
 
 .container{
 max-width:1200px;
 margin:auto;
-padding:20px
+padding:20px;
 }
 
-.login,.panel{
+.login,
+.panel{
 background:#fff;
 border-radius:24px;
-box-shadow:0 15px 45px #5d326622
+box-shadow:0 15px 45px #5d326622;
 }
 
 .login{
 max-width:440px;
 margin:70px auto;
 padding:35px 25px;
-text-align:center
+text-align:center;
 }
 
 .logo{
 font-size:32px;
 font-weight:800;
-color:#d92878
+color:#d92878;
 }
 
 .google{
@@ -48,16 +53,16 @@ border-radius:12px;
 background:#fff;
 font-size:16px;
 font-weight:bold;
-cursor:pointer
+cursor:pointer;
 }
 
 .google:hover{
-background:#fafafa
+background:#fafafa;
 }
 
 .panel{
 display:none;
-padding:25px
+padding:25px;
 }
 
 .header{
@@ -65,64 +70,70 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 gap:15px;
-margin-bottom:25px
+margin-bottom:25px;
 }
 
 .header h1{
-margin:0 0 5px
+margin:0 0 5px;
 }
 
 .email{
 font-size:14px;
-color:#777
+color:#777;
 }
 
 button{
-cursor:pointer
+cursor:pointer;
 }
 
-.logout,.delete,.statusBtn,.refresh,.tab{
+.logout,
+.delete,
+.statusBtn,
+.refresh,
+.tab{
 border:0;
 border-radius:10px;
 padding:10px 14px;
-font-weight:bold
+font-weight:bold;
 }
 
 .logout{
 background:#ffe5ed;
-color:#a00038
+color:#a00038;
 }
 
 .grid{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:20px
+gap:20px;
 }
 
 .card{
 background:#fff8fc;
 border-radius:20px;
-padding:22px
+padding:22px;
 }
 
 label{
 display:block;
 font-weight:bold;
-margin-top:10px
+margin-top:10px;
 }
 
-input,select,textarea{
+input,
+select,
+textarea{
 width:100%;
 padding:12px;
 margin:7px 0 12px;
 border:1px solid #ddd1e2;
 border-radius:10px;
-font-size:15px
+font-size:15px;
 }
 
 textarea{
 min-height:100px;
-resize:vertical
+resize:vertical;
 }
 
 .add{
@@ -133,12 +144,12 @@ border-radius:12px;
 background:linear-gradient(135deg,#e72b7b,#7228ff);
 color:#fff;
 font-size:16px;
-font-weight:bold
+font-weight:bold;
 }
 
 .product{
 padding:15px 0;
-border-bottom:1px solid #eaddea
+border-bottom:1px solid #eaddea;
 }
 
 .product img{
@@ -147,19 +158,19 @@ height:75px;
 object-fit:cover;
 border-radius:10px;
 float:left;
-margin-right:12px
+margin-right:12px;
 }
 
 .product:after{
 content:"";
 display:block;
-clear:both
+clear:both;
 }
 
 .delete{
 background:#ffe5e9;
 color:#a00038;
-margin-top:10px
+margin-top:10px;
 }
 
 .share{
@@ -169,24 +180,24 @@ color:#08743d;
 padding:8px 12px;
 border-radius:8px;
 text-decoration:none;
-margin-top:10px
+margin-top:10px;
 }
 
 .msg{
 display:none;
 padding:12px;
 border-radius:10px;
-margin-bottom:15px
+margin-bottom:15px;
 }
 
 .error{
 background:#fff0f3;
-color:#a00030
+color:#a00030;
 }
 
 .success{
 background:#e8fff0;
-color:#08743d
+color:#08743d;
 }
 
 .preview{
@@ -195,13 +206,11 @@ max-height:220px;
 object-fit:contain;
 display:none;
 border-radius:12px;
-margin-bottom:10px
+margin-bottom:10px;
 }
 
-/* ORDERS */
-
 .orders-section{
-margin-top:25px
+margin-top:25px;
 }
 
 .order-card{
@@ -210,7 +219,7 @@ border-radius:18px;
 padding:18px;
 margin-bottom:15px;
 box-shadow:0 6px 20px #5d326612;
-border:1px solid #f0e4ef
+border:1px solid #f0e4ef;
 }
 
 .order-top{
@@ -220,18 +229,18 @@ gap:15px;
 flex-wrap:wrap;
 border-bottom:1px solid #eee;
 padding-bottom:13px;
-margin-bottom:13px
+margin-bottom:13px;
 }
 
 .order-id{
 font-weight:bold;
-color:#74154f
+color:#74154f;
 }
 
 .order-date{
 font-size:12px;
 color:#777;
-margin-top:5px
+margin-top:5px;
 }
 
 .status{
@@ -241,7 +250,7 @@ border-radius:20px;
 background:#f4e8f2;
 color:#721550;
 font-weight:bold;
-font-size:12px
+font-size:12px;
 }
 
 .customer-box,
@@ -251,25 +260,25 @@ border-radius:12px;
 padding:13px;
 margin:10px 0;
 line-height:1.6;
-font-size:14px
+font-size:14px;
 }
 
 .order-item{
 display:flex;
 gap:12px;
 padding:12px 0;
-border-bottom:1px solid #eee
+border-bottom:1px solid #eee;
 }
 
 .order-item img{
 width:60px;
 height:60px;
 border-radius:9px;
-object-fit:cover
+object-fit:cover;
 }
 
 .order-item-info{
-flex:1
+flex:1;
 }
 
 .order-total{
@@ -277,93 +286,92 @@ text-align:right;
 font-size:19px;
 font-weight:bold;
 color:#8b1657;
-margin-top:14px
+margin-top:14px;
 }
 
 .status-actions{
 display:flex;
 gap:8px;
 flex-wrap:wrap;
-margin-top:15px
+margin-top:15px;
 }
 
 .statusBtn{
-color:white
+color:white;
 }
 
 .confirm{
-background:#08743d
+background:#08743d;
 }
 
 .dispatch{
-background:#1565c0
+background:#1565c0;
 }
 
 .delivered{
-background:#6a1b9a
+background:#6a1b9a;
 }
 
 .cancel{
-background:#b00020
+background:#b00020;
 }
 
 .refresh{
 background:#eee3f1;
-color:#641449
+color:#641449;
 }
 
 .tabs{
 display:flex;
 gap:8px;
 flex-wrap:wrap;
-margin-bottom:18px
+margin-bottom:18px;
 }
 
 .tab{
 background:#eee5f1;
-color:#641449
+color:#641449;
 }
 
 .tab.active{
 background:#721550;
-color:white
+color:white;
 }
 
 .order-empty{
 text-align:center;
 padding:35px;
-color:#777
+color:#777;
 }
 
 @media(max-width:750px){
 
 .grid{
-grid-template-columns:1fr
+grid-template-columns:1fr;
 }
 
 .header{
 align-items:flex-start;
-flex-direction:column
+flex-direction:column;
 }
 
 .status-actions{
 display:grid;
-grid-template-columns:1fr 1fr
+grid-template-columns:1fr 1fr;
 }
 
 .statusBtn{
-width:100%
+width:100%;
 }
 
 }
+
 </style>
 </head>
 
 <body>
 
 <div class="container">
-
-<!-- LOGIN -->
 
 <div id="loginBox" class="login">
 
@@ -383,16 +391,16 @@ width:100%
 
 </div>
 
-
-<!-- ADMIN PANEL -->
-
 <div id="panel" class="panel">
 
 <div class="header">
 
 <div>
+
 <h1>✨ Ziya Jewellery Admin</h1>
+
 <div id="adminEmail" class="email"></div>
+
 </div>
 
 <button id="logout" class="logout">
@@ -403,27 +411,19 @@ Logout
 
 <div id="status" class="msg"></div>
 
-
-<!-- PRODUCTS -->
-
 <div class="grid">
-
-<!-- ADD PRODUCT -->
 
 <div class="card">
 
 <h2>➕ Add Jewellery</h2>
 
-<form id="productForm">
-
-<label>Product Name</label>
+<form id="productForm"><label>Product Name</label>
 
 <input
 id="name"
 required
 placeholder="Example: 22K Gold Ring"
 >
-
 
 <label>Metal Type</label>
 
@@ -435,7 +435,6 @@ placeholder="Example: 22K Gold Ring"
 <option>Other Metal</option>
 
 </select>
-
 
 <label>Purity / Material</label>
 
@@ -461,7 +460,6 @@ placeholder="Example: 22K Gold Ring"
 
 </select>
 
-
 <label>Main Category</label>
 
 <select id="category" required>
@@ -485,7 +483,6 @@ placeholder="Example: 22K Gold Ring"
 <option>Other</option>
 
 </select>
-
 
 <label>Sub Category / Item</label>
 
@@ -555,7 +552,6 @@ placeholder="Example: 22K Gold Ring"
 
 </select>
 
-
 <label>Price ₹</label>
 
 <input
@@ -566,7 +562,6 @@ required
 placeholder="999"
 >
 
-
 <label>Weight</label>
 
 <input
@@ -574,14 +569,12 @@ id="weight"
 placeholder="Example: 4.5 g"
 >
 
-
 <label>Size / Variant</label>
 
 <input
 id="size"
 placeholder="18 / 20 / Adjustable"
 >
-
 
 <label>Stock</label>
 
@@ -592,14 +585,12 @@ min="0"
 placeholder="10"
 >
 
-
 <label>SKU</label>
 
 <input
 id="sku"
 placeholder="ZJ-RING-001"
 >
-
 
 <label>Product Photo</label>
 
@@ -614,7 +605,6 @@ id="preview"
 class="preview"
 >
 
-
 <label>Image URL</label>
 
 <input
@@ -623,14 +613,12 @@ type="url"
 placeholder="https://example.com/image.jpg"
 >
 
-
 <label>Description</label>
 
 <textarea
 id="description"
 placeholder="Write genuine product details..."
 ></textarea>
-
 
 <label>
 
@@ -643,7 +631,6 @@ style="width:auto"
 ⭐ Featured Product
 
 </label>
-
 
 <button
 class="add"
@@ -658,9 +645,6 @@ Add Product ✨
 
 </div>
 
-
-<!-- PRODUCT LIST -->
-
 <div class="card">
 
 <h2>📦 Products</h2>
@@ -672,9 +656,6 @@ Loading products...
 </div>
 
 </div>
-
-
-<!-- ORDERS -->
 
 <div class="orders-section">
 
@@ -700,7 +681,6 @@ class="refresh"
 </button>
 
 </div>
-
 
 <div class="tabs">
 
@@ -748,7 +728,6 @@ Cancelled
 
 </div>
 
-
 <div id="orders">
 Loading orders...
 </div>
@@ -761,7 +740,6 @@ Loading orders...
 
 </div>
 
-
 <script type="module">
 
 import {
@@ -769,7 +747,6 @@ initializeApp
 }
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-
 
 import {
 getAuth,
@@ -780,7 +757,6 @@ onAuthStateChanged
 }
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
-
 
 import {
 getFirestore,
@@ -794,9 +770,6 @@ serverTimestamp
 }
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
-
-
-/* FIREBASE CONFIG */
 
 const firebaseConfig={
 
@@ -820,14 +793,8 @@ appId:
 
 };
 
-
-/* ADMIN EMAIL */
-
 const ADMIN_EMAIL=
 "gifthamperlovers@gmail.com";
-
-
-/* FIREBASE START */
 
 const app=
 initializeApp(firebaseConfig);
@@ -840,7 +807,6 @@ getFirestore(app);
 
 const provider=
 new GoogleAuthProvider();
-
 
 const loginBox=
 document.getElementById("loginBox");
@@ -861,22 +827,15 @@ let allOrders=[];
 
 let orderFilter="all";
 
-
-/* MESSAGE */
-
 function message(el,text,type){
 
 el.textContent=text;
 
-el.className=
-"msg "+type;
+el.className="msg "+type;
 
 el.style.display="block";
 
 }
-
-
-/* ESCAPE */
 
 function escapeHTML(value){
 
@@ -889,9 +848,6 @@ return String(value??"")
 
 }
 
-
-/* DATE */
-
 function formatDate(timestamp){
 
 if(!timestamp)
@@ -903,17 +859,13 @@ return timestamp
 .toDate()
 .toLocaleString("en-IN");
 
-}
-catch{
+}catch{
 
 return "Date unavailable";
 
 }
 
 }
-
-
-/* GOOGLE LOGIN - REDIRECT */
 
 document
 .getElementById("loginBtn")
@@ -934,8 +886,7 @@ auth,
 provider
 );
 
-}
-catch(error){
+}catch(error){
 
 console.error(error);
 
@@ -948,9 +899,6 @@ document.getElementById("loginMsg"),
 }
 
 });
-
-
-/* AUTH STATE */
 
 onAuthStateChanged(
 auth,
@@ -977,31 +925,15 @@ loadProducts();
 
 loadOrders();
 
-}
-else{
+}else{
 
 loginBox.style.display="block";
 
 panel.style.display="none";
 
-if(user){
-
-signOut(auth);
-
-message(
-document.getElementById("loginMsg"),
-"Access denied. Please use the authorized Gmail.",
-"error"
-);
-
-}
-
 }
 
 });
-
-
-/* LOGOUT */
 
 document
 .getElementById("logout")
@@ -1015,9 +947,6 @@ location.reload();
 
 });
 
-
-/* PHOTO PREVIEW */
-
 document
 .getElementById("photo")
 .addEventListener(
@@ -1026,8 +955,7 @@ function(){
 
 const file=this.files[0];
 
-if(!file)
-return;
+if(!file)return;
 
 const preview=
 document.getElementById("preview");
@@ -1038,9 +966,6 @@ URL.createObjectURL(file);
 preview.style.display="block";
 
 });
-
-
-/* ADD PRODUCT */
 
 document
 .getElementById("productForm")
@@ -1060,7 +985,6 @@ alert("Please login first.");
 return;
 
 }
-
 
 try{
 
@@ -1146,8 +1070,7 @@ statusBox,
 
 loadProducts();
 
-}
-catch(error){
+}catch(error){
 
 console.error(error);
 
@@ -1159,17 +1082,11 @@ statusBox,
 
 }
 
-});
-
-
-/* LOAD PRODUCTS */
-
-async function loadProducts(){
+});async function loadProducts(){
 
 try{
 
-const snap=
-await getDocs(
+const snap=await getDocs(
 collection(db,"products")
 );
 
@@ -1184,84 +1101,54 @@ return;
 
 productsBox.innerHTML="";
 
-
 snap.forEach(item=>{
 
 const p=item.data();
 
-const div=
-document.createElement("div");
+const div=document.createElement("div");
 
 div.className="product";
 
-
-const img=
-p.image
+const img=p.image
 ?
-`
-<img
-src="${escapeHTML(p.image)}"
-alt="${escapeHTML(p.name||"Jewellery")}"
->
-`
+`<img src="${escapeHTML(p.image)}"
+alt="${escapeHTML(p.name||"Jewellery")}">`
 :"";
 
-
-const shareText=
-encodeURIComponent(
-
+const shareText=encodeURIComponent(
 `✨ ${p.name||"Ziya Jewellery Product"}
 
 Metal: ${p.metal||""}
 Purity: ${p.purity||""}
-Price: ₹${p.price||""}
+Category: ${p.category||""}
+Price: ₹${p.price||0}
 
 Ziya Jewellery`
-
 );
-
 
 div.innerHTML=`
 
 ${img}
 
 <strong>
-${escapeHTML(
-p.name||"Product"
-)}
+${escapeHTML(p.name||"Product")}
 </strong>
 
 <br>
 
 <small>
-
-${escapeHTML(
-p.metal||""
-)}
-
+${escapeHTML(p.metal||"")}
 •
-
-${escapeHTML(
-p.purity||""
-)}
-
+${escapeHTML(p.purity||"")}
 •
-
-₹${escapeHTML(
-String(p.price||"")
-)}
-
+₹${Number(p.price||0).toLocaleString("en-IN")}
 </small>
 
 <br>
 
 <small>
-
 Category:
-${escapeHTML(
-p.category||""
-)}
-
+${escapeHTML(p.category||"")}
 </small>
 
 <br>
@@ -1271,58 +1158,53 @@ class="share"
 target="_blank"
 href="https://wa.me/?text=${shareText}"
 >
-
 📲 Share on WhatsApp
-
 </a>
 
 <br>
 
 <button
 class="delete"
-data-id="${item.id}"
+data-product-id="${item.id}"
 >
-
 🗑️ Delete
-
 </button>
 
 `;
 
-
 div
-.querySelector(".delete")
+.querySelector("[data-product-id]")
 .addEventListener(
 "click",
 async()=>{
 
-if(
-confirm(
-"Delete this product?"
-)
-){
+if(!confirm("Delete this product?"))
+return;
+
+try{
 
 await deleteDoc(
-doc(
-db,
-"products",
-item.id
-)
+doc(db,"products",item.id)
 );
 
 loadProducts();
 
+}catch(error){
+
+alert(
+"Delete failed: "+
+error.message
+);
+
 }
 
 });
-
 
 productsBox.appendChild(div);
 
 });
 
-}
-catch(error){
+}catch(error){
 
 console.error(error);
 
@@ -1343,8 +1225,7 @@ ordersBox.innerHTML=
 
 try{
 
-const snap=
-await getDocs(
+const snap=await getDocs(
 collection(db,"orders")
 );
 
@@ -1355,13 +1236,11 @@ snap.forEach(item=>{
 allOrders.push({
 
 id:item.id,
-
 ...item.data()
 
 });
 
 });
-
 
 allOrders.sort(
 (a,b)=>{
@@ -1376,11 +1255,9 @@ return bTime-aTime;
 
 });
 
-
 renderOrders();
 
-}
-catch(error){
+}catch(error){
 
 console.error(error);
 
@@ -1392,9 +1269,7 @@ ordersBox.innerHTML=`
 
 <br><br>
 
-${escapeHTML(
-error.message
-)}
+${escapeHTML(error.message)}
 
 </div>
 
@@ -1409,22 +1284,17 @@ error.message
 
 function renderOrders(){
 
-let list=
-[...allOrders];
-
+let list=[...allOrders];
 
 if(orderFilter!=="all"){
 
-list=
-list.filter(
+list=list.filter(
 order=>
 (order.status||"New")
-===
-orderFilter
+===orderFilter
 );
 
 }
-
 
 if(!list.length){
 
@@ -1448,16 +1318,14 @@ return;
 
 }
 
-
 ordersBox.innerHTML="";
-
 
 list.forEach(order=>{
 
 const customer=
 order.customer||{};
 
-const currentStatus=
+const status=
 order.status||"New";
 
 const items=
@@ -1467,9 +1335,7 @@ order.items
 :
 [];
 
-
 let itemsHTML="";
-
 
 items.forEach(item=>{
 
@@ -1480,15 +1346,11 @@ itemsHTML+=`
 ${
 item.image
 ?
-`
-<img
+`<img
 src="${escapeHTML(item.image)}"
-alt=""
->
-`
+alt="">`
 :
-`
-<div style="
+`<div style="
 width:60px;
 height:60px;
 border-radius:9px;
@@ -1499,8 +1361,7 @@ justify-content:center;
 font-size:27px;
 ">
 💎
-</div>
-`
+</div>`
 }
 
 <div class="order-item-info">
@@ -1515,18 +1376,14 @@ item.name||"Jewellery"
 
 <small>
 Metal:
-${escapeHTML(
-item.metal||""
-)}
+${escapeHTML(item.metal||"")}
 </small>
 
 <br>
 
 <small>
 Quantity:
-${Number(
-item.quantity||1
-)}
+${Number(item.quantity||1)}
 </small>
 
 <br>
@@ -1545,12 +1402,10 @@ item.price||0
 
 });
 
-
 const card=
 document.createElement("div");
 
 card.className="order-card";
-
 
 card.innerHTML=`
 
@@ -1569,9 +1424,7 @@ order.orderId||order.id
 
 <div class="order-date">
 
-${formatDate(
-order.createdAt
-)}
+${formatDate(order.createdAt)}
 
 </div>
 
@@ -1579,9 +1432,7 @@ order.createdAt
 
 <div class="status">
 
-${escapeHTML(
-currentStatus
-)}
+${escapeHTML(status)}
 
 </div>
 
@@ -1590,7 +1441,7 @@ currentStatus
 
 <div class="customer-box">
 
-<strong>👤 Customer Details</strong>
+<strong>👤 Customer</strong>
 
 <br>
 
@@ -1622,7 +1473,7 @@ customer.email||"Not provided"
 🏠 Shipping Address
 </strong>
 
-<br><br>
+<br>
 
 ${escapeHTML(
 customer.name||""
@@ -1656,11 +1507,9 @@ customer.pin||""
 ${
 customer.landmark
 ?
-`
-<br>
+`<br>
 Landmark:
-${escapeHTML(customer.landmark)}
-`
+${escapeHTML(customer.landmark)}`
 :""
 }
 
@@ -1674,11 +1523,15 @@ customer.phone||""
 </div>
 
 
+<div>
+
 <strong>
 💎 Ordered Items
 </strong>
 
 ${itemsHTML}
+
+</div>
 
 
 <div class="order-total">
@@ -1695,32 +1548,32 @@ order.total||0
 
 <button
 class="statusBtn confirm"
-data-status="Confirmed"
-data-id="${order.id}"
+data-order-status="Confirmed"
+data-order-id="${order.id}"
 >
 ✅ Confirm
 </button>
 
 <button
 class="statusBtn dispatch"
-data-status="Dispatched"
-data-id="${order.id}"
+data-order-status="Dispatched"
+data-order-id="${order.id}"
 >
 🚚 Dispatch
 </button>
 
 <button
 class="statusBtn delivered"
-data-status="Delivered"
-data-id="${order.id}"
+data-order-status="Delivered"
+data-order-id="${order.id}"
 >
 📦 Delivered
 </button>
 
 <button
 class="statusBtn cancel"
-data-status="Cancelled"
-data-id="${order.id}"
+data-order-status="Cancelled"
+data-order-id="${order.id}"
 >
 ❌ Cancel
 </button>
@@ -1729,9 +1582,10 @@ data-id="${order.id}"
 
 `;
 
-
 card
-.querySelectorAll("[data-status]")
+.querySelectorAll(
+"[data-order-status]"
+)
 .forEach(button=>{
 
 button.addEventListener(
@@ -1739,112 +1593,10 @@ button.addEventListener(
 async()=>{
 
 const newStatus=
-button.dataset.status;
+button.dataset.orderStatus;
 
 const orderId=
-button.dataset.id;
+button.dataset.orderId;
 
-
-if(
-!confirm(
-`Change order status to ${newStatus}?`
-)
-)
-return;
-
-
-try{
-
-await updateDoc(
-doc(
-db,
-"orders",
-orderId
-),
-{
-
-status:newStatus,
-
-updatedAt:
-serverTimestamp()
-
-}
-);
-
-
-const found=
-allOrders.find(
-x=>x.id===orderId
-);
-
-if(found){
-
-found.status=
-newStatus;
-
-}
-
-
-renderOrders();
-
-message(
-statusBox,
-`Order updated: ${newStatus}`,
-"success"
-);
-
-}
-catch(error){
-
-console.error(error);
-
-message(
-statusBox,
-"Order update failed: "+
-error.message,
-"error"
-);
-
-}
-
-});
-
-});
-
-
-ordersBox.appendChild(card);
-
-});
-
-}
-
-
-/* ORDER FILTER */
-
-document
-.querySelectorAll(".tab")
-.forEach(tab=>{
-
-tab.addEventListener(
-"click",
-()=>{
-
-document
-.querySelectorAll(".tab")
-.forEach(x=>
-x.classList.remove("active")
-);
-
-tab.classList.add("active");
-
-orderFilter=
-tab.dataset.filter;
-
-renderOrders();
-
-});
-
-});
-
-
-/* REFRESH
+if(!confirm(
+`Change order
