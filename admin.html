@@ -7,242 +7,354 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
- margin:0;
- font-family:Arial,sans-serif;
- background:linear-gradient(135deg,#fff0f6,#eee7ff);
- color:#29152e
+margin:0;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#fff0f6,#eee7ff);
+color:#29152e
 }
-.container{max-width:1200px;margin:auto;padding:20px}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:20px
+}
+
 .login,.panel{
- background:#fff;
- border-radius:24px;
- box-shadow:0 15px 45px #5d326622
+background:#fff;
+border-radius:24px;
+box-shadow:0 15px 45px #5d326622
 }
+
 .login{
- max-width:440px;
- margin:70px auto;
- padding:35px 25px;
- text-align:center
+max-width:440px;
+margin:70px auto;
+padding:35px 25px;
+text-align:center
 }
+
 .logo{
- font-size:32px;
- font-weight:800;
- color:#d92878
+font-size:32px;
+font-weight:800;
+color:#d92878
 }
+
 .google{
- width:100%;
- padding:14px;
- border:1px solid #ddd;
- border-radius:12px;
- background:#fff;
- font-size:16px;
- font-weight:bold;
- cursor:pointer
+width:100%;
+padding:15px;
+border:1px solid #ddd;
+border-radius:12px;
+background:#fff;
+font-size:16px;
+font-weight:bold;
+cursor:pointer
 }
-.google:active{transform:scale(.98)}
-.panel{display:none;padding:25px}
+
+.google:hover{
+background:#fafafa
+}
+
+.panel{
+display:none;
+padding:25px
+}
+
 .header{
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:15px;
- margin-bottom:25px
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+margin-bottom:25px
 }
-.header h1{margin:0 0 5px}
-.email{font-size:14px;color:#777}
+
+.header h1{
+margin:0 0 5px
+}
+
+.email{
+font-size:14px;
+color:#777
+}
+
+button{
+cursor:pointer
+}
+
 .logout,.delete,.statusBtn,.refresh,.tab{
- border:0;
- border-radius:10px;
- padding:10px 14px;
- cursor:pointer;
- font-weight:bold
+border:0;
+border-radius:10px;
+padding:10px 14px;
+font-weight:bold
 }
-.logout{background:#ffe5ed;color:#a00038}
+
+.logout{
+background:#ffe5ed;
+color:#a00038
+}
+
 .grid{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:20px
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px
 }
+
 .card{
- background:#fff8fc;
- border-radius:20px;
- padding:22px
+background:#fff8fc;
+border-radius:20px;
+padding:22px
 }
+
 label{
- display:block;
- font-weight:bold;
- margin-top:10px
+display:block;
+font-weight:bold;
+margin-top:10px
 }
+
 input,select,textarea{
- width:100%;
- padding:12px;
- margin:7px 0 12px;
- border:1px solid #ddd1e2;
- border-radius:10px;
- font-size:15px
+width:100%;
+padding:12px;
+margin:7px 0 12px;
+border:1px solid #ddd1e2;
+border-radius:10px;
+font-size:15px
 }
-textarea{min-height:100px;resize:vertical}
+
+textarea{
+min-height:100px;
+resize:vertical
+}
+
 .add{
- width:100%;
- padding:14px;
- border:0;
- border-radius:12px;
- background:linear-gradient(135deg,#e72b7b,#7228ff);
- color:#fff;
- font-size:16px;
- font-weight:bold;
- cursor:pointer
+width:100%;
+padding:14px;
+border:0;
+border-radius:12px;
+background:linear-gradient(135deg,#e72b7b,#7228ff);
+color:#fff;
+font-size:16px;
+font-weight:bold
 }
+
 .product{
- padding:15px 0;
- border-bottom:1px solid #eaddea
+padding:15px 0;
+border-bottom:1px solid #eaddea
 }
+
 .product img{
- width:75px;
- height:75px;
- object-fit:cover;
- border-radius:10px;
- float:left;
- margin-right:12px
+width:75px;
+height:75px;
+object-fit:cover;
+border-radius:10px;
+float:left;
+margin-right:12px
 }
-.product:after{content:"";display:block;clear:both}
+
+.product:after{
+content:"";
+display:block;
+clear:both
+}
+
 .delete{
- background:#ffe5e9;
- color:#a00038;
- margin-top:10px
+background:#ffe5e9;
+color:#a00038;
+margin-top:10px
 }
+
 .share{
- display:inline-block;
- background:#e8fff0;
- color:#08743d;
- padding:8px 12px;
- border-radius:8px;
- text-decoration:none;
- margin-top:10px
+display:inline-block;
+background:#e8fff0;
+color:#08743d;
+padding:8px 12px;
+border-radius:8px;
+text-decoration:none;
+margin-top:10px
 }
+
 .msg{
- display:none;
- padding:12px;
- border-radius:10px;
- margin-bottom:15px
+display:none;
+padding:12px;
+border-radius:10px;
+margin-bottom:15px
 }
-.error{background:#fff0f3;color:#a00030}
-.success{background:#e8fff0;color:#08743d}
+
+.error{
+background:#fff0f3;
+color:#a00030
+}
+
+.success{
+background:#e8fff0;
+color:#08743d
+}
+
 .preview{
- width:100%;
- max-height:220px;
- object-fit:contain;
- display:none;
- border-radius:12px;
- margin-bottom:10px
+width:100%;
+max-height:220px;
+object-fit:contain;
+display:none;
+border-radius:12px;
+margin-bottom:10px
 }
 
 /* ORDERS */
-.orders-section{margin-top:25px}
+
+.orders-section{
+margin-top:25px
+}
+
 .order-card{
- background:white;
- border-radius:18px;
- padding:18px;
- margin-bottom:15px;
- box-shadow:0 6px 20px #5d326612;
- border:1px solid #f0e4ef
+background:white;
+border-radius:18px;
+padding:18px;
+margin-bottom:15px;
+box-shadow:0 6px 20px #5d326612;
+border:1px solid #f0e4ef
 }
+
 .order-top{
- display:flex;
- justify-content:space-between;
- gap:15px;
- flex-wrap:wrap;
- border-bottom:1px solid #eee;
- padding-bottom:13px;
- margin-bottom:13px
+display:flex;
+justify-content:space-between;
+gap:15px;
+flex-wrap:wrap;
+border-bottom:1px solid #eee;
+padding-bottom:13px;
+margin-bottom:13px
 }
-.order-id{font-weight:bold;color:#74154f}
-.order-date{font-size:12px;color:#777;margin-top:5px}
+
+.order-id{
+font-weight:bold;
+color:#74154f
+}
+
+.order-date{
+font-size:12px;
+color:#777;
+margin-top:5px
+}
+
 .status{
- display:inline-block;
- padding:7px 12px;
- border-radius:20px;
- background:#f4e8f2;
- color:#721550;
- font-weight:bold;
- font-size:12px
+display:inline-block;
+padding:7px 12px;
+border-radius:20px;
+background:#f4e8f2;
+color:#721550;
+font-weight:bold;
+font-size:12px
 }
-.customer-box,.address-box{
- background:#faf6fa;
- border-radius:12px;
- padding:13px;
- margin:10px 0;
- line-height:1.6;
- font-size:14px
+
+.customer-box,
+.address-box{
+background:#faf6fa;
+border-radius:12px;
+padding:13px;
+margin:10px 0;
+line-height:1.6;
+font-size:14px
 }
+
 .order-item{
- display:flex;
- gap:12px;
- padding:12px 0;
- border-bottom:1px solid #eee
+display:flex;
+gap:12px;
+padding:12px 0;
+border-bottom:1px solid #eee
 }
+
 .order-item img{
- width:60px;
- height:60px;
- border-radius:9px;
- object-fit:cover;
- background:#f4eaf3
+width:60px;
+height:60px;
+border-radius:9px;
+object-fit:cover
 }
-.order-item-info{flex:1}
+
+.order-item-info{
+flex:1
+}
+
 .order-total{
- text-align:right;
- font-size:19px;
- font-weight:bold;
- color:#8b1657;
- margin-top:14px
+text-align:right;
+font-size:19px;
+font-weight:bold;
+color:#8b1657;
+margin-top:14px
 }
+
 .status-actions{
- display:flex;
- gap:8px;
- flex-wrap:wrap;
- margin-top:15px
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+margin-top:15px
 }
-.statusBtn{color:white}
-.confirm{background:#08743d}
-.dispatch{background:#1565c0}
-.delivered{background:#6a1b9a}
-.cancel{background:#b00020}
+
+.statusBtn{
+color:white
+}
+
+.confirm{
+background:#08743d
+}
+
+.dispatch{
+background:#1565c0
+}
+
+.delivered{
+background:#6a1b9a
+}
+
+.cancel{
+background:#b00020
+}
+
 .refresh{
- background:#eee3f1;
- color:#641449
+background:#eee3f1;
+color:#641449
 }
-.order-empty{
- text-align:center;
- padding:35px;
- color:#777
-}
+
 .tabs{
- display:flex;
- gap:8px;
- flex-wrap:wrap;
- margin-bottom:18px
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+margin-bottom:18px
 }
+
 .tab{
- background:#eee5f1;
- color:#641449
+background:#eee5f1;
+color:#641449
 }
+
 .tab.active{
- background:#721550;
- color:white
+background:#721550;
+color:white
 }
+
+.order-empty{
+text-align:center;
+padding:35px;
+color:#777
+}
+
 @media(max-width:750px){
- .grid{grid-template-columns:1fr}
- .header{
-  align-items:flex-start;
-  flex-direction:column
- }
- .order-top{flex-direction:column}
- .status-actions{
-  display:grid;
-  grid-template-columns:1fr 1fr
- }
- .statusBtn{width:100%}
+
+.grid{
+grid-template-columns:1fr
+}
+
+.header{
+align-items:flex-start;
+flex-direction:column
+}
+
+.status-actions{
+display:grid;
+grid-template-columns:1fr 1fr
+}
+
+.statusBtn{
+width:100%
+}
+
 }
 </style>
 </head>
@@ -252,40 +364,51 @@ textarea{min-height:100px;resize:vertical}
 <div class="container">
 
 <!-- LOGIN -->
+
 <div id="loginBox" class="login">
 
- <div class="logo">✨ Ziya Jewellery</div>
+<div class="logo">
+✨ Ziya Jewellery
+</div>
 
- <h2>Secure Admin Panel</h2>
- <p>Authorized administrator only</p>
+<h2>Secure Admin Panel</h2>
 
- <button type="button" id="loginBtn" class="google">
-   🔐 Continue with Google
- </button>
+<p>Authorized administrator only</p>
 
- <div id="loginMsg" class="msg error"></div>
+<button id="loginBtn" class="google">
+🔐 Continue with Google
+</button>
+
+<div id="loginMsg" class="msg error"></div>
+
 </div>
 
 
 <!-- ADMIN PANEL -->
+
 <div id="panel" class="panel">
 
- <div class="header">
-  <div>
-   <h1>✨ Ziya Jewellery Admin</h1>
-   <div id="adminEmail" class="email"></div>
-  </div>
+<div class="header">
 
-  <button type="button" id="logout" class="logout">
-   Logout
-  </button>
- </div>
+<div>
+<h1>✨ Ziya Jewellery Admin</h1>
+<div id="adminEmail" class="email"></div>
+</div>
 
- <div id="status" class="msg"></div>
+<button id="logout" class="logout">
+Logout
+</button>
+
+</div>
+
+<div id="status" class="msg"></div>
 
 
 <!-- PRODUCTS -->
+
 <div class="grid">
+
+<!-- ADD PRODUCT -->
 
 <div class="card">
 
@@ -294,37 +417,57 @@ textarea{min-height:100px;resize:vertical}
 <form id="productForm">
 
 <label>Product Name</label>
-<input id="name" required placeholder="Example: 22K Gold Ring">
+
+<input
+id="name"
+required
+placeholder="Example: 22K Gold Ring"
+>
+
 
 <label>Metal Type</label>
+
 <select id="metal" required>
+
 <option value="">Select Metal</option>
 <option>Gold</option>
 <option>Silver</option>
 <option>Other Metal</option>
+
 </select>
 
+
 <label>Purity / Material</label>
+
 <select id="purity" required>
+
 <option value="">Select Purity / Material</option>
+
 <option>24K Gold</option>
 <option>22K Gold</option>
 <option>18K Gold</option>
 <option>14K Gold</option>
+
 <option>999 Fine Silver</option>
 <option>925 Sterling Silver</option>
 <option>Other Silver</option>
+
 <option>Stainless Steel</option>
 <option>Brass</option>
 <option>Copper</option>
 <option>Alloy</option>
 <option>Titanium</option>
 <option>Mixed Metal</option>
+
 </select>
 
+
 <label>Main Category</label>
+
 <select id="category" required>
+
 <option value="">Select Category</option>
+
 <option>Rings</option>
 <option>Earrings</option>
 <option>Necklaces</option>
@@ -339,102 +482,185 @@ textarea{min-height:100px;resize:vertical}
 <option>Men's Jewellery</option>
 <option>Couple Jewellery</option>
 <option>Gift Collection</option>
-<option>Other Metal Jewellery</option>
+<option>Other</option>
+
 </select>
 
+
 <label>Sub Category / Item</label>
+
 <select id="subcategory">
+
 <option value="">Select Item</option>
+
 <option>Gold Ring</option>
 <option>Silver Ring</option>
 <option>Diamond Ring</option>
 <option>Couple Ring</option>
 <option>Engagement Ring</option>
 <option>Wedding Ring</option>
+
 <option>Stud Earrings</option>
 <option>Jhumka</option>
 <option>Hoop Earrings</option>
 <option>Drop Earrings</option>
 <option>Chandbali</option>
 <option>Bali</option>
+
 <option>Gold Necklace</option>
 <option>Silver Necklace</option>
 <option>Pendant Necklace</option>
 <option>Chain Necklace</option>
 <option>Choker</option>
 <option>Mangalsutra</option>
+
 <option>Gold Bracelet</option>
 <option>Silver Bracelet</option>
 <option>Charm Bracelet</option>
 <option>Couple Bracelet</option>
 <option>Kada</option>
+
 <option>Gold Bangle</option>
 <option>Silver Bangle</option>
 <option>Bridal Bangles</option>
+
 <option>Gold Chain</option>
 <option>Silver Chain</option>
 <option>Figaro Chain</option>
 <option>Rope Chain</option>
 <option>Box Chain</option>
+
 <option>Gold Pendant</option>
 <option>Silver Pendant</option>
 <option>Heart Pendant</option>
 <option>Name Pendant</option>
 <option>Couple Pendant</option>
+
 <option>Silver Payal</option>
 <option>Designer Payal</option>
 <option>Pair Payal</option>
+
 <option>Nose Pin</option>
 <option>Nose Ring</option>
 <option>Nath</option>
+
 <option>Maang Tikka</option>
 <option>Matha Patti</option>
 <option>Bridal Set</option>
+
 <option>Men's Ring</option>
 <option>Men's Chain</option>
 <option>Men's Bracelet</option>
 <option>Men's Kada</option>
+
 </select>
 
+
 <label>Price ₹</label>
-<input id="price" type="number" min="0" required placeholder="999">
+
+<input
+id="price"
+type="number"
+min="0"
+required
+placeholder="999"
+>
+
 
 <label>Weight</label>
-<input id="weight" placeholder="Example: 4.5 g">
+
+<input
+id="weight"
+placeholder="Example: 4.5 g"
+>
+
 
 <label>Size / Variant</label>
-<input id="size" placeholder="Example: 18 / 20 / Adjustable">
+
+<input
+id="size"
+placeholder="18 / 20 / Adjustable"
+>
+
 
 <label>Stock</label>
-<input id="stock" type="number" min="0" placeholder="10">
+
+<input
+id="stock"
+type="number"
+min="0"
+placeholder="10"
+>
+
 
 <label>SKU</label>
-<input id="sku" placeholder="ZJ-RING-001">
+
+<input
+id="sku"
+placeholder="ZJ-RING-001"
+>
+
 
 <label>Product Photo</label>
-<input id="photo" type="file" accept="image/*">
-<img id="preview" class="preview">
+
+<input
+id="photo"
+type="file"
+accept="image/*"
+>
+
+<img
+id="preview"
+class="preview"
+>
+
 
 <label>Image URL</label>
-<input id="imageUrl" type="url" placeholder="https://example.com/image.jpg">
+
+<input
+id="imageUrl"
+type="url"
+placeholder="https://example.com/image.jpg"
+>
+
 
 <label>Description</label>
-<textarea id="description" placeholder="Write genuine product details..."></textarea>
+
+<textarea
+id="description"
+placeholder="Write genuine product details..."
+></textarea>
+
 
 <label>
-<input id="featured" type="checkbox" style="width:auto">
+
+<input
+id="featured"
+type="checkbox"
+style="width:auto"
+>
+
 ⭐ Featured Product
+
 </label>
 
-<button class="add" type="submit">
+
+<button
+class="add"
+type="submit"
+>
+
 Add Product ✨
+
 </button>
 
 </form>
+
 </div>
 
 
 <!-- PRODUCT LIST -->
+
 <div class="card">
 
 <h2>📦 Products</h2>
@@ -449,6 +675,7 @@ Loading products...
 
 
 <!-- ORDERS -->
+
 <div class="orders-section">
 
 <div class="card">
@@ -463,95 +690,175 @@ flex-wrap:wrap;
 
 <h2>📦 Customer Orders</h2>
 
-<button type="button" id="refreshOrders" class="refresh">
+<button
+id="refreshOrders"
+class="refresh"
+>
+
 🔄 Refresh Orders
+
 </button>
 
 </div>
 
+
 <div class="tabs">
 
-<button type="button" class="tab active" data-filter="all">All</button>
-<button type="button" class="tab" data-filter="New">New</button>
-<button type="button" class="tab" data-filter="Confirmed">Confirmed</button>
-<button type="button" class="tab" data-filter="Dispatched">Dispatched</button>
-<button type="button" class="tab" data-filter="Delivered">Delivered</button>
-<button type="button" class="tab" data-filter="Cancelled">Cancelled</button>
+<button
+class="tab active"
+data-filter="all"
+>
+All
+</button>
+
+<button
+class="tab"
+data-filter="New"
+>
+New
+</button>
+
+<button
+class="tab"
+data-filter="Confirmed"
+>
+Confirmed
+</button>
+
+<button
+class="tab"
+data-filter="Dispatched"
+>
+Dispatched
+</button>
+
+<button
+class="tab"
+data-filter="Delivered"
+>
+Delivered
+</button>
+
+<button
+class="tab"
+data-filter="Cancelled"
+>
+Cancelled
+</button>
 
 </div>
 
-<div id="orders">Loading orders...</div>
+
+<div id="orders">
+Loading orders...
+</div>
 
 </div>
+
 </div>
 
 </div>
+
 </div>
 
 
 <script type="module">
 
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+import {
+initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
 
 import {
- getAuth,
- GoogleAuthProvider,
- signInWithPopup,
- signOut,
- onAuthStateChanged
+getAuth,
+GoogleAuthProvider,
+signInWithRedirect,
+signOut,
+onAuthStateChanged
 }
-from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
 
 import {
- getFirestore,
- collection,
- addDoc,
- getDocs,
- deleteDoc,
- doc,
- updateDoc,
- serverTimestamp
+getFirestore,
+collection,
+addDoc,
+getDocs,
+deleteDoc,
+doc,
+updateDoc,
+serverTimestamp
 }
-from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
 /* FIREBASE CONFIG */
 
-const firebaseConfig = {
- apiKey:"AIzaSyBmapJhIb0QixjcUbLqB1X9l7EuPMqEUEQ",
- authDomain:"ziya-jewellery-d420f.firebaseapp.com",
- projectId:"ziya-jewellery-d420f",
- storageBucket:"ziya-jewellery-d420f.firebasestorage.app",
- messagingSenderId:"292032564389",
- appId:"1:292032564389:web:69b11699d8f790db5c114c"
+const firebaseConfig={
+
+apiKey:
+"AIzaSyBmapJhIb0QixjcUbLqB1X9l7EuPMqEUEQ",
+
+authDomain:
+"ziya-jewellery-d420f.firebaseapp.com",
+
+projectId:
+"ziya-jewellery-d420f",
+
+storageBucket:
+"ziya-jewellery-d420f.firebasestorage.app",
+
+messagingSenderId:
+"292032564389",
+
+appId:
+"1:292032564389:web:69b11699d8f790db5c114c"
+
 };
 
 
-/* ADMIN GMAIL */
+/* ADMIN EMAIL */
 
-const ADMIN_EMAIL="gifthamperlovers@gmail.com";
-
-
-/* FIREBASE */
-
-const app=initializeApp(firebaseConfig);
-const auth=getAuth(app);
-const db=getFirestore(app);
-const provider=new GoogleAuthProvider();
+const ADMIN_EMAIL=
+"gifthamperlovers@gmail.com";
 
 
-/* ELEMENTS */
+/* FIREBASE START */
 
-const loginBox=document.getElementById("loginBox");
-const panel=document.getElementById("panel");
-const productsBox=document.getElementById("products");
-const ordersBox=document.getElementById("orders");
-const statusBox=document.getElementById("status");
-const loginMsg=document.getElementById("loginMsg");
+const app=
+initializeApp(firebaseConfig);
 
+const auth=
+getAuth(app);
+
+const db=
+getFirestore(app);
+
+const provider=
+new GoogleAuthProvider();
+
+
+const loginBox=
+document.getElementById("loginBox");
+
+const panel=
+document.getElementById("panel");
+
+const productsBox=
+document.getElementById("products");
+
+const ordersBox=
+document.getElementById("orders");
+
+const statusBox=
+document.getElementById("status");
 
 let allOrders=[];
+
 let orderFilter="all";
 
 
@@ -559,23 +866,26 @@ let orderFilter="all";
 
 function message(el,text,type){
 
- el.textContent=text;
- el.className="msg "+type;
- el.style.display="block";
+el.textContent=text;
+
+el.className=
+"msg "+type;
+
+el.style.display="block";
 
 }
 
 
-/* ESCAPE HTML */
+/* ESCAPE */
 
 function escapeHTML(value){
 
- return String(value ?? "")
- .replaceAll("&","&amp;")
- .replaceAll("<","&lt;")
- .replaceAll(">","&gt;")
- .replaceAll('"',"&quot;")
- .replaceAll("'","&#039;");
+return String(value??"")
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
 }
 
@@ -584,363 +894,442 @@ function escapeHTML(value){
 
 function formatDate(timestamp){
 
- if(!timestamp) return "Date unavailable";
+if(!timestamp)
+return "Date unavailable";
 
- try{
-  return timestamp.toDate().toLocaleString("en-IN");
- }
- catch{
-  return "Date unavailable";
- }
+try{
+
+return timestamp
+.toDate()
+.toLocaleString("en-IN");
+
+}
+catch{
+
+return "Date unavailable";
+
+}
 
 }
 
 
-/* GOOGLE LOGIN */
+/* GOOGLE LOGIN - REDIRECT */
 
-document.getElementById("loginBtn").addEventListener(
- "click",
- async function(){
+document
+.getElementById("loginBtn")
+.addEventListener(
+"click",
+async()=>{
 
-  loginMsg.style.display="none";
+try{
 
-  try{
-
-   provider.setCustomParameters({
-    prompt:"select_account"
-   });
-
-   const result=await signInWithPopup(auth,provider);
-
-   const email=(result.user.email || "").toLowerCase();
-
-   if(email !== ADMIN_EMAIL.toLowerCase()){
-
-    await signOut(auth);
-
-    message(
-     loginMsg,
-     "Access denied. Please use the authorized admin Gmail.",
-     "error"
-    );
-
-    return;
-   }
-
-  }
-  catch(error){
-
-   console.error("Google Login Error:",error);
-
-   message(
-    loginMsg,
-    "Login failed: "+error.message,
-    "error"
-   );
-
-  }
-
- }
+message(
+document.getElementById("loginMsg"),
+"Opening Google Login...",
+"success"
 );
+
+await signInWithRedirect(
+auth,
+provider
+);
+
+}
+catch(error){
+
+console.error(error);
+
+message(
+document.getElementById("loginMsg"),
+"Login error: "+error.message,
+"error"
+);
+
+}
+
+});
 
 
 /* AUTH STATE */
 
-onAuthStateChanged(auth,user=>{
+onAuthStateChanged(
+auth,
+user=>{
 
- if(
-  user &&
-  (user.email || "").toLowerCase() ===
-  ADMIN_EMAIL.toLowerCase()
- ){
+if(
+user &&
+(user.email||"")
+.toLowerCase()
+===
+ADMIN_EMAIL.toLowerCase()
+){
 
-  loginBox.style.display="none";
-  panel.style.display="block";
+loginBox.style.display="none";
 
-  document.getElementById("adminEmail").textContent=
-  "Logged in: "+user.email;
+panel.style.display="block";
 
-  loadProducts();
-  loadOrders();
+document.getElementById(
+"adminEmail"
+).textContent=
+"Logged in: "+user.email;
 
- }
- else{
+loadProducts();
 
-  loginBox.style.display="block";
-  panel.style.display="none";
+loadOrders();
 
- }
+}
+else{
+
+loginBox.style.display="block";
+
+panel.style.display="none";
+
+if(user){
+
+signOut(auth);
+
+message(
+document.getElementById("loginMsg"),
+"Access denied. Please use the authorized Gmail.",
+"error"
+);
+
+}
+
+}
 
 });
 
 
 /* LOGOUT */
 
-document.getElementById("logout").addEventListener(
- "click",
- async()=>{
+document
+.getElementById("logout")
+.addEventListener(
+"click",
+async()=>{
 
-  try{
-   await signOut(auth);
-  }
-  catch(error){
-   console.error(error);
-  }
+await signOut(auth);
 
- }
-);
+location.reload();
+
+});
 
 
 /* PHOTO PREVIEW */
 
-document.getElementById("photo").addEventListener(
- "change",
- function(){
+document
+.getElementById("photo")
+.addEventListener(
+"change",
+function(){
 
-  const file=this.files[0];
+const file=this.files[0];
 
-  if(!file)return;
+if(!file)
+return;
 
-  const preview=document.getElementById("preview");
+const preview=
+document.getElementById("preview");
 
-  preview.src=URL.createObjectURL(file);
-  preview.style.display="block";
+preview.src=
+URL.createObjectURL(file);
 
- }
-);
+preview.style.display="block";
+
+});
 
 
 /* ADD PRODUCT */
 
-document.getElementById("productForm").addEventListener(
- "submit",
- async event=>{
+document
+.getElementById("productForm")
+.addEventListener(
+"submit",
+async event=>{
 
-  event.preventDefault();
+event.preventDefault();
 
-  const user=auth.currentUser;
+const user=
+auth.currentUser;
 
-  if(!user){
+if(!user){
 
-   message(
-    statusBox,
-    "Please login first.",
-    "error"
-   );
+alert("Please login first.");
 
-   return;
-  }
+return;
 
-
-  try{
-
-   await addDoc(
-    collection(db,"products"),
-    {
-
-     name:document.getElementById("name").value.trim(),
-
-     metal:document.getElementById("metal").value,
-
-     purity:document.getElementById("purity").value,
-
-     category:document.getElementById("category").value,
-
-     subcategory:document.getElementById("subcategory").value,
-
-     price:Number(
-      document.getElementById("price").value
-     ) || 0,
-
-     weight:document.getElementById("weight").value.trim(),
-
-     size:document.getElementById("size").value.trim(),
-
-     stock:Number(
-      document.getElementById("stock").value
-     ) || 0,
-
-     sku:document.getElementById("sku").value.trim(),
-
-     image:document.getElementById("imageUrl").value.trim(),
-
-     description:document.getElementById("description").value.trim(),
-
-     featured:document.getElementById("featured").checked,
-
-     createdBy:user.email,
-
-     createdAt:serverTimestamp()
-
-    }
-   );
+}
 
 
-   event.target.reset();
+try{
 
-   document.getElementById("preview").style.display="none";
+await addDoc(
+collection(db,"products"),
+{
 
-   message(
-    statusBox,
-    "Product added successfully ✨",
-    "success"
-   );
+name:
+document.getElementById("name")
+.value.trim(),
 
-   loadProducts();
+metal:
+document.getElementById("metal")
+.value,
 
-  }
-  catch(error){
+purity:
+document.getElementById("purity")
+.value,
 
-   console.error(error);
+category:
+document.getElementById("category")
+.value,
 
-   message(
-    statusBox,
-    "Product save failed: "+error.message,
-    "error"
-   );
+subcategory:
+document.getElementById("subcategory")
+.value,
 
-  }
+price:
+Number(
+document.getElementById("price")
+.value
+)||0,
 
- });
+weight:
+document.getElementById("weight")
+.value.trim(),
+
+size:
+document.getElementById("size")
+.value.trim(),
+
+stock:
+Number(
+document.getElementById("stock")
+.value
+)||0,
+
+sku:
+document.getElementById("sku")
+.value.trim(),
+
+image:
+document.getElementById("imageUrl")
+.value.trim(),
+
+description:
+document.getElementById("description")
+.value.trim(),
+
+featured:
+document.getElementById("featured")
+.checked,
+
+createdBy:
+user.email,
+
+createdAt:
+serverTimestamp()
+
+});
+
+event.target.reset();
+
+document.getElementById(
+"preview"
+).style.display="none";
+
+message(
+statusBox,
+"Product added successfully ✨",
+"success"
+);
+
+loadProducts();
+
+}
+catch(error){
+
+console.error(error);
+
+message(
+statusBox,
+"Product save failed: "+error.message,
+"error"
+);
+
+}
+
+});
 
 
 /* LOAD PRODUCTS */
 
 async function loadProducts(){
 
- try{
+try{
 
-  const snap=await getDocs(
-   collection(db,"products")
-  );
+const snap=
+await getDocs(
+collection(db,"products")
+);
 
-  if(snap.empty){
+if(snap.empty){
 
-   productsBox.innerHTML="<p>No products yet.</p>";
-   return;
+productsBox.innerHTML=
+"<p>No products yet.</p>";
 
-  }
+return;
 
-  productsBox.innerHTML="";
+}
 
-
-  snap.forEach(item=>{
-
-   const p=item.data();
-
-   const div=document.createElement("div");
-
-   div.className="product";
+productsBox.innerHTML="";
 
 
-   const img=p.image
-   ?
-   `<img src="${escapeHTML(p.image)}"
-   alt="${escapeHTML(p.name || "Jewellery")}">`
-   :
-   "";
+snap.forEach(item=>{
+
+const p=item.data();
+
+const div=
+document.createElement("div");
+
+div.className="product";
 
 
-   const shareText=encodeURIComponent(
-`✨ ${p.name || "Ziya Jewellery Product"}
+const img=
+p.image
+?
+`
+<img
+src="${escapeHTML(p.image)}"
+alt="${escapeHTML(p.name||"Jewellery")}"
+>
+`
+:"";
 
-Metal: ${p.metal || ""}
-Purity: ${p.purity || ""}
-Category: ${p.category || ""}
-Price: ₹${p.price || ""}
+
+const shareText=
+encodeURIComponent(
+
+`✨ ${p.name||"Ziya Jewellery Product"}
+
+Metal: ${p.metal||""}
+Purity: ${p.purity||""}
+Price: ₹${p.price||""}
 
 Ziya Jewellery`
-   );
+
+);
 
 
-   div.innerHTML=`
+div.innerHTML=`
 
-   ${img}
+${img}
 
-   <strong>
-   ${escapeHTML(p.name || "Product")}
-   </strong>
+<strong>
+${escapeHTML(
+p.name||"Product"
+)}
+</strong>
 
-   <br>
+<br>
 
-   <small>
-   ${escapeHTML(p.metal || "")}
-   • ${escapeHTML(p.purity || "")}
-   • ₹${escapeHTML(String(p.price || ""))}
-   </small>
+<small>
 
-   <br>
+${escapeHTML(
+p.metal||""
+)}
 
-   <small>
-   Category:
-   ${escapeHTML(p.category || "")}
-   </small>
+•
 
-   <br>
+${escapeHTML(
+p.purity||""
+)}
 
-   <a
-   class="share"
-   target="_blank"
-   rel="noopener"
-   href="https://wa.me/?text=${shareText}">
-   📲 Share on WhatsApp
-   </a>
+•
 
-   <br>
+₹${escapeHTML(
+String(p.price||"")
+)}
 
-   <button
-   type="button"
-   class="delete"
-   data-product-id="${item.id}">
-   🗑️ Delete
-   </button>
+</small>
 
-   `;
+<br>
 
+<small>
 
-   div.querySelector("[data-product-id]")
-   .addEventListener(
-    "click",
-    async()=>{
+Category:
+${escapeHTML(
+p.category||""
+)}
 
-     if(!confirm("Delete this product?"))return;
+</small>
 
-     try{
+<br>
 
-      await deleteDoc(
-       doc(db,"products",item.id)
-      );
+<a
+class="share"
+target="_blank"
+href="https://wa.me/?text=${shareText}"
+>
 
-      loadProducts();
+📲 Share on WhatsApp
 
-     }
-     catch(error){
+</a>
 
-      message(
-       statusBox,
-       "Delete failed: "+error.message,
-       "error"
-      );
+<br>
 
-     }
+<button
+class="delete"
+data-id="${item.id}"
+>
 
-    }
-   );
+🗑️ Delete
+
+</button>
+
+`;
 
 
-   productsBox.appendChild(div);
+div
+.querySelector(".delete")
+.addEventListener(
+"click",
+async()=>{
 
-  });
+if(
+confirm(
+"Delete this product?"
+)
+){
 
- }
- catch(error){
+await deleteDoc(
+doc(
+db,
+"products",
+item.id
+)
+);
 
-  console.error(error);
+loadProducts();
 
-  productsBox.innerHTML=
-  `<p>Unable to load products.<br>${escapeHTML(error.message)}</p>`;
+}
 
- }
+});
+
+
+productsBox.appendChild(div);
+
+});
+
+}
+catch(error){
+
+console.error(error);
+
+productsBox.innerHTML=
+"<p>Unable to load products.</p>";
+
+}
 
 }
 
@@ -949,58 +1338,69 @@ Ziya Jewellery`
 
 async function loadOrders(){
 
- ordersBox.innerHTML="Loading orders...";
+ordersBox.innerHTML=
+"Loading orders...";
 
- try{
+try{
 
-  const snap=await getDocs(
-   collection(db,"orders")
-  );
+const snap=
+await getDocs(
+collection(db,"orders")
+);
 
-  allOrders=[];
+allOrders=[];
 
-  snap.forEach(item=>{
+snap.forEach(item=>{
 
-   allOrders.push({
-    id:item.id,
-    ...item.data()
-   });
+allOrders.push({
 
-  });
+id:item.id,
 
+...item.data()
 
-  allOrders.sort((a,b)=>{
+});
 
-   const aTime=a.createdAt?.seconds || 0;
-   const bTime=b.createdAt?.seconds || 0;
-
-   return bTime-aTime;
-
-  });
+});
 
 
-  renderOrders();
+allOrders.sort(
+(a,b)=>{
 
- }
- catch(error){
+const aTime=
+a.createdAt?.seconds||0;
 
-  console.error(error);
+const bTime=
+b.createdAt?.seconds||0;
 
-  ordersBox.innerHTML=`
+return bTime-aTime;
 
-  <div class="order-empty">
+});
 
-  ❌ Unable to load orders.
 
-  <br><br>
+renderOrders();
 
-  ${escapeHTML(error.message)}
+}
+catch(error){
 
-  </div>
+console.error(error);
 
-  `;
+ordersBox.innerHTML=`
 
- }
+<div class="order-empty">
+
+❌ Unable to load orders.
+
+<br><br>
+
+${escapeHTML(
+error.message
+)}
+
+</div>
+
+`;
+
+}
 
 }
 
@@ -1009,213 +1409,442 @@ async function loadOrders(){
 
 function renderOrders(){
 
- let list=[...allOrders];
+let list=
+[...allOrders];
 
 
- if(orderFilter !== "all"){
+if(orderFilter!=="all"){
 
-  list=list.filter(
-   order=>(order.status || "New") === orderFilter
-  );
+list=
+list.filter(
+order=>
+(order.status||"New")
+===
+orderFilter
+);
 
- }
+}
 
 
- if(!list.length){
+if(!list.length){
 
-  ordersBox.innerHTML=`
+ordersBox.innerHTML=`
 
-  <div class="order-empty">
+<div class="order-empty">
 
-  📦
+📦
 
-  <h3>No orders found</h3>
+<h3>No orders found</h3>
 
-  <p>Customer orders will appear here.</p>
+<p>
+Customer orders will appear here.
+</p>
 
-  </div>
+</div>
 
-  `;
+`;
 
-  return;
+return;
 
- }
+}
 
 
- ordersBox.innerHTML="";
+ordersBox.innerHTML="";
 
 
- list.forEach(order=>{
+list.forEach(order=>{
 
-  const customer=order.customer || {};
+const customer=
+order.customer||{};
 
-  const currentStatus=order.status || "New";
+const currentStatus=
+order.status||"New";
 
-  const items=
-  Array.isArray(order.items)
-  ? order.items
-  : [];
+const items=
+Array.isArray(order.items)
+?
+order.items
+:
+[];
 
 
-  let itemsHTML="";
+let itemsHTML="";
 
 
-  items.forEach(item=>{
+items.forEach(item=>{
 
-   itemsHTML+=`
+itemsHTML+=`
 
-   <div class="order-item">
+<div class="order-item">
 
-   ${
-    item.image
-    ?
-    `<img
-    src="${escapeHTML(item.image)}"
-    alt="">`
-    :
-    `<div style="
-    width:60px;
-    height:60px;
-    border-radius:9px;
-    background:#f4eaf3;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:27px;
-    ">💎</div>`
-   }
+${
+item.image
+?
+`
+<img
+src="${escapeHTML(item.image)}"
+alt=""
+>
+`
+:
+`
+<div style="
+width:60px;
+height:60px;
+border-radius:9px;
+background:#f4eaf3;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:27px;
+">
+💎
+</div>
+`
+}
 
-   <div class="order-item-info">
+<div class="order-item-info">
 
-   <strong>
-   ${escapeHTML(item.name || "Jewellery")}
-   </strong>
+<strong>
+${escapeHTML(
+item.name||"Jewellery"
+)}
+</strong>
 
-   <br>
+<br>
 
-   <small>
-   Metal: ${escapeHTML(item.metal || "")}
-   </small>
+<small>
+Metal:
+${escapeHTML(
+item.metal||""
+)}
+</small>
 
-   <br>
+<br>
 
-   <small>
-   Quantity: ${Number(item.quantity || 1)}
-   </small>
+<small>
+Quantity:
+${Number(
+item.quantity||1
+)}
+</small>
 
-   <br>
+<br>
 
-   <strong>
-   ₹${Number(item.price || 0).toLocaleString("en-IN")}
-   </strong>
+<strong>
+₹${Number(
+item.price||0
+).toLocaleString("en-IN")}
+</strong>
 
-   </div>
+</div>
 
-   </div>
+</div>
 
-   `;
+`;
 
-  });
+});
 
 
-  const card=document.createElement("div");
+const card=
+document.createElement("div");
 
-  card.className="order-card";
+card.className="order-card";
 
 
-  card.innerHTML=`
+card.innerHTML=`
 
-  <div class="order-top">
+<div class="order-top">
 
-   <div>
+<div>
 
-    <div class="order-id">
-    Order ID:
-    ${escapeHTML(order.orderId || order.id)}
-    </div>
+<div class="order-id">
 
-    <div class="order-date">
-    ${formatDate(order.createdAt)}
-    </div>
+Order ID:
+${escapeHTML(
+order.orderId||order.id
+)}
 
-   </div>
+</div>
 
-   <div class="status">
-   ${escapeHTML(currentStatus)}
-   </div>
+<div class="order-date">
 
-  </div>
+${formatDate(
+order.createdAt
+)}
 
+</div>
 
-  <div class="customer-box">
+</div>
 
-   <strong>👤 Customer</strong>
+<div class="status">
 
-   <br>
+${escapeHTML(
+currentStatus
+)}
 
-   Name:
-   ${escapeHTML(customer.name || "Not provided")}
+</div>
 
-   <br>
+</div>
 
-   Mobile:
-   ${escapeHTML(customer.phone || "Not provided")}
 
-   <br>
+<div class="customer-box">
 
-   Email:
-   ${escapeHTML(customer.email || "Not provided")}
+<strong>👤 Customer Details</strong>
 
-  </div>
+<br>
 
+Name:
+${escapeHTML(
+customer.name||"Not provided"
+)}
 
-  <div class="address-box">
+<br>
 
-   <strong>🏠 Shipping Address</strong>
+Mobile:
+${escapeHTML(
+customer.phone||"Not provided"
+)}
 
-   <br>
+<br>
 
-   ${escapeHTML(customer.name || "")}
+Email:
+${escapeHTML(
+customer.email||"Not provided"
+)}
 
-   <br>
+</div>
 
-   ${escapeHTML(customer.house || "")}
 
-   <br>
+<div class="address-box">
 
-   ${escapeHTML(customer.area || "")}
+<strong>
+🏠 Shipping Address
+</strong>
 
-   <br>
+<br><br>
 
-   ${escapeHTML(customer.city || "")},
-   ${escapeHTML(customer.state || "")}
-   - ${escapeHTML(customer.pin || "")}
+${escapeHTML(
+customer.name||""
+)}
 
-   ${
-    customer.landmark
-    ?
-    `<br>Landmark: ${escapeHTML(customer.landmark)}`
-    :
-    ""
-   }
+<br>
 
-   <br>
+${escapeHTML(
+customer.house||""
+)}
 
-   📱 ${escapeHTML(customer.phone || "")}
+<br>
 
-  </div>
+${escapeHTML(
+customer.area||""
+)}
 
+<br>
 
-  <div>
+${escapeHTML(
+customer.city||""
+)},
+${escapeHTML(
+customer.state||""
+)}
+-
+${escapeHTML(
+customer.pin||""
+)}
 
-   <strong>💎 Ordered Items</strong>
+${
+customer.landmark
+?
+`
+<br>
+Landmark:
+${escapeHTML(customer.landmark)}
+`
+:""
+}
 
-   ${itemsHTML}
+<br>
 
-  </div>
+📱
+${escapeHTML(
+customer.phone||""
+)}
 
+</div>
 
-  <div class="order-total">
 
-   Total:
-   ₹${Number(order.total ||
+<strong>
+💎 Ordered Items
+</strong>
+
+${itemsHTML}
+
+
+<div class="order-total">
+
+Total:
+₹${Number(
+order.total||0
+).toLocaleString("en-IN")}
+
+</div>
+
+
+<div class="status-actions">
+
+<button
+class="statusBtn confirm"
+data-status="Confirmed"
+data-id="${order.id}"
+>
+✅ Confirm
+</button>
+
+<button
+class="statusBtn dispatch"
+data-status="Dispatched"
+data-id="${order.id}"
+>
+🚚 Dispatch
+</button>
+
+<button
+class="statusBtn delivered"
+data-status="Delivered"
+data-id="${order.id}"
+>
+📦 Delivered
+</button>
+
+<button
+class="statusBtn cancel"
+data-status="Cancelled"
+data-id="${order.id}"
+>
+❌ Cancel
+</button>
+
+</div>
+
+`;
+
+
+card
+.querySelectorAll("[data-status]")
+.forEach(button=>{
+
+button.addEventListener(
+"click",
+async()=>{
+
+const newStatus=
+button.dataset.status;
+
+const orderId=
+button.dataset.id;
+
+
+if(
+!confirm(
+`Change order status to ${newStatus}?`
+)
+)
+return;
+
+
+try{
+
+await updateDoc(
+doc(
+db,
+"orders",
+orderId
+),
+{
+
+status:newStatus,
+
+updatedAt:
+serverTimestamp()
+
+}
+);
+
+
+const found=
+allOrders.find(
+x=>x.id===orderId
+);
+
+if(found){
+
+found.status=
+newStatus;
+
+}
+
+
+renderOrders();
+
+message(
+statusBox,
+`Order updated: ${newStatus}`,
+"success"
+);
+
+}
+catch(error){
+
+console.error(error);
+
+message(
+statusBox,
+"Order update failed: "+
+error.message,
+"error"
+);
+
+}
+
+});
+
+});
+
+
+ordersBox.appendChild(card);
+
+});
+
+}
+
+
+/* ORDER FILTER */
+
+document
+.querySelectorAll(".tab")
+.forEach(tab=>{
+
+tab.addEventListener(
+"click",
+()=>{
+
+document
+.querySelectorAll(".tab")
+.forEach(x=>
+x.classList.remove("active")
+);
+
+tab.classList.add("active");
+
+orderFilter=
+tab.dataset.filter;
+
+renderOrders();
+
+});
+
+});
+
+
+/* REFRESH
