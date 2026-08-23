@@ -1787,4 +1787,116 @@ id:product.id,
 
 name:product.name||"Jewellery",
 
-price:Number(produc
+/* BUY NOW */
+
+document.addEventListener("click", event => {
+
+  const button = event.target.closest("[data-buy]");
+  if (!button) return;
+
+  const product = findProduct(button.dataset.buy);
+  if (!product) return;
+
+  let cart = getCart();
+
+  const existing = cart.find(
+    item => item.id === product.id
+  );
+
+  if (existing) {
+    existing.quantity = 1;
+  } else {
+
+    cart.push({
+      id: product.id,
+      name: product.name || "Jewellery",
+      price: Number(product.price || 0),
+      image: product.image || "",
+      metal: product.metal || "",
+      purity: product.purity || "",
+      quantity: 1
+    });
+
+  }
+
+  saveCart(cart);
+
+  window.location.href = "cart.html";
+
+});
+
+
+/* SEARCH */
+
+document.getElementById("searchBtn")
+.addEventListener("click", () => {
+
+  currentSearch =
+    document.getElementById("search").value.trim();
+
+  applyFilters();
+
+});
+
+
+document.getElementById("search")
+.addEventListener("input", event => {
+
+  currentSearch = event.target.value.trim();
+
+  applyFilters();
+
+});
+
+
+/* METAL FILTER */
+
+document.addEventListener("click", event => {
+
+  const button =
+    event.target.closest("[data-metal]");
+
+  if (!button) return;
+
+  currentMetal =
+    button.dataset.metal || "";
+
+  currentCategory = "";
+
+  document.querySelectorAll(".metal-card")
+    .forEach(card => {
+      card.classList.remove("active");
+    });
+
+  button.classList.add("active");
+
+  applyFilters();
+
+});
+
+
+/* CATEGORY FILTER */
+
+document.addEventListener("click", event => {
+
+  const category =
+    event.target.closest("[data-category]");
+
+  if (!category) return;
+
+  currentCategory =
+    category.dataset.category || "";
+
+  applyFilters();
+
+});
+
+
+/* LOAD WEBSITE */
+
+loadProducts();
+
+</script>
+
+</body>
+</html>
