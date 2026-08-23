@@ -3,33 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>Ziya Jewellery | Admin Panel</title>
 
 <style>
-*{box-sizing:border-box}
+
+*{
+ box-sizing:border-box
+}
+
 body{
  margin:0;
  font-family:Arial,sans-serif;
  background:linear-gradient(135deg,#fff0f6,#eee7ff);
  color:#29152e
 }
-.container{max-width:1150px;margin:auto;padding:20px}
-.login,.panel{
+
+.container{
+ max-width:1150px;
+ margin:auto;
+ padding:20px
+}
+
+.login,
+.panel{
  background:#fff;
  border-radius:24px;
  box-shadow:0 15px 45px #5d326622
 }
+
 .login{
  max-width:440px;
  margin:70px auto;
  padding:35px 25px;
  text-align:center
 }
+
 .logo{
  font-size:32px;
  font-weight:800;
  color:#d92878
 }
+
 .google{
  width:100%;
  padding:14px;
@@ -40,7 +55,12 @@ body{
  font-weight:bold;
  cursor:pointer
 }
-.panel{display:none;padding:25px}
+
+.panel{
+ display:none;
+ padding:25px
+}
+
 .header{
  display:flex;
  justify-content:space-between;
@@ -48,32 +68,51 @@ body{
  gap:15px;
  margin-bottom:25px
 }
-.header h1{margin:0 0 5px}
-.email{font-size:14px;color:#777}
-.logout,.delete{
+
+.header h1{
+ margin:0 0 5px
+}
+
+.email{
+ font-size:14px;
+ color:#777
+}
+
+.logout,
+.delete{
  border:0;
  border-radius:10px;
  padding:10px 15px;
  cursor:pointer;
  font-weight:bold
 }
-.logout{background:#ffe5ed;color:#a00038}
+
+.logout{
+ background:#ffe5ed;
+ color:#a00038
+}
+
 .grid{
  display:grid;
  grid-template-columns:1fr 1fr;
  gap:20px
 }
+
 .card{
  background:#fff8fc;
  border-radius:20px;
  padding:22px
 }
+
 label{
  display:block;
  font-weight:bold;
  margin-top:10px
 }
-input,select,textarea{
+
+input,
+select,
+textarea{
  width:100%;
  padding:12px;
  margin:7px 0 12px;
@@ -81,7 +120,12 @@ input,select,textarea{
  border-radius:10px;
  font-size:15px
 }
-textarea{min-height:100px;resize:vertical}
+
+textarea{
+ min-height:100px;
+ resize:vertical
+}
+
 .add{
  width:100%;
  padding:14px;
@@ -93,10 +137,12 @@ textarea{min-height:100px;resize:vertical}
  font-weight:bold;
  cursor:pointer
 }
+
 .product{
  padding:15px 0;
  border-bottom:1px solid #eaddea
 }
+
 .product img{
  width:75px;
  height:75px;
@@ -105,8 +151,19 @@ textarea{min-height:100px;resize:vertical}
  float:left;
  margin-right:12px
 }
-.product:after{content:"";display:block;clear:both}
-.delete{background:#ffe5e9;color:#a00038;margin-top:10px}
+
+.product:after{
+ content:"";
+ display:block;
+ clear:both
+}
+
+.delete{
+ background:#ffe5e9;
+ color:#a00038;
+ margin-top:10px
+}
+
 .share{
  display:inline-block;
  background:#e8fff0;
@@ -116,14 +173,24 @@ textarea{min-height:100px;resize:vertical}
  text-decoration:none;
  margin-top:10px
 }
+
 .msg{
  display:none;
  padding:12px;
  border-radius:10px;
  margin-bottom:15px
 }
-.error{background:#fff0f3;color:#a00030}
-.success{background:#e8fff0;color:#08743d}
+
+.error{
+ background:#fff0f3;
+ color:#a00030
+}
+
+.success{
+ background:#e8fff0;
+ color:#08743d
+}
+
 .preview{
  width:100%;
  max-height:220px;
@@ -132,29 +199,95 @@ textarea{min-height:100px;resize:vertical}
  border-radius:12px;
  margin-bottom:10px
 }
-@media(max-width:750px){
- .grid{grid-template-columns:1fr}
- .header{align-items:flex-start}
+
+.order{
+ background:#fff;
+ border:1px solid #eaddea;
+ border-radius:15px;
+ padding:16px;
+ margin-bottom:15px
 }
+
+.order-title{
+ font-size:18px;
+ font-weight:bold;
+ color:#d92878
+}
+
+.order-row{
+ margin-top:7px;
+ line-height:1.5
+}
+
+.status-badge{
+ display:inline-block;
+ padding:6px 10px;
+ border-radius:8px;
+ background:#fff0d9;
+ color:#8a5100;
+ font-weight:bold;
+ margin-top:5px
+}
+
+.payment-badge{
+ display:inline-block;
+ padding:6px 10px;
+ border-radius:8px;
+ background:#e8fff0;
+ color:#08743d;
+ font-weight:bold;
+ margin-top:5px
+}
+
+.section-title{
+ margin-top:0
+}
+
+.empty{
+ color:#777;
+ padding:15px 0
+}
+
+@media(max-width:750px){
+
+ .grid{
+  grid-template-columns:1fr
+ }
+
+ .header{
+  align-items:flex-start;
+  flex-direction:column
+ }
+
+ .logout{
+  width:100%
+ }
+
+}
+
 </style>
 </head>
+
 
 <body>
 
 <div class="container">
 
+
 <!-- LOGIN -->
 
 <div id="loginBox" class="login">
 
- <div class="logo">✨ Ziya Jewellery</div>
+ <div class="logo">
+  ✨ Ziya Jewellery
+ </div>
 
  <h2>Secure Admin Panel</h2>
 
  <p>Authorized administrator only</p>
 
  <button id="loginBtn" class="google">
-   🔐 Continue with Google
+  🔐 Continue with Google
  </button>
 
  <div id="loginMsg" class="msg error"></div>
@@ -162,16 +295,24 @@ textarea{min-height:100px;resize:vertical}
 </div>
 
 
-<!-- ADMIN -->
+
+<!-- ADMIN PANEL -->
 
 <div id="panel" class="panel">
+
 
  <div class="header">
 
   <div>
-   <h1>✨ Ziya Jewellery</h1>
+
+   <h1>
+    ✨ Ziya Jewellery
+   </h1>
+
    <div id="adminEmail" class="email"></div>
+
   </div>
+
 
   <button id="logout" class="logout">
    Logout
@@ -179,201 +320,317 @@ textarea{min-height:100px;resize:vertical}
 
  </div>
 
+
  <div id="status" class="msg"></div>
 
 
+
  <div class="grid">
+
 
   <!-- ADD PRODUCT -->
 
   <div class="card">
 
-   <h2>➕ Add Jewellery</h2>
+   <h2>
+    ➕ Add Jewellery
+   </h2>
+
 
    <form id="productForm">
 
-    <label>Product Name</label>
-    <input id="name" required
-      placeholder="Example: 22K Gold Ring">
 
+    <label>
+     Product Name
+    </label>
 
-    <label>Metal Type</label>
+    <input
+     id="name"
+     required
+     placeholder="Example: 22K Gold Ring"
+    >
 
-    <select id="metal" required>
-      <option value="">Select Metal</option>
-      <option>Gold</option>
-      <option>Silver</option>
-      <option>Other Metal</option>
-    </select>
-
-
-    <label>Purity / Material</label>
-
-    <select id="purity" required>
-      <option value="">Select Purity / Material</option>
-      <option>24K Gold</option>
-      <option>22K Gold</option>
-      <option>18K Gold</option>
-      <option>14K Gold</option>
-      <option>999 Fine Silver</option>
-      <option>925 Sterling Silver</option>
-      <option>Other Silver</option>
-      <option>Stainless Steel</option>
-      <option>Brass</option>
-      <option>Copper</option>
-      <option>Alloy</option>
-      <option>Titanium</option>
-      <option>Mixed Metal</option>
-    </select>
-
-
-    <label>Main Category</label>
-
-    <select id="category" required>
-      <option value="">Select Category</option>
-
-      <option>Rings</option>
-      <option>Earrings</option>
-      <option>Necklaces</option>
-      <option>Bracelets</option>
-      <option>Bangles</option>
-      <option>Chains</option>
-      <option>Pendants</option>
-      <option>Anklets / Payal</option>
-      <option>Nose Jewellery</option>
-      <option>Bridal Jewellery</option>
-      <option>Jewellery Sets</option>
-      <option>Men's Jewellery</option>
-      <option>Couple Jewellery</option>
-      <option>Gift Collection</option>
-      <option>Other</option>
-    </select>
-
-
-    <label>Sub Category / Item</label>
-
-    <select id="subcategory">
-      <option value="">Select Item</option>
-
-      <option>Gold Ring</option>
-      <option>Silver Ring</option>
-      <option>Diamond Ring</option>
-      <option>Couple Ring</option>
-      <option>Engagement Ring</option>
-      <option>Wedding Ring</option>
-
-      <option>Stud Earrings</option>
-      <option>Jhumka</option>
-      <option>Hoop Earrings</option>
-      <option>Drop Earrings</option>
-      <option>Chandbali</option>
-      <option>Bali</option>
-
-      <option>Gold Necklace</option>
-      <option>Silver Necklace</option>
-      <option>Pendant Necklace</option>
-      <option>Chain Necklace</option>
-      <option>Choker</option>
-      <option>Mangalsutra</option>
-
-      <option>Gold Bracelet</option>
-      <option>Silver Bracelet</option>
-      <option>Charm Bracelet</option>
-      <option>Couple Bracelet</option>
-      <option>Kada</option>
-
-      <option>Gold Bangle</option>
-      <option>Silver Bangle</option>
-      <option>Bridal Bangles</option>
-
-      <option>Gold Chain</option>
-      <option>Silver Chain</option>
-      <option>Figaro Chain</option>
-      <option>Rope Chain</option>
-      <option>Box Chain</option>
-
-      <option>Gold Pendant</option>
-      <option>Silver Pendant</option>
-      <option>Heart Pendant</option>
-      <option>Name Pendant</option>
-      <option>Couple Pendant</option>
-
-      <option>Silver Payal</option>
-      <option>Designer Payal</option>
-      <option>Pair Payal</option>
-
-      <option>Nose Pin</option>
-      <option>Nose Ring</option>
-      <option>Nath</option>
-
-      <option>Maang Tikka</option>
-      <option>Matha Patti</option>
-      <option>Bridal Set</option>
-
-      <option>Men's Ring</option>
-      <option>Men's Chain</option>
-      <option>Men's Bracelet</option>
-      <option>Men's Kada</option>
-    </select>
-
-
-    <label>Price ₹</label>
-    <input id="price" type="number" min="0"
-      placeholder="999" required>
-
-
-    <label>Weight</label>
-    <input id="weight"
-      placeholder="Example: 4.5 g">
-
-
-    <label>Size / Variant</label>
-    <input id="size"
-      placeholder="Example: 18 / 20 / Adjustable">
-
-
-    <label>Stock</label>
-    <input id="stock" type="number" min="0"
-      placeholder="10">
-
-
-    <label>SKU</label>
-    <input id="sku"
-      placeholder="ZJ-RING-001">
-
-
-    <label>Product Photo</label>
-
-    <input id="photo"
-      type="file"
-      accept="image/*">
-
-    <img id="preview" class="preview">
-
-
-    <label>Image URL</label>
-
-    <input id="imageUrl"
-      type="url"
-      placeholder="https://example.com/image.jpg">
-
-
-    <label>Description</label>
-
-    <textarea id="description"
-      placeholder="Write genuine product details..."></textarea>
 
 
     <label>
-      <input id="featured"
-        type="checkbox"
-        style="width:auto">
-      ⭐ Featured Product
+     Metal Type
+    </label>
+
+    <select id="metal" required>
+
+     <option value="">
+      Select Metal
+     </option>
+
+     <option>
+      Gold
+     </option>
+
+     <option>
+      Silver
+     </option>
+
+     <option>
+      Other Metal
+     </option>
+
+    </select>
+
+
+
+    <label>
+     Purity / Material
+    </label>
+
+    <select id="purity" required>
+
+     <option value="">
+      Select Purity / Material
+     </option>
+
+     <option>24K Gold</option>
+     <option>22K Gold</option>
+     <option>18K Gold</option>
+     <option>14K Gold</option>
+     <option>999 Fine Silver</option>
+     <option>925 Sterling Silver</option>
+     <option>Other Silver</option>
+     <option>Stainless Steel</option>
+     <option>Brass</option>
+     <option>Copper</option>
+     <option>Alloy</option>
+     <option>Titanium</option>
+     <option>Mixed Metal</option>
+
+    </select>
+
+
+
+    <label>
+     Main Category
+    </label>
+
+    <select id="category" required>
+
+     <option value="">
+      Select Category
+     </option>
+
+     <option>Rings</option>
+     <option>Earrings</option>
+     <option>Necklaces</option>
+     <option>Bracelets</option>
+     <option>Bangles</option>
+     <option>Chains</option>
+     <option>Pendants</option>
+     <option>Anklets / Payal</option>
+     <option>Nose Jewellery</option>
+     <option>Bridal Jewellery</option>
+     <option>Jewellery Sets</option>
+     <option>Men's Jewellery</option>
+     <option>Couple Jewellery</option>
+     <option>Gift Collection</option>
+     <option>Other</option>
+
+    </select>
+
+
+
+    <label>
+     Sub Category / Item
+    </label>
+
+    <select id="subcategory">
+
+     <option value="">
+      Select Item
+     </option>
+
+     <option>Gold Ring</option>
+     <option>Silver Ring</option>
+     <option>Diamond Ring</option>
+     <option>Couple Ring</option>
+     <option>Engagement Ring</option>
+     <option>Wedding Ring</option>
+
+     <option>Stud Earrings</option>
+     <option>Jhumka</option>
+     <option>Hoop Earrings</option>
+     <option>Drop Earrings</option>
+     <option>Chandbali</option>
+     <option>Bali</option>
+
+     <option>Gold Necklace</option>
+     <option>Silver Necklace</option>
+     <option>Pendant Necklace</option>
+     <option>Chain Necklace</option>
+     <option>Choker</option>
+     <option>Mangalsutra</option>
+
+     <option>Gold Bracelet</option>
+     <option>Silver Bracelet</option>
+     <option>Charm Bracelet</option>
+     <option>Couple Bracelet</option>
+     <option>Kada</option>
+
+     <option>Gold Bangle</option>
+     <option>Silver Bangle</option>
+     <option>Bridal Bangles</option>
+
+     <option>Gold Chain</option>
+     <option>Silver Chain</option>
+     <option>Figaro Chain</option>
+     <option>Rope Chain</option>
+     <option>Box Chain</option>
+
+     <option>Gold Pendant</option>
+     <option>Silver Pendant</option>
+     <option>Heart Pendant</option>
+     <option>Name Pendant</option>
+     <option>Couple Pendant</option>
+
+     <option>Silver Payal</option>
+     <option>Designer Payal</option>
+     <option>Pair Payal</option>
+
+     <option>Nose Pin</option>
+     <option>Nose Ring</option>
+     <option>Nath</option>
+
+     <option>Maang Tikka</option>
+     <option>Matha Patti</option>
+     <option>Bridal Set</option>
+
+     <option>Men's Ring</option>
+     <option>Men's Chain</option>
+     <option>Men's Bracelet</option>
+     <option>Men's Kada</option>
+
+    </select>
+
+
+
+    <label>
+     Price ₹
+    </label>
+
+    <input
+     id="price"
+     type="number"
+     min="0"
+     placeholder="999"
+     required
+    >
+
+
+
+    <label>
+     Weight
+    </label>
+
+    <input
+     id="weight"
+     placeholder="Example: 4.5 g"
+    >
+
+
+
+    <label>
+     Size / Variant
+    </label>
+
+    <input
+     id="size"
+     placeholder="Example: 18 / 20 / Adjustable"
+    >
+
+
+
+    <label>
+     Stock
+    </label>
+
+    <input
+     id="stock"
+     type="number"
+     min="0"
+     placeholder="10"
+    >
+
+
+
+    <label>
+     SKU
+    </label>
+
+    <input
+     id="sku"
+     placeholder="ZJ-RING-001"
+    >
+
+
+
+    <label>
+     Product Photo
+    </label>
+
+    <input
+     id="photo"
+     type="file"
+     accept="image/*"
+    >
+
+    <img
+     id="preview"
+     class="preview"
+    >
+
+
+
+    <label>
+     Image URL
+    </label>
+
+    <input
+     id="imageUrl"
+     type="url"
+     placeholder="https://example.com/image.jpg"
+    >
+
+
+
+    <label>
+     Description
+    </label>
+
+    <textarea
+     id="description"
+     placeholder="Write genuine product details..."
+    ></textarea>
+
+
+
+    <label>
+
+     <input
+      id="featured"
+      type="checkbox"
+      style="width:auto"
+     >
+
+     ⭐ Featured Product
+
     </label>
 
 
-    <button class="add" type="submit">
-      Add Product ✨
+
+    <button
+     class="add"
+     type="submit"
+    >
+
+     Add Product ✨
+
     </button>
 
    </form>
@@ -381,17 +638,40 @@ textarea{min-height:100px;resize:vertical}
   </div>
 
 
-  <!-- PRODUCT LIST -->
+
+  <!-- PRODUCTS -->
 
   <div class="card">
 
-   <h2>📦 Products</h2>
+   <h2 class="section-title">
+    📦 Products
+   </h2>
 
    <div id="products">
     Loading products...
    </div>
 
   </div>
+
+
+
+  <!-- ORDERS -->
+
+  <div
+   class="card"
+   style="grid-column:1/-1"
+  >
+
+   <h2 class="section-title">
+    🛍️ Customer Orders
+   </h2>
+
+   <div id="orders">
+    Loading orders...
+   </div>
+
+  </div>
+
 
  </div>
 
@@ -400,12 +680,18 @@ textarea{min-height:100px;resize:vertical}
 </div>
 
 
+
 <script type="module">
+
+
+/* FIREBASE */
 
 import {
  initializeApp
-} from
+}
+from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
 
 import {
  getAuth,
@@ -413,8 +699,10 @@ import {
  signInWithPopup,
  signOut,
  onAuthStateChanged
-} from
+}
+from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
 
 import {
  getFirestore,
@@ -424,40 +712,63 @@ import {
  deleteDoc,
  doc,
  serverTimestamp
-} from
+}
+from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
 
 
 /* FIREBASE CONFIG */
 
 const firebaseConfig = {
- apiKey:"AIzaSyBmapJhIb0QixjcUbLqB1X9l7EuPMqEUEQ",
- authDomain:"ziya-jewellery-d420f.firebaseapp.com",
- projectId:"ziya-jewellery-d420f",
- storageBucket:"ziya-jewellery-d420f.firebasestorage.app",
- messagingSenderId:"292032564389",
- appId:"1:292032564389:web:69b11699d8f790db5c114c"
+
+ apiKey:
+ "AIzaSyBmapJhIb0QixjcUbLqB1X9l7EuPMqEUEQ",
+
+ authDomain:
+ "ziya-jewellery-d420f.firebaseapp.com",
+
+ projectId:
+ "ziya-jewellery-d420f",
+
+ storageBucket:
+ "ziya-jewellery-d420f.firebasestorage.app",
+
+ messagingSenderId:
+ "292032564389",
+
+ appId:
+ "1:292032564389:web:69b11699d8f790db5c114c"
+
 };
 
-
-/* AUTHORIZED ADMIN */
-
-const ADMIN_EMAIL =
-"gifthamperlovers@gmail.com";
 
 
 const app =
 initializeApp(firebaseConfig);
 
+
 const auth =
 getAuth(app);
+
 
 const db =
 getFirestore(app);
 
+
 const provider =
 new GoogleAuthProvider();
 
+
+
+/* ADMIN EMAIL */
+
+const ADMIN_EMAIL =
+"gifthamperlovers@gmail.com";
+
+
+
+/* ELEMENTS */
 
 const loginBox =
 document.getElementById("loginBox");
@@ -468,68 +779,94 @@ document.getElementById("panel");
 const products =
 document.getElementById("products");
 
+const orders =
+document.getElementById("orders");
+
 const status =
 document.getElementById("status");
 
 
+
 /* MESSAGE */
 
-function message(el,text,type){
+function message(
+ el,
+ text,
+ type
+){
 
  el.textContent=text;
- el.className="msg "+type;
- el.style.display="block";
+
+ el.className=
+ "msg "+type;
+
+ el.style.display=
+ "block";
 
 }
+
 
 
 /* GOOGLE LOGIN */
 
 document
 .getElementById("loginBtn")
-.addEventListener("click",async()=>{
+.addEventListener(
+ "click",
+ async()=>{
 
- try{
+  try{
 
-  const result =
-  await signInWithPopup(
-   auth,
-   provider
-  );
+   const result=
+   await signInWithPopup(
+    auth,
+    provider
+   );
 
-  const email =
-  (result.user.email||"")
-  .toLowerCase();
 
-  if(
-   email !==
-   ADMIN_EMAIL.toLowerCase()
-  ){
+   const email=
+   (result.user.email||"")
+   .toLowerCase();
 
-   await signOut(auth);
+
+   if(
+    email !==
+    ADMIN_EMAIL.toLowerCase()
+   ){
+
+    await signOut(auth);
+
+
+    message(
+     document.getElementById(
+      "loginMsg"
+     ),
+     "Access denied. This Gmail is not authorized.",
+     "error"
+    );
+
+   }
+
+  }
+  catch(error){
+
+   console.error(error);
+
 
    message(
-    document.getElementById("loginMsg"),
-    "Access denied. This Gmail is not authorized.",
+    document.getElementById(
+     "loginMsg"
+    ),
+    "Login failed: "+
+    error.message,
     "error"
    );
 
   }
 
  }
- catch(error){
+);
 
-  console.error(error);
-
-  message(
-   document.getElementById("loginMsg"),
-   "Login failed: "+error.message,
-   "error"
-  );
-
- }
-
-});
 
 
 /* LOGIN STATE */
@@ -546,26 +883,38 @@ onAuthStateChanged(
    ADMIN_EMAIL.toLowerCase()
   ){
 
-   loginBox.style.display="none";
-   panel.style.display="block";
+   loginBox.style.display=
+   "none";
+
+   panel.style.display=
+   "block";
+
 
    document.getElementById(
     "adminEmail"
    ).textContent=
-   "Logged in: "+user.email;
+   "Logged in: "+
+   user.email;
+
 
    loadProducts();
+
+   loadOrders();
 
   }
   else{
 
-   loginBox.style.display="block";
-   panel.style.display="none";
+   loginBox.style.display=
+   "block";
+
+   panel.style.display=
+   "none";
 
   }
 
  }
 );
+
 
 
 /* LOGOUT */
@@ -578,6 +927,7 @@ document
 );
 
 
+
 /* PHOTO PREVIEW */
 
 document
@@ -586,21 +936,30 @@ document
  "change",
  function(){
 
-  const file=this.files[0];
+  const file=
+  this.files[0];
 
   if(!file)return;
+
 
   const url=
   URL.createObjectURL(file);
 
+
   const preview=
-  document.getElementById("preview");
+  document.getElementById(
+   "preview"
+  );
+
 
   preview.src=url;
-  preview.style.display="block";
+
+  preview.style.display=
+  "block";
 
  }
 );
+
 
 
 /* ADD PRODUCT */
@@ -613,28 +972,31 @@ document
 
   event.preventDefault();
 
-  const user=auth.currentUser;
 
-  if(!user)return;
-
-
-  const photo=
-  document.getElementById("photo")
-  .files[0];
+  const user=
+  auth.currentUser;
 
 
-  /*
-   IMPORTANT:
-   Abhi Firebase Storage enable nahi kiya hai.
-   Isliye selected photo sirf preview hogi.
-   Product ke liye Image URL use kiya ja sakta hai.
-  */
+  if(!user){
+
+   message(
+    status,
+    "Please login first.",
+    "error"
+   );
+
+   return;
+
+  }
 
 
   try{
 
    await addDoc(
-    collection(db,"products"),
+    collection(
+     db,
+     "products"
+    ),
     {
 
      name:
@@ -714,9 +1076,11 @@ document
 
    event.target.reset();
 
+
    document.getElementById(
     "preview"
-   ).style.display="none";
+   ).style.display=
+   "none";
 
 
    message(
@@ -733,6 +1097,7 @@ document
 
    console.error(error);
 
+
    message(
     status,
     "Product save failed: "+
@@ -742,7 +1107,9 @@ document
 
   }
 
- });
+ }
+);
+
 
 
 /* LOAD PRODUCTS */
@@ -763,7 +1130,7 @@ async function loadProducts(){
   if(snap.empty){
 
    products.innerHTML=
-   "<p>No products yet.</p>";
+   "<p class='empty'>No products yet.</p>";
 
    return;
 
@@ -773,148 +1140,398 @@ async function loadProducts(){
   products.innerHTML="";
 
 
-  snap.forEach(item=>{
+  snap.forEach(
+   item=>{
 
-   const p=item.data();
-
-   const div=
-   document.createElement("div");
-
-   div.className="product";
+    const p=
+    item.data();
 
 
-   const img=
-   p.image
-   ?
-   `<img src="${escapeHTML(p.image)}"
-      alt="${escapeHTML(p.name||"Jewellery")}">`
-   :
-   "";
+    const div=
+    document.createElement(
+     "div"
+    );
 
 
-   const shareText=
-   encodeURIComponent(
-    `✨ ${p.name||"Ziya Jewellery Product"}
-    
-Metal: ${p.metal||""}
-Purity: ${p.purity||""}
-Price: ₹${p.price||""}
-
-Ziya Jewellery`
-   );
+    div.className=
+    "product";
 
 
-   div.innerHTML=`
-
-    ${img}
-
-    <strong>
-     ${escapeHTML(
-      p.name||"Product"
-     )}
-    </strong>
-
-    <br>
-
-    <small>
-     ${escapeHTML(
-      p.metal||""
-     )}
-     •
-     ${escapeHTML(
-      p.purity||""
-     )}
-     • ₹${escapeHTML(
-      String(p.price||"")
-     )}
-    </small>
-
-    <br>
-
-    <small>
-     Category:
-     ${escapeHTML(
-      p.category||""
-     )}
-    </small>
-
-    <br>
-
-    <a
-     class="share"
-     target="_blank"
-     href="https://wa.me/?text=${shareText}">
-     📲 Share on WhatsApp
-    </a>
-
-    <br>
-
-    <button
-     class="delete"
-     data-id="${item.id}">
-     🗑️ Delete
-    </button>
-
-   `;
+    const img=
+    p.image
+    ?
+    `<img
+      src="${escapeHTML(p.image)}"
+      alt="${escapeHTML(
+       p.name||"Jewellery"
+      )}"
+     >`
+    :
+    "";
 
 
-   div
-   .querySelector(".delete")
-   .addEventListener(
-    "click",
-    async()=>{
-
-     if(
-      confirm(
-       "Delete this product?"
-      )
-     ){
-
-      await deleteDoc(
-       doc(
-        db,
-        "products",
-        item.id
-       )
-      );
-
-      loadProducts();
-
+    const shareText=
+    encodeURIComponent(
+     `✨ ${
+      p.name||
+      "Ziya Jewellery Product"
      }
 
-    }
-   );
+Metal: ${
+      p.metal||""
+     }
+
+Purity: ${
+      p.purity||""
+     }
+
+Price: ₹${
+      p.price||""
+     }
+
+Ziya Jewellery`
+    );
 
 
-   products.appendChild(div);
+    div.innerHTML=`
 
-  });
+     ${img}
+
+     <strong>
+      ${escapeHTML(
+       p.name||"Product"
+      )}
+     </strong>
+
+     <br>
+
+     <small>
+      ${escapeHTML(
+       p.metal||""
+      )}
+      •
+      ${escapeHTML(
+       p.purity||""
+      )}
+      • ₹
+      ${escapeHTML(
+       String(
+        p.price||""
+       )
+      )}
+     </small>
+
+     <br>
+
+     <small>
+      Category:
+      ${escapeHTML(
+       p.category||""
+      )}
+     </small>
+
+     <br>
+
+     <a
+      class="share"
+      target="_blank"
+      href="https://wa.me/?text=${shareText}"
+     >
+      📲 Share on WhatsApp
+     </a>
+
+     <br>
+
+     <button
+      class="delete"
+      data-id="${item.id}"
+     >
+      🗑️ Delete
+     </button>
+
+    `;
+
+
+    div
+    .querySelector(
+     ".delete"
+    )
+    .addEventListener(
+     "click",
+     async()=>{
+
+      if(
+       confirm(
+        "Delete this product?"
+       )
+      ){
+
+       await deleteDoc(
+        doc(
+         db,
+         "products",
+         item.id
+        )
+       );
+
+
+       loadProducts();
+
+      }
+
+     }
+    );
+
+
+    products.appendChild(
+     div
+    );
+
+   }
+  );
 
  }
  catch(error){
 
   console.error(error);
 
+
   products.innerHTML=
-  "<p>Unable to load products.</p>";
+  "<p class='empty'>Unable to load products.</p>";
 
  }
 
 }
 
 
-/* ESCAPE HTML */
 
-function escapeHTML(value){
+/* LOAD ORDERS */
 
- return String(value)
- .replaceAll("&","&amp;")
- .replaceAll("<","&lt;")
- .replaceAll(">","&gt;")
- .replaceAll('"',"&quot;")
- .replaceAll("'","&#039;");
+async function loadOrders(){
+
+ try{
+
+  const snap=
+  await getDocs(
+   collection(
+    db,
+    "orders"
+   )
+  );
+
+
+  if(snap.empty){
+
+   orders.innerHTML=
+   "<p class='empty'>No customer orders yet.</p>";
+
+   return;
+
+  }
+
+
+  orders.innerHTML="";
+
+
+  snap.forEach(
+   item=>{
+
+    const o=
+    item.data();
+
+
+    const div=
+    document.createElement(
+     "div"
+    );
+
+
+    div.className=
+    "order";
+
+
+    const customer=
+    o.customerName ||
+    o.customer?.name ||
+    "Not available";
+
+
+    const payment=
+    o.paymentStatus ||
+    "Pending";
+
+
+    const orderStatus=
+    o.orderStatus ||
+    "New Order";
+
+
+    div.innerHTML=`
+
+     <div class="order-title">
+
+      🆔 Order ID:
+      ${escapeHTML(
+       item.id
+      )}
+
+     </div>
+
+
+     <div class="order-row">
+
+      👤
+      <strong>
+       Customer:
+      </strong>
+
+      ${escapeHTML(
+       customer
+      )}
+
+     </div>
+
+
+     <div class="order-row">
+
+      💳
+      <strong>
+       Payment:
+      </strong>
+
+      <br>
+
+      <span class="payment-badge">
+
+       ${escapeHTML(
+        payment
+       )}
+
+      </span>
+
+     </div>
+
+
+     <div class="order-row">
+
+      📦
+      <strong>
+       Order Status:
+      </strong>
+
+      <br>
+
+      <span class="status-badge">
+
+       ${escapeHTML(
+        orderStatus
+       )}
+
+      </span>
+
+     </div>
+
+
+     <button
+      class="delete"
+      data-order="${item.id}"
+     >
+
+      🗑️ Delete Test Order
+
+     </button>
+
+    `;
+
+
+    div
+    .querySelector(
+     ".delete"
+    )
+    .addEventListener(
+     "click",
+     async()=>{
+
+      if(
+       confirm(
+        "Delete this order?"
+       )
+      ){
+
+       await deleteDoc(
+        doc(
+         db,
+         "orders",
+         item.id
+        )
+       );
+
+
+       loadOrders();
+
+      }
+
+     }
+    );
+
+
+    orders.appendChild(
+     div
+    );
+
+   }
+  );
+
+ }
+ catch(error){
+
+  console.error(error);
+
+
+  orders.innerHTML=
+  "<p class='empty'>Unable to load orders.</p>";
+
+ }
 
 }
+
+
+
+/* ESCAPE HTML */
+
+function escapeHTML(
+ value
+){
+
+ return String(value)
+
+  .replaceAll(
+   "&",
+   "&amp;"
+  )
+
+  .replaceAll(
+   "<",
+   "&lt;"
+  )
+
+  .replaceAll(
+   ">",
+   "&gt;"
+  )
+
+  .replaceAll(
+   '"',
+   "&quot;"
+  )
+
+  .replaceAll(
+   "'",
+   "&#039;"
+  );
+
+}
+
 
 </script>
 
