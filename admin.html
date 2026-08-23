@@ -2,180 +2,139 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ziya Jewellery | Secure Admin Panel</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ziya Jewellery | Admin Panel</title>
 
 <style>
 *{box-sizing:border-box}
-
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:linear-gradient(135deg,#ffe4ef,#eee5ff);
-  color:#28152f;
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:linear-gradient(135deg,#fff0f6,#eee7ff);
+ color:#29152e
 }
-
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:25px;
+.container{max-width:1150px;margin:auto;padding:20px}
+.login,.panel{
+ background:#fff;
+ border-radius:24px;
+ box-shadow:0 15px 45px #5d326622
 }
-
-.login-box,
-.admin-box{
-  background:#fff;
-  border-radius:25px;
-  padding:30px;
-  box-shadow:0 15px 45px rgba(60,20,80,.15);
+.login{
+ max-width:440px;
+ margin:70px auto;
+ padding:35px 25px;
+ text-align:center
 }
-
-.login-box{
-  max-width:450px;
-  margin:70px auto;
-  text-align:center;
-}
-
 .logo{
-  font-size:34px;
-  font-weight:800;
-  background:linear-gradient(90deg,#ff3180,#7628ff);
-  color:transparent;
-  background-clip:text;
+ font-size:32px;
+ font-weight:800;
+ color:#d92878
 }
-
-.login-box p{
-  color:#777;
+.google{
+ width:100%;
+ padding:14px;
+ border:1px solid #ddd;
+ border-radius:12px;
+ background:#fff;
+ font-size:16px;
+ font-weight:bold;
+ cursor:pointer
 }
-
-.google-btn{
-  width:100%;
-  padding:14px;
-  border:1px solid #ddd;
-  background:#fff;
-  border-radius:12px;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.google-btn:hover{
-  background:#f7f7f7;
-}
-
-.admin-box{
-  display:none;
-}
-
+.panel{display:none;padding:25px}
 .header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  margin-bottom:25px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:15px;
+ margin-bottom:25px
 }
-
-.header h1{
-  margin:0 0 5px;
+.header h1{margin:0 0 5px}
+.email{font-size:14px;color:#777}
+.logout,.delete{
+ border:0;
+ border-radius:10px;
+ padding:10px 15px;
+ cursor:pointer;
+ font-weight:bold
 }
-
-.email{
-  color:#777;
-  font-size:14px;
-}
-
-.logout{
-  border:0;
-  background:#ffe5ec;
-  color:#b00035;
-  padding:11px 18px;
-  border-radius:10px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
+.logout{background:#ffe5ed;color:#a00038}
 .grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:20px
 }
-
 .card{
-  background:#fff7fb;
-  padding:22px;
-  border-radius:20px;
+ background:#fff8fc;
+ border-radius:20px;
+ padding:22px
 }
-
-input,
-textarea,
-select{
-  width:100%;
-  padding:13px;
-  margin:7px 0 15px;
-  border:1px solid #e2d7e8;
-  border-radius:10px;
-  font-size:15px;
+label{
+ display:block;
+ font-weight:bold;
+ margin-top:10px
 }
-
-textarea{
-  min-height:100px;
-  resize:vertical;
+input,select,textarea{
+ width:100%;
+ padding:12px;
+ margin:7px 0 12px;
+ border:1px solid #ddd1e2;
+ border-radius:10px;
+ font-size:15px
 }
-
-.add-btn{
-  width:100%;
-  border:0;
-  padding:14px;
-  border-radius:12px;
-  background:linear-gradient(135deg,#ff3180,#7628ff);
-  color:white;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
+textarea{min-height:100px;resize:vertical}
+.add{
+ width:100%;
+ padding:14px;
+ border:0;
+ border-radius:12px;
+ background:linear-gradient(135deg,#e72b7b,#7228ff);
+ color:#fff;
+ font-size:16px;
+ font-weight:bold;
+ cursor:pointer
 }
-
 .product{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  padding:14px 0;
-  border-bottom:1px solid #eadfea;
+ padding:15px 0;
+ border-bottom:1px solid #eaddea
 }
-
-.delete-btn{
-  border:0;
-  background:#ffe5eb;
-  color:#b00035;
-  padding:8px 12px;
-  border-radius:8px;
-  cursor:pointer;
+.product img{
+ width:75px;
+ height:75px;
+ object-fit:cover;
+ border-radius:10px;
+ float:left;
+ margin-right:12px
 }
-
-.message{
-  display:none;
-  padding:12px;
-  border-radius:10px;
-  margin-bottom:15px;
+.product:after{content:"";display:block;clear:both}
+.delete{background:#ffe5e9;color:#a00038;margin-top:10px}
+.share{
+ display:inline-block;
+ background:#e8fff0;
+ color:#08743d;
+ padding:8px 12px;
+ border-radius:8px;
+ text-decoration:none;
+ margin-top:10px
 }
-
-.error{
-  background:#fff0f3;
-  color:#a00030;
+.msg{
+ display:none;
+ padding:12px;
+ border-radius:10px;
+ margin-bottom:15px
 }
-
-.success{
-  background:#e7fff1;
-  color:#08733d;
+.error{background:#fff0f3;color:#a00030}
+.success{background:#e8fff0;color:#08743d}
+.preview{
+ width:100%;
+ max-height:220px;
+ object-fit:contain;
+ display:none;
+ border-radius:12px;
+ margin-bottom:10px
 }
-
-@media(max-width:700px){
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  .header{
-    align-items:flex-start;
-  }
+@media(max-width:750px){
+ .grid{grid-template-columns:1fr}
+ .header{align-items:flex-start}
 }
 </style>
 </head>
@@ -186,133 +145,255 @@ textarea{
 
 <!-- LOGIN -->
 
-<div id="loginBox" class="login-box">
+<div id="loginBox" class="login">
 
-  <div class="logo">✨ Ziya Jewellery</div>
+ <div class="logo">✨ Ziya Jewellery</div>
 
-  <h2>Admin Panel</h2>
+ <h2>Secure Admin Panel</h2>
 
-  <p>Secure administrator login</p>
+ <p>Authorized administrator only</p>
 
-  <button id="googleLogin" class="google-btn">
-    🔐 Continue with Google
-  </button>
+ <button id="loginBtn" class="google">
+   🔐 Continue with Google
+ </button>
 
-  <div id="loginMessage" class="message error"></div>
+ <div id="loginMsg" class="msg error"></div>
 
 </div>
 
 
-<!-- ADMIN PANEL -->
+<!-- ADMIN -->
 
-<div id="adminPanel" class="admin-box">
+<div id="panel" class="panel">
 
-  <div class="header">
+ <div class="header">
 
-    <div>
-      <h1>✨ Ziya Jewellery</h1>
-      <div id="adminEmail" class="email"></div>
-    </div>
+  <div>
+   <h1>✨ Ziya Jewellery</h1>
+   <div id="adminEmail" class="email"></div>
+  </div>
 
-    <button id="logout" class="logout">
-      Logout
+  <button id="logout" class="logout">
+   Logout
+  </button>
+
+ </div>
+
+ <div id="status" class="msg"></div>
+
+
+ <div class="grid">
+
+  <!-- ADD PRODUCT -->
+
+  <div class="card">
+
+   <h2>➕ Add Jewellery</h2>
+
+   <form id="productForm">
+
+    <label>Product Name</label>
+    <input id="name" required
+      placeholder="Example: 22K Gold Ring">
+
+
+    <label>Metal Type</label>
+
+    <select id="metal" required>
+      <option value="">Select Metal</option>
+      <option>Gold</option>
+      <option>Silver</option>
+      <option>Other Metal</option>
+    </select>
+
+
+    <label>Purity / Material</label>
+
+    <select id="purity" required>
+      <option value="">Select Purity / Material</option>
+      <option>24K Gold</option>
+      <option>22K Gold</option>
+      <option>18K Gold</option>
+      <option>14K Gold</option>
+      <option>999 Fine Silver</option>
+      <option>925 Sterling Silver</option>
+      <option>Other Silver</option>
+      <option>Stainless Steel</option>
+      <option>Brass</option>
+      <option>Copper</option>
+      <option>Alloy</option>
+      <option>Titanium</option>
+      <option>Mixed Metal</option>
+    </select>
+
+
+    <label>Main Category</label>
+
+    <select id="category" required>
+      <option value="">Select Category</option>
+
+      <option>Rings</option>
+      <option>Earrings</option>
+      <option>Necklaces</option>
+      <option>Bracelets</option>
+      <option>Bangles</option>
+      <option>Chains</option>
+      <option>Pendants</option>
+      <option>Anklets / Payal</option>
+      <option>Nose Jewellery</option>
+      <option>Bridal Jewellery</option>
+      <option>Jewellery Sets</option>
+      <option>Men's Jewellery</option>
+      <option>Couple Jewellery</option>
+      <option>Gift Collection</option>
+      <option>Other</option>
+    </select>
+
+
+    <label>Sub Category / Item</label>
+
+    <select id="subcategory">
+      <option value="">Select Item</option>
+
+      <option>Gold Ring</option>
+      <option>Silver Ring</option>
+      <option>Diamond Ring</option>
+      <option>Couple Ring</option>
+      <option>Engagement Ring</option>
+      <option>Wedding Ring</option>
+
+      <option>Stud Earrings</option>
+      <option>Jhumka</option>
+      <option>Hoop Earrings</option>
+      <option>Drop Earrings</option>
+      <option>Chandbali</option>
+      <option>Bali</option>
+
+      <option>Gold Necklace</option>
+      <option>Silver Necklace</option>
+      <option>Pendant Necklace</option>
+      <option>Chain Necklace</option>
+      <option>Choker</option>
+      <option>Mangalsutra</option>
+
+      <option>Gold Bracelet</option>
+      <option>Silver Bracelet</option>
+      <option>Charm Bracelet</option>
+      <option>Couple Bracelet</option>
+      <option>Kada</option>
+
+      <option>Gold Bangle</option>
+      <option>Silver Bangle</option>
+      <option>Bridal Bangles</option>
+
+      <option>Gold Chain</option>
+      <option>Silver Chain</option>
+      <option>Figaro Chain</option>
+      <option>Rope Chain</option>
+      <option>Box Chain</option>
+
+      <option>Gold Pendant</option>
+      <option>Silver Pendant</option>
+      <option>Heart Pendant</option>
+      <option>Name Pendant</option>
+      <option>Couple Pendant</option>
+
+      <option>Silver Payal</option>
+      <option>Designer Payal</option>
+      <option>Pair Payal</option>
+
+      <option>Nose Pin</option>
+      <option>Nose Ring</option>
+      <option>Nath</option>
+
+      <option>Maang Tikka</option>
+      <option>Matha Patti</option>
+      <option>Bridal Set</option>
+
+      <option>Men's Ring</option>
+      <option>Men's Chain</option>
+      <option>Men's Bracelet</option>
+      <option>Men's Kada</option>
+    </select>
+
+
+    <label>Price ₹</label>
+    <input id="price" type="number" min="0"
+      placeholder="999" required>
+
+
+    <label>Weight</label>
+    <input id="weight"
+      placeholder="Example: 4.5 g">
+
+
+    <label>Size / Variant</label>
+    <input id="size"
+      placeholder="Example: 18 / 20 / Adjustable">
+
+
+    <label>Stock</label>
+    <input id="stock" type="number" min="0"
+      placeholder="10">
+
+
+    <label>SKU</label>
+    <input id="sku"
+      placeholder="ZJ-RING-001">
+
+
+    <label>Product Photo</label>
+
+    <input id="photo"
+      type="file"
+      accept="image/*">
+
+    <img id="preview" class="preview">
+
+
+    <label>Image URL</label>
+
+    <input id="imageUrl"
+      type="url"
+      placeholder="https://example.com/image.jpg">
+
+
+    <label>Description</label>
+
+    <textarea id="description"
+      placeholder="Write genuine product details..."></textarea>
+
+
+    <label>
+      <input id="featured"
+        type="checkbox"
+        style="width:auto">
+      ⭐ Featured Product
+    </label>
+
+
+    <button class="add" type="submit">
+      Add Product ✨
     </button>
 
-  </div>
-
-
-  <div id="statusMessage" class="message"></div>
-
-
-  <div class="grid">
-
-    <!-- ADD PRODUCT -->
-
-    <div class="card">
-
-      <h2>➕ Add Product</h2>
-
-      <form id="productForm">
-
-        <label>Product Name</label>
-
-        <input
-          type="text"
-          id="productName"
-          placeholder="Example: Gold Ring"
-          required
-        >
-
-
-        <label>Category</label>
-
-        <select id="category" required>
-
-          <option value="">Select Category</option>
-          <option>Ring</option>
-          <option>Necklace</option>
-          <option>Earrings</option>
-          <option>Bracelet</option>
-          <option>Bangles</option>
-          <option>Jewellery Set</option>
-          <option>Gift</option>
-
-        </select>
-
-
-        <label>Price ₹</label>
-
-        <input
-          type="number"
-          id="price"
-          min="0"
-          placeholder="999"
-          required
-        >
-
-
-        <label>Image URL</label>
-
-        <input
-          type="url"
-          id="image"
-          placeholder="https://example.com/image.jpg"
-        >
-
-
-        <label>Description</label>
-
-        <textarea
-          id="description"
-          placeholder="Product details..."
-        ></textarea>
-
-
-        <button
-          type="submit"
-          class="add-btn"
-        >
-          Add Product ✨
-        </button>
-
-      </form>
-
-    </div>
-
-
-    <!-- PRODUCTS -->
-
-    <div class="card">
-
-      <h2>📦 Products</h2>
-
-      <div id="products">
-        No products yet.
-      </div>
-
-    </div>
+   </form>
 
   </div>
+
+
+  <!-- PRODUCT LIST -->
+
+  <div class="card">
+
+   <h2>📦 Products</h2>
+
+   <div id="products">
+    Loading products...
+   </div>
+
+  </div>
+
+ </div>
 
 </div>
 
@@ -321,514 +402,517 @@ textarea{
 
 <script type="module">
 
-/* =========================================
-   FIREBASE
-========================================= */
+import {
+ initializeApp
+} from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
 import {
-  initializeApp
-} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+ getAuth,
+ GoogleAuthProvider,
+ signInWithPopup,
+ signOut,
+ onAuthStateChanged
+} from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signOut,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
-
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs,
-  deleteDoc,
-  doc,
-  serverTimestamp,
-  query,
-  orderBy
-} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+ getFirestore,
+ collection,
+ addDoc,
+ getDocs,
+ deleteDoc,
+ doc,
+ serverTimestamp
+} from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
-/* =========================================
-   YOUR FIREBASE CONFIG
-========================================= */
+/* FIREBASE CONFIG */
 
 const firebaseConfig = {
-
-  apiKey:
-    "AIzaSyBmapJhIb0QixjcUbLqB1X9l7EuPMqEUEQ",
-
-  authDomain:
-    "ziya-jewellery-d420f.firebaseapp.com",
-
-  projectId:
-    "ziya-jewellery-d420f",
-
-  storageBucket:
-    "ziya-jewellery-d420f.firebasestorage.app",
-
-  messagingSenderId:
-    "292032564389",
-
-  appId:
-    "1:292032564389:web:69b11699d8f790db5c114c"
-
+ apiKey:"AIzaSyBmapJhIb0QixjcUbLqB1X9l7EuPMqEUEQ",
+ authDomain:"ziya-jewellery-d420f.firebaseapp.com",
+ projectId:"ziya-jewellery-d420f",
+ storageBucket:"ziya-jewellery-d420f.firebasestorage.app",
+ messagingSenderId:"292032564389",
+ appId:"1:292032564389:web:69b11699d8f790db5c114c"
 };
 
 
-/* =========================================
-   ONLY ADMIN EMAIL
-========================================= */
+/* AUTHORIZED ADMIN */
 
 const ADMIN_EMAIL =
-  "gifthamperlovers@gmail.com";
+"gifthamperlovers@gmail.com";
 
-
-/* =========================================
-   INITIALIZE
-========================================= */
 
 const app =
-  initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 const auth =
-  getAuth(app);
+getAuth(app);
 
 const db =
-  getFirestore(app);
+getFirestore(app);
 
 const provider =
-  new GoogleAuthProvider();
+new GoogleAuthProvider();
 
-
-/* =========================================
-   ELEMENTS
-========================================= */
 
 const loginBox =
-  document.getElementById("loginBox");
+document.getElementById("loginBox");
 
-const adminPanel =
-  document.getElementById("adminPanel");
-
-const loginMessage =
-  document.getElementById("loginMessage");
-
-const statusMessage =
-  document.getElementById("statusMessage");
-
-const adminEmail =
-  document.getElementById("adminEmail");
+const panel =
+document.getElementById("panel");
 
 const products =
-  document.getElementById("products");
+document.getElementById("products");
+
+const status =
+document.getElementById("status");
 
 
-/* =========================================
-   MESSAGE
-========================================= */
+/* MESSAGE */
 
-function showMessage(
-  element,
-  text,
-  type
-){
+function message(el,text,type){
 
-  element.textContent = text;
-
-  element.className =
-    "message " + type;
-
-  element.style.display =
-    "block";
+ el.textContent=text;
+ el.className="msg "+type;
+ el.style.display="block";
 
 }
 
 
-/* =========================================
-   GOOGLE LOGIN
-========================================= */
+/* GOOGLE LOGIN */
 
 document
-.getElementById("googleLogin")
-.addEventListener(
-  "click",
-  async function(){
+.getElementById("loginBtn")
+.addEventListener("click",async()=>{
 
-    try{
+ try{
 
-      const result =
-        await signInWithPopup(
-          auth,
-          provider
-        );
+  const result =
+  await signInWithPopup(
+   auth,
+   provider
+  );
 
+  const email =
+  (result.user.email||"")
+  .toLowerCase();
 
-      const email =
-        (result.user.email || "")
-        .toLowerCase();
+  if(
+   email !==
+   ADMIN_EMAIL.toLowerCase()
+  ){
 
+   await signOut(auth);
 
-      if(
-        email !==
-        ADMIN_EMAIL.toLowerCase()
-      ){
-
-        await signOut(auth);
-
-        showMessage(
-          loginMessage,
-          "Access denied. Only the authorized Gmail can use this Admin Panel.",
-          "error"
-        );
-
-      }
-
-    }
-    catch(error){
-
-      console.error(error);
-
-      showMessage(
-        loginMessage,
-        "Google login failed. Please enable Google Sign-In in Firebase.",
-        "error"
-      );
-
-    }
+   message(
+    document.getElementById("loginMsg"),
+    "Access denied. This Gmail is not authorized.",
+    "error"
+   );
 
   }
-);
+
+ }
+ catch(error){
+
+  console.error(error);
+
+  message(
+   document.getElementById("loginMsg"),
+   "Login failed: "+error.message,
+   "error"
+  );
+
+ }
+
+});
 
 
-/* =========================================
-   AUTH STATE
-========================================= */
+/* LOGIN STATE */
 
 onAuthStateChanged(
-  auth,
-  function(user){
+ auth,
+ user=>{
 
-    if(
-      user &&
-      (user.email || "")
-      .toLowerCase()
-      ===
-      ADMIN_EMAIL.toLowerCase()
-    ){
+  if(
+   user &&
+   (user.email||"")
+   .toLowerCase()
+   ===
+   ADMIN_EMAIL.toLowerCase()
+  ){
 
-      loginBox.style.display =
-        "none";
+   loginBox.style.display="none";
+   panel.style.display="block";
 
-      adminPanel.style.display =
-        "block";
+   document.getElementById(
+    "adminEmail"
+   ).textContent=
+   "Logged in: "+user.email;
 
-      adminEmail.textContent =
-        "Logged in: " +
-        user.email;
-
-      loadProducts();
-
-    }
-    else{
-
-      loginBox.style.display =
-        "block";
-
-      adminPanel.style.display =
-        "none";
-
-    }
+   loadProducts();
 
   }
+  else{
+
+   loginBox.style.display="block";
+   panel.style.display="none";
+
+  }
+
+ }
 );
 
 
-/* =========================================
-   LOGOUT
-========================================= */
+/* LOGOUT */
 
 document
 .getElementById("logout")
 .addEventListener(
-  "click",
-  async function(){
-
-    await signOut(auth);
-
-  }
+ "click",
+ ()=>signOut(auth)
 );
 
 
-/* =========================================
-   ADD PRODUCT
-========================================= */
+/* PHOTO PREVIEW */
+
+document
+.getElementById("photo")
+.addEventListener(
+ "change",
+ function(){
+
+  const file=this.files[0];
+
+  if(!file)return;
+
+  const url=
+  URL.createObjectURL(file);
+
+  const preview=
+  document.getElementById("preview");
+
+  preview.src=url;
+  preview.style.display="block";
+
+ }
+);
+
+
+/* ADD PRODUCT */
 
 document
 .getElementById("productForm")
 .addEventListener(
-  "submit",
-  async function(event){
+ "submit",
+ async event=>{
 
-    event.preventDefault();
+  event.preventDefault();
 
+  const user=auth.currentUser;
 
-    try{
-
-      await addDoc(
-        collection(
-          db,
-          "products"
-        ),
-        {
-
-          name:
-            document
-            .getElementById(
-              "productName"
-            )
-            .value
-            .trim(),
-
-          category:
-            document
-            .getElementById(
-              "category"
-            )
-            .value,
-
-          price:
-            document
-            .getElementById(
-              "price"
-            )
-            .value,
-
-          image:
-            document
-            .getElementById(
-              "image"
-            )
-            .value
-            .trim(),
-
-          description:
-            document
-            .getElementById(
-              "description"
-            )
-            .value
-            .trim(),
-
-          createdAt:
-            serverTimestamp(),
-
-          createdBy:
-            auth.currentUser.email
-
-        }
-      );
+  if(!user)return;
 
 
-      event.target.reset();
+  const photo=
+  document.getElementById("photo")
+  .files[0];
 
 
-      showMessage(
-        statusMessage,
-        "Product added successfully ✨",
-        "success"
-      );
+  /*
+   IMPORTANT:
+   Abhi Firebase Storage enable nahi kiya hai.
+   Isliye selected photo sirf preview hogi.
+   Product ke liye Image URL use kiya ja sakta hai.
+  */
 
-
-      loadProducts();
-
-    }
-    catch(error){
-
-      console.error(error);
-
-      showMessage(
-        statusMessage,
-        "Product could not be added. Please check Firestore setup.",
-        "error"
-      );
-
-    }
-
-  }
-);
-
-
-/* =========================================
-   LOAD PRODUCTS
-========================================= */
-
-async function loadProducts(){
 
   try{
 
-    const q =
-      query(
-        collection(
-          db,
-          "products"
-        ),
-        orderBy(
-          "createdAt",
-          "desc"
-        )
-      );
+   await addDoc(
+    collection(db,"products"),
+    {
 
+     name:
+      document.getElementById(
+       "name"
+      ).value.trim(),
 
-    const snapshot =
-      await getDocs(q);
+     metal:
+      document.getElementById(
+       "metal"
+      ).value,
 
+     purity:
+      document.getElementById(
+       "purity"
+      ).value,
 
-    if(snapshot.empty){
+     category:
+      document.getElementById(
+       "category"
+      ).value,
 
-      products.innerHTML =
-        "<p>No products added yet.</p>";
+     subcategory:
+      document.getElementById(
+       "subcategory"
+      ).value,
 
-      return;
+     price:
+      document.getElementById(
+       "price"
+      ).value,
+
+     weight:
+      document.getElementById(
+       "weight"
+      ).value.trim(),
+
+     size:
+      document.getElementById(
+       "size"
+      ).value.trim(),
+
+     stock:
+      document.getElementById(
+       "stock"
+      ).value,
+
+     sku:
+      document.getElementById(
+       "sku"
+      ).value.trim(),
+
+     image:
+      document.getElementById(
+       "imageUrl"
+      ).value.trim(),
+
+     description:
+      document.getElementById(
+       "description"
+      ).value.trim(),
+
+     featured:
+      document.getElementById(
+       "featured"
+      ).checked,
+
+     createdBy:
+      user.email,
+
+     createdAt:
+      serverTimestamp()
 
     }
+   );
 
 
-    products.innerHTML = "";
+   event.target.reset();
+
+   document.getElementById(
+    "preview"
+   ).style.display="none";
 
 
-    snapshot.forEach(
-      function(item){
-
-        const data =
-          item.data();
-
-
-        const div =
-          document.createElement(
-            "div"
-          );
+   message(
+    status,
+    "Product added successfully ✨",
+    "success"
+   );
 
 
-        div.className =
-          "product";
-
-
-        div.innerHTML = `
-
-          <div>
-
-            <strong>
-              ${escapeHTML(
-                data.name ||
-                "Product"
-              )}
-            </strong>
-
-            <br>
-
-            <small>
-              ${escapeHTML(
-                data.category ||
-                ""
-              )}
-              • ₹${escapeHTML(
-                String(
-                  data.price ||
-                  ""
-                )
-              )}
-            </small>
-
-          </div>
-
-          <button
-            class="delete-btn"
-          >
-            Delete
-          </button>
-
-        `;
-
-
-        div
-        .querySelector(
-          ".delete-btn"
-        )
-        .addEventListener(
-          "click",
-          async function(){
-
-            if(
-              confirm(
-                "Delete this product?"
-              )
-            ){
-
-              await deleteDoc(
-                doc(
-                  db,
-                  "products",
-                  item.id
-                )
-              );
-
-              loadProducts();
-
-            }
-
-          }
-        );
-
-
-        products.appendChild(
-          div
-        );
-
-      }
-    );
+   loadProducts();
 
   }
   catch(error){
 
-    console.error(error);
+   console.error(error);
 
-    products.innerHTML =
-      "<p>Unable to load products. Firestore Rules/setup check karein.</p>";
+   message(
+    status,
+    "Product save failed: "+
+    error.message,
+    "error"
+   );
 
   }
+
+ });
+
+
+/* LOAD PRODUCTS */
+
+async function loadProducts(){
+
+ try{
+
+  const snap=
+  await getDocs(
+   collection(
+    db,
+    "products"
+   )
+  );
+
+
+  if(snap.empty){
+
+   products.innerHTML=
+   "<p>No products yet.</p>";
+
+   return;
+
+  }
+
+
+  products.innerHTML="";
+
+
+  snap.forEach(item=>{
+
+   const p=item.data();
+
+   const div=
+   document.createElement("div");
+
+   div.className="product";
+
+
+   const img=
+   p.image
+   ?
+   `<img src="${escapeHTML(p.image)}"
+      alt="${escapeHTML(p.name||"Jewellery")}">`
+   :
+   "";
+
+
+   const shareText=
+   encodeURIComponent(
+    `✨ ${p.name||"Ziya Jewellery Product"}
+    
+Metal: ${p.metal||""}
+Purity: ${p.purity||""}
+Price: ₹${p.price||""}
+
+Ziya Jewellery`
+   );
+
+
+   div.innerHTML=`
+
+    ${img}
+
+    <strong>
+     ${escapeHTML(
+      p.name||"Product"
+     )}
+    </strong>
+
+    <br>
+
+    <small>
+     ${escapeHTML(
+      p.metal||""
+     )}
+     •
+     ${escapeHTML(
+      p.purity||""
+     )}
+     • ₹${escapeHTML(
+      String(p.price||"")
+     )}
+    </small>
+
+    <br>
+
+    <small>
+     Category:
+     ${escapeHTML(
+      p.category||""
+     )}
+    </small>
+
+    <br>
+
+    <a
+     class="share"
+     target="_blank"
+     href="https://wa.me/?text=${shareText}">
+     📲 Share on WhatsApp
+    </a>
+
+    <br>
+
+    <button
+     class="delete"
+     data-id="${item.id}">
+     🗑️ Delete
+    </button>
+
+   `;
+
+
+   div
+   .querySelector(".delete")
+   .addEventListener(
+    "click",
+    async()=>{
+
+     if(
+      confirm(
+       "Delete this product?"
+      )
+     ){
+
+      await deleteDoc(
+       doc(
+        db,
+        "products",
+        item.id
+       )
+      );
+
+      loadProducts();
+
+     }
+
+    }
+   );
+
+
+   products.appendChild(div);
+
+  });
+
+ }
+ catch(error){
+
+  console.error(error);
+
+  products.innerHTML=
+  "<p>Unable to load products.</p>";
+
+ }
 
 }
 
 
-/* =========================================
-   ESCAPE HTML
-========================================= */
+/* ESCAPE HTML */
 
 function escapeHTML(value){
 
-  return String(value)
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
+ return String(value)
+ .replaceAll("&","&amp;")
+ .replaceAll("<","&lt;")
+ .replaceAll(">","&gt;")
+ .replaceAll('"',"&quot;")
+ .replaceAll("'","&#039;");
 
 }
 
