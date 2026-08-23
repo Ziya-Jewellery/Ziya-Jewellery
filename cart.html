@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Shopping Cart | Ziya Jewellery</title>
+
+<style>
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:linear-gradient(135deg,#fff6fb,#f1eaff);
+color:#29152e;
+}
+
+header{
+background:linear-gradient(135deg,#8d1455,#5c1b9e);
+color:white;
+padding:17px 20px;
+}
+
+.nav{
+max-width:1100px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+}
+
+.logo{
+font-size:25px;
+font-weight:800;
+}
+
+.navlinks{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+}
+
+.navlinks a{
+color:white;
+text-decoration:none;
+padding:9px 12px;
+border-radius:18px;
+background:#ffffff1c;
+font-size:14px;
+}
+
+.container{
+max-width:1100px;
+margin:30px auto;
+padding:0 18px;
+}
+
+h1{
+color:#701650;
+}
+
+.layout{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:22px;
+}
+
+.card{
+background:white;
+padding:22px;
+border-radius:20px;
+box-shadow:0 10px 35px #5b245018;
+}
+
+.item{
+display:grid;
+grid-template-columns:100px 1fr auto;
+gap:15px;
+align-items:center;
+padding:15px 0;
+border-bottom:1px solid #eee;
+}
+
+.item:last-child{
+border-bottom:0;
+}
+
+.item img{
+width:100px;
+height:100px;
+object-fit:cover;
+border-radius:14px;
+background:#f6edf4;
+}
+
+.noimage{
+width:100px;
+height:100px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#f6edf4;
+border-radius:14px;
+font-size:45px;
+}
+
+.name{
+font-size:18px;
+font-weight:bold;
+margin-bottom:7px;
+}
+
+.meta{
+font-size:13px;
+color:#777;
+line-height:1.7;
+}
+
+.price{
+font-weight:bold;
+color:#a01762;
+font-size:18px;
+margin-top:8px;
+}
+
+.qty{
+display:flex;
+align-items:center;
+gap:8px;
+margin-top:10px;
+}
+
+.qty button{
+width:32px;
+height:32px;
+border:0;
+border-radius:8px;
+background:#eee2ef;
+cursor:pointer;
+font-weight:bold;
+}
+
+.remove{
+margin-top:8px;
+border:0;
+background:none;
+color:#b00045;
+cursor:pointer;
+padding:0;
+}
+
+.summary h2{
+color:#701650;
+margin-top:0;
+}
+
+.row{
+display:flex;
+justify-content:space-between;
+padding:10px 0;
+border-bottom:1px solid #eee;
+}
+
+.total{
+font-size:24px;
+font-weight:bold;
+color:#721550;
+padding-top:18px;
+}
+
+.checkout{
+display:block;
+text-align:center;
+margin-top:20px;
+padding:14px;
+border-radius:12px;
+background:linear-gradient(135deg,#e72b7b,#7025ed);
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+.continue{
+display:block;
+text-align:center;
+margin-top:10px;
+padding:12px;
+border-radius:12px;
+background:#f7e8f1;
+color:#701650;
+text-decoration:none;
+font-weight:bold;
+}
+
+.empty{
+text-align:center;
+padding:60px 20px;
+}
+
+.empty-icon{
+font-size:70px;
+}
+
+.empty a{
+display:inline-block;
+margin-top:15px;
+padding:12px 20px;
+border-radius:20px;
+background:#721550;
+color:white;
+text-decoration:none;
+}
+
+@media(max-width:750px){
+
+.layout{
+grid-template-columns:1fr;
+}
+
+.item{
+grid-template-columns:75px 1fr;
+}
+
+.item img,
+.noimage{
+width:75px;
+height:75px;
+}
+
+.item-actions{
+grid-column:1/-1;
+padding-left:90px;
+}
+
+}
+
+@media(max-width:450px){
+
+.nav{
+flex-direction:column;
+}
+
+.item{
+grid-template-columns:65px 1fr;
+gap:10px;
+}
+
+.item img,
+.noimage{
+width:65px;
+height:65px;
+}
+
+.item-actions{
+padding-left:75px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="nav">
+
+<div class="logo">
+✨ Ziya Jewellery
+</div>
+
+<div class="navlinks">
+
+<a href="index.html">
+🏠 Home
+</a>
+
+<a href="categories.html">
+Categories
+</a>
+
+<a href="wishlist.html">
+❤️ Saved
+</a>
+
+<a href="orders.html">
+📦 Orders
+</a>
+
+</div>
+
+</div>
+
+</header>
+
+
+<main class="container">
+
+<h1>🛒 Your Shopping Cart</h1>
+
+<div id="cartArea"></div>
+
+</main>
+
+
+<script>
+
+const CART_KEY="ziyaCart";
+
+
+function getCart(){
+
+try{
+
+return JSON.parse(
+localStorage.getItem(CART_KEY)
+)||[];
+
+}
+catch{
+
+return[];
+
+}
+
+}
+
+
+function saveCart(cart){
+
+localStorage.setItem(
+CART_KEY,
+JSON.stringify(cart)
+);
+
+}
+
+
+function escapeHTML(value){
+
+return String(value)
+
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+
+function renderCart(){
+
+const cart=getCart();
+
+const area=
+document.getElementById("cartArea");
+
+
+if(!cart.length){
+
+area.innerHTML=`
+
+<div class="card empty">
+
+<div class="empty-icon">
+🛒
+</div>
+
+<h2>Your cart is empty</h2>
+
+<p>
+Explore our jewellery collection and add your favourite products.
+</p>
+
+<a href="index.html">
+Continue Shopping
+</a>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+let subtotal=0;
+
+
+cart.forEach(item=>{
+
+const price=
+Number(item.price)||0;
+
+const quantity=
+Number(item.quantity)||1;
+
+subtotal+=
+price*quantity;
+
+});
+
+
+area.innerHTML=`
+
+<div class="layout">
+
+<div class="card">
+
+<div id="items"></div>
+
+</div>
+
+
+<div class="card summary">
+
+<h2>Order Summary</h2>
+
+<div class="row">
+
+<span>Items</span>
+
+<strong>
+${cart.length}
+</strong>
+
+</div>
+
+<div class="row">
+
+<span>Subtotal</span>
+
+<strong>
+₹${subtotal.toLocaleString("en-IN")}
+</strong>
+
+</div>
+
+<div class="row">
+
+<span>Shipping</span>
+
+<strong>
+Calculated at checkout
+</strong>
+
+</div>
+
+<div class="total">
+
+Total: ₹${subtotal.toLocaleString("en-IN")}
+
+</div>
+
+
+<a
+class="checkout"
+href="checkout.html"
+>
+🛍️ Proceed to Checkout
+</a>
+
+
+<a
+class="continue"
+href="index.html"
+>
+Continue Shopping
+</a>
+
+</div>
+
+</div>
+
+`;
+
+
+const itemsBox=
+document.getElementById("items");
+
+
+cart.forEach(
+(item,index)=>{
+
+const quantity=
+Number(item.quantity)||1;
+
+const price=
+Number(item.price)||0;
+
+
+const div=
+document.createElement("div");
+
+div.className="item";
+
+
+const imageHTML=
+item.image
+?
+`
+<img
+src="${escapeHTML(item.image)}"
+alt="${escapeHTML(item.name||"Jewellery")}"
+onerror="
+this.style.display='none';
+this.nextElementSibling.style.display='flex';
+"
+>
+
+<div
+class="noimage"
+style="display:none"
+>
+💎
+</div>
+`
+:
+`
+<div class="noimage">
+💎
+</div>
+`;
+
+
+div.innerHTML=`
+
+${imageHTML}
+
+<div>
+
+<div class="name">
+${escapeHTML(
+item.name||"Jewellery Product"
+)}
+</div>
+
+<div class="meta">
+
+${item.metal
+?
+"Metal: "+escapeHTML(item.metal)+"<br>"
+:""}
+
+${item.purity
+?
+"Purity: "+escapeHTML(item.purity)+"<br>"
+:""}
+
+Price:
+₹${price.toLocaleString("en-IN")}
+
+</div>
+
+
+<div class="price">
+
+₹${(
+price*quantity
+).toLocaleString("en-IN")}
+
+</div>
+
+</div>
+
+
+<div class="item-actions">
+
+<div class="qty">
+
+<button
+data-action="minus"
+data-index="${index}"
+>
+−
+</button>
+
+<strong>
+${quantity}
+</strong>
+
+<button
+data-action="plus"
+data-index="${index}"
+>
++
+</button>
+
+</div>
+
+<button
+class="remove"
+data-action="remove"
+data-index="${index}"
+>
+Remove
+</button>
+
+</div>
+
+`;
+
+
+itemsBox.appendChild(div);
+
+});
+
+}
+
+
+/* BUTTON ACTIONS */
+
+document.addEventListener(
+"click",
+event=>{
+
+const button=
+event.target.closest(
+"[data-action]"
+);
+
+if(!button)return;
+
+
+const index=
+Number(button.dataset.index);
+
+const action=
+button.dataset.action;
+
+const cart=
+getCart();
+
+
+if(!cart[index])return;
+
+
+if(action==="plus"){
+
+cart[index].quantity=
+(Number(cart[index].quantity)||1)+1;
+
+}
+
+
+if(action==="minus"){
+
+cart[index].quantity=
+(Number(cart[index].quantity)||1)-1;
+
+if(cart[index].quantity<1){
+
+cart[index].quantity=1;
+
+}
+
+}
+
+
+if(action==="remove"){
+
+cart.splice(index,1);
+
+}
+
+
+saveCart(cart);
+
+renderCart();
+
+});
+
+
+renderCart();
+
+</script>
+
+</body>
+</html>
