@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Product | Ziya Jewellery</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ font-family:Arial,Helvetica,sans-serif;
+ background:linear-gradient(135deg,#fff7fb,#f1eaff);
+ color:#29152e
+}
+
+header{
+ background:linear-gradient(135deg,#8d1455,#5c1b9e);
+ color:#fff;
+ padding:17px 20px
+}
+
+.nav{
+ max-width:1100px;
+ margin:auto;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:15px
+}
+
+.logo{
+ font-size:25px;
+ font-weight:800
+}
+
+.navlinks{
+ display:flex;
+ gap:8px;
+ flex-wrap:wrap
+}
+
+.navlinks a{
+ color:#fff;
+ text-decoration:none;
+ padding:9px 12px;
+ border-radius:18px;
+ background:#ffffff1c;
+ font-size:14px
+}
+
+.container{
+ max-width:1100px;
+ margin:30px auto;
+ padding:0 18px
+}
+
+.product{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:30px;
+ background:#fff;
+ padding:25px;
+ border-radius:24px;
+ box-shadow:0 12px 40px #5a235018
+}
+
+.photo{
+ min-height:450px;
+ background:#f7edf5;
+ border-radius:18px;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ overflow:hidden
+}
+
+.photo img{
+ width:100%;
+ height:100%;
+ max-height:550px;
+ object-fit:contain
+}
+
+.noimage{
+ font-size:90px;
+ opacity:.5
+}
+
+.badges{
+ display:flex;
+ flex-wrap:wrap;
+ gap:7px;
+ margin-bottom:10px
+}
+
+.badge{
+ background:#f6e4ef;
+ color:#731c55;
+ padding:6px 10px;
+ border-radius:15px;
+ font-size:12px
+}
+
+h1{
+ font-size:34px;
+ margin:10px 0
+}
+
+.price{
+ color:#a01762;
+ font-size:29px;
+ font-weight:bold;
+ margin:15px 0
+}
+
+.info{
+ color:#666;
+ line-height:1.8
+}
+
+.description{
+ margin-top:20px;
+ line-height:1.7;
+ color:#555
+}
+
+.actions{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:10px;
+ margin-top:22px
+}
+
+button,.action{
+ border:0;
+ padding:14px;
+ border-radius:12px;
+ font-weight:bold;
+ font-size:15px;
+ cursor:pointer;
+ text-align:center;
+ text-decoration:none
+}
+
+.save{
+ background:#fff0f5;
+ color:#a00045
+}
+
+.save.saved{
+ background:#a00045;
+ color:#fff
+}
+
+.cart{
+ background:linear-gradient(135deg,#7b1d61,#58229a);
+ color:#fff
+}
+
+.buy{
+ grid-column:1/-1;
+ background:linear-gradient(135deg,#e72b7b,#7025ed);
+ color:#fff
+}
+
+.whatsapp{
+ grid-column:1/-1;
+ background:#e8fff0;
+ color:#08743d
+}
+
+.message{
+ display:none;
+ margin-top:15px;
+ padding:12px;
+ border-radius:10px;
+ background:#e8fff0;
+ color:#08743d
+}
+
+.related{
+ margin-top:35px
+}
+
+.related h2{
+ color:#701650
+}
+
+@media(max-width:750px){
+
+.product{
+ grid-template-columns:1fr;
+ padding:15px
+}
+
+.photo{
+ min-height:330px
+}
+
+h1{
+ font-size:27px
+}
+
+.actions{
+ grid-template-columns:1fr
+}
+
+.buy,.whatsapp{
+ grid-column:auto
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="nav">
+
+<div class="logo">
+✨ Ziya Jewellery
+</div>
+
+<div class="navlinks">
+
+<a href="index.html">🏠 Home</a>
+
+<a href="categories.html">
+Categories
+</a>
+
+<a href="wishlist.html">
+❤️ Saved
+</a>
+
+<a href="cart.html">
+🛒 Cart
+</a>
+
+<a href="orders.html">
+📦 Orders
+</a>
+
+</div>
+
+</div>
+
+</header>
+
+
+<main class="container">
+
+<div id="loading">
+Loading product...
+</div>
+
+<div
+id="productBox"
+class="product"
+style="display:none"
+>
+
+<div class="photo">
+
+<img
+id="productImage"
+alt="Ziya Jewellery"
+style="display:none"
+>
+
+<div
+id="noImage"
+class="noimage"
+>
+💎
+</div>
+
+</div>
+
+
+<div>
+
+<div
+id="badges"
+class="badges"
+>
+</div>
+
+<h1 id="name">
+</h1>
+
+<div
+id="price"
+class="price"
+>
+</div>
+
+<div
+id="info"
+class="info"
+>
+</div>
+
+<div
+id="description"
+class="description"
+>
+</div>
+
+
+<div class="actions">
+
+<button
+id="saveBtn"
+class="save"
+>
+❤️ Save
+</button>
+
+<button
+id="cartBtn"
+class="cart"
+>
+🛒 Add to Cart
+</button>
+
+<button
+id="buyBtn"
+class="buy"
+>
+🛍️ Buy Now
+</button>
+
+<a
+id="whatsappBtn"
+class="action whatsapp"
+target="_blank"
+>
+💬 WhatsApp Inquiry
+</a>
+
+</div>
+
+
+<div
+id="message"
+class="message"
+>
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+
+<script type="module">
+
+import {
+ initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+import {
+ getFirestore,
+ doc,
+ getDoc,
+ updateDoc,
+ increment
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+const firebaseConfig={
+
+apiKey:
+"AIzaSyBmapJhIb0QixjcUbLqB1X9l7EuPMqEUEQ",
+
+authDomain:
+"ziya-jewellery-d420f.firebaseapp.com",
+
+projectId:
+"ziya-jewellery-d420f",
+
+storageBucket:
+"ziya-jewellery-d420f.firebasestorage.app",
+
+messagingSenderId:
+"292032564389",
+
+appId:
+"1:292032564389:web:69b11699d8f790db5c114c"
+
+};
+
+
+const app=
+initializeApp(firebaseConfig);
+
+const db=
+getFirestore(app);
+
+
+const params=
+new URLSearchParams(
+location.search
+);
+
+const productId=
+params.get("id");
+
+
+let product=null;
+
+
+/* LOCAL STORAGE */
+
+function getSaved(){
+
+return JSON.parse(
+localStorage.getItem(
+"ziyaWishlist"
+)
+)||[];
+
+}
+
+
+function getCart(){
+
+return JSON.parse(
+localStorage.getItem(
+"ziyaCart"
+)
+)||[];
+
+}
+
+
+/* MESSAGE */
+
+function message(text){
+
+const box=
+document.getElementById(
+"message"
+);
+
+box.textContent=text;
+
+box.style.display="block";
+
+setTimeout(
+()=>{
+box.style.display="none"
+},
+2500
+);
+
+}
+
+
+/* LOAD */
+
+async function loadProduct(){
+
+if(!productId){
+
+document.getElementById(
+"loading"
+).textContent=
+"Product not found.";
+
+return;
+
+}
+
+
+try{
+
+const ref=
+doc(
+db,
+"products",
+productId
+);
+
+const snap=
+await getDoc(ref);
+
+
+if(!snap.exists()){
+
+document.getElementById(
+"loading"
+).textContent=
+"Product not found.";
+
+return;
+
+}
+
+
+product={
+id:snap.id,
+...snap.data()
+};
+
+
+/*
+REAL VIEW COUNT
+
+Firestore में views field
+increment होगी.
+*/
+
+try{
+
+await updateDoc(
+ref,
+{
+views:increment(1)
+}
+);
+
+}
+catch(error){
+
+console.log(
+"View count not updated",
+error
+);
+
+}
+
+
+document.title=
+(product.name||
+"Product")+
+" | Ziya Jewellery";
+
+
+document.getElementById(
+"name"
+).textContent=
+product.name||
+"Jewellery Product";
+
+
+document.getElementById(
+"price"
+).textContent=
+"₹"+
+Number(
+product.price||0
+).toLocaleString(
+"en-IN"
+);
+
+
+/* IMAGE */
+
+if(product.image){
+
+const img=
+document.getElementById(
+"productImage"
+);
+
+img.src=
+product.image;
+
+img.style.display=
+"block";
+
+document.getElementById(
+"noImage"
+).style.display=
+"none";
+
+}
+
+
+/* BADGES */
+
+const badges=
+document.getElementById(
+"badges"
+);
+
+badges.innerHTML="";
+
+
+[
+product.metal,
+product.purity,
+product.category
+]
+.filter(Boolean)
+.forEach(
+item=>{
+
+const span=
+document.createElement(
+"span"
+);
+
+span.className=
+"badge";
+
+span.textContent=
+item;
+
+badges.appendChild(
+span
+);
+
+});
+
+
+/* INFO */
+
+document.getElementById(
+"info"
+).innerHTML=`
+
+${product.subcategory
+?
+`<b>Item:</b>
+${escapeHTML(product.subcategory)}<br>`
+:""}
+
+${product.weight
+?
+`<b>Weight:</b>
+${escapeHTML(product.weight)}<br>`
+:""}
+
+${product.size
+?
+`<b>Size:</b>
+${escapeHTML(product.size)}<br>`
+:""}
+
+${product.stock !== undefined
+?
+`<b>Stock:</b>
+${escapeHTML(product.stock)}<br>`
+:""}
+
+${product.sku
+?
+`<b>SKU:</b>
+${escapeHTML(product.sku)}<br>`
+:""}
+
+<b>Views:</b>
+${Number(product.views||0)+1}
+
+`;
+
+
+/* DESCRIPTION */
+
+document.getElementById(
+"description"
+).textContent=
+product.description||
+"Beautiful jewellery design from Ziya Jewellery.";
+
+
+/* WHATSAPP */
+
+const text=
+encodeURIComponent(
+
+`Hello Ziya Jewellery,
+
+I am interested in:
+
+${product.name||"Jewellery"}
+
+Metal:
+${product.metal||""}
+
+Purity:
+${product.purity||""}
+
+Price:
+₹${product.price||""}
+
+SKU:
+${product.sku||""}
+
+Please provide more details.`
+
+);
+
+document.getElementById(
+"whatsappBtn"
+).href=
+"https://wa.me/?text="+text;
+
+
+/* BUTTONS */
+
+setupButtons();
+
+
+document.getElementById(
+"loading"
+).style.display=
+"none";
+
+document.getElementById(
+"productBox"
+).style.display=
+"grid";
+
+}
+catch(error){
+
+console.error(error);
+
+document.getElementById(
+"loading"
+).textContent=
+"Unable to load product.";
+
+}
+
+}
+
+
+/* SAVE */
+
+function setupButtons(){
+
+const saveBtn=
+document.getElementById(
+"saveBtn"
+);
+
+let saved=
+getSaved();
+
+
+if(saved.includes(
+product.id
+)){
+
+saveBtn.textContent=
+"❤️ Saved";
+
+saveBtn.classList.add(
+"saved"
+);
+
+}
+
+
+saveBtn.addEventListener(
+"click",
+()=>{
+
+let list=
+getSaved();
+
+
+if(list.includes(
+product.id
+)){
+
+list=
+list.filter(
+id=>id!==product.id
+);
+
+saveBtn.textContent=
+"❤️ Save";
+
+saveBtn.classList.remove(
+"saved"
+);
+
+message(
+"Removed from saved products."
+);
+
+}
+else{
+
+list.push(
+product.id
+);
+
+saveBtn.textContent=
+"❤️ Saved";
+
+saveBtn.classList.add(
+"saved"
+);
+
+message(
+"Product saved ❤️"
+);
+
+}
+
+
+localStorage.setItem(
+"ziyaWishlist",
+JSON.stringify(list)
+);
+
+});
+
+
+/* CART */
+
+document
+.getElementById(
+"cartBtn"
+)
+.addEventListener(
+"click",
+()=>{
+
+addToCart();
+
+});
+
+
+/* BUY */
+
+document
+.getElementById(
+"buyBtn"
+)
+.addEventListener(
+"click",
+()=>{
+
+addToCart();
+
+location.href=
+"checkout.html";
+
+});
+
+}
+
+
+/* ADD CART */
+
+function addToCart(){
+
+let cart=
+getCart();
+
+
+const existing=
+cart.find(
+item=>
+item.id===
+product.id
+);
+
+
+if(existing){
+
+existing.quantity=
+Number(
+existing.quantity||1
+)+1;
+
+}
+else{
+
+cart.push({
+
+id:product.id,
+
+name:product.name,
+
+price:Number(
+product.price||0
+),
+
+image:product.image||"",
+
+metal:product.metal||"",
+
+purity:product.purity||"",
+
+quantity:1
+
+});
+
+}
+
+
+localStorage.setItem(
+"ziyaCart",
+JSON.stringify(cart)
+);
+
+
+message(
+"Added to cart 🛒"
+);
+
+}
+
+
+/* ESCAPE */
+
+function escapeHTML(value){
+
+return String(value)
+
+.replaceAll(
+"&","&amp;"
+)
+
+.replaceAll(
+"<","&lt;"
+)
+
+.replaceAll(
+">","&gt;"
+)
+
+.replaceAll(
+'"',"&quot;"
+)
+
+.replaceAll(
+"'","&#039;"
+);
+
+}
+
+
+loadProduct();
+
+</script>
+
+</body>
+</html>
