@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Checkout | Ziya Jewellery</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(135deg,#fff7fb,#f1eaff);
+  color:#29152e;
+}
+
+header{
+  background:linear-gradient(135deg,#8d1455,#5c1b9e);
+  color:white;
+  padding:17px 20px;
+}
+
+.nav{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:800;
+}
+
+.navlinks{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.navlinks a{
+  color:white;
+  text-decoration:none;
+  padding:9px 12px;
+  border-radius:18px;
+  background:#ffffff1c;
+  font-size:14px;
+}
+
+.container{
+  max-width:1000px;
+  margin:30px auto;
+  padding:0 18px;
+}
+
+h1{
+  color:#701650;
+}
+
+.checkout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.box{
+  background:white;
+  padding:22px;
+  border-radius:20px;
+  box-shadow:0 10px 30px #5a235018;
+}
+
+.box h2{
+  margin-top:0;
+  color:#701650;
+}
+
+.product{
+  display:flex;
+  gap:15px;
+  padding:12px 0;
+  border-bottom:1px solid #eee;
+}
+
+.product img{
+  width:80px;
+  height:80px;
+  object-fit:cover;
+  border-radius:12px;
+  background:#f7edf5;
+}
+
+.product-info{
+  flex:1;
+}
+
+.product-name{
+  font-weight:bold;
+}
+
+.product-price{
+  color:#a01762;
+  font-weight:bold;
+  margin-top:6px;
+}
+
+label{
+  display:block;
+  font-weight:bold;
+  margin-top:14px;
+  margin-bottom:6px;
+}
+
+input,
+textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  font-size:15px;
+  outline:none;
+}
+
+textarea{
+  min-height:90px;
+  resize:vertical;
+}
+
+.total{
+  font-size:24px;
+  font-weight:bold;
+  color:#701650;
+  margin-top:20px;
+}
+
+.place{
+  width:100%;
+  margin-top:20px;
+  padding:14px;
+  border:0;
+  border-radius:12px;
+  background:linear-gradient(135deg,#e72b7b,#7025ed);
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.empty{
+  background:white;
+  padding:50px 20px;
+  text-align:center;
+  border-radius:20px;
+}
+
+.empty a{
+  display:inline-block;
+  margin-top:15px;
+  padding:12px 20px;
+  background:#721550;
+  color:white;
+  text-decoration:none;
+  border-radius:10px;
+}
+
+.message{
+  display:none;
+  margin-top:15px;
+  padding:13px;
+  background:#e8fff0;
+  color:#08743d;
+  border-radius:10px;
+}
+
+@media(max-width:750px){
+
+  .nav{
+    flex-direction:column;
+  }
+
+  .checkout{
+    grid-template-columns:1fr;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="nav">
+
+<div class="logo">
+✨ Ziya Jewellery
+</div>
+
+<div class="navlinks">
+
+<a href="index.html">🏠 Home</a>
+
+<a href="wishlist.html">
+❤️ Saved
+</a>
+
+<a href="cart.html">
+🛒 Cart
+</a>
+
+<a href="orders.html">
+📦 Orders
+</a>
+
+</div>
+
+</div>
+
+</header>
+
+<main class="container">
+
+<h1>🛍️ Checkout</h1>
+
+<div id="main"></div>
+
+</main>
+
+<script>
+
+function getCart(){
+
+  try{
+
+    return JSON.parse(
+      localStorage.getItem("ziyaCart")
+    ) || [];
+
+  }catch{
+
+    return [];
+
+  }
+
+}
+
+function saveCart(cart){
+
+  localStorage.setItem(
+    "ziyaCart",
+    JSON.stringify(cart)
+  );
+
+}
+
+function render(){
+
+  const main =
+    document.getElementById("main");
+
+  const cart = getCart();
+
+  if(!cart.length){
+
+    main.innerHTML = `
+      <div class="empty">
+
+        <div style="font-size:60px">
+          🛒
+        </div>
+
+        <h2>Your cart is empty</h2>
+
+        <p>Add a product before checkout.</p>
+
+        <a href="index.html">
+          Continue Shopping
+        </a>
+
+      </div>
+    `;
+
+    return;
+
+  }
+
+  let total = 0;
+
+  let productsHTML = "";
+
+  cart.forEach(item => {
+
+    const quantity =
+      Number(item.quantity || 1);
+
+    const price =
+      Number(item.price || 0);
+
+    total += price * quantity;
+
+    productsHTML += `
+
+      <div class="product">
+
+        ${
+          item.image
+          ?
+          `<img
+            src="${item.image}"
+            alt="Jewellery"
+          >`
+          :
+          `<div style="
+            width:80px;
+            height:80px;
+            border-radius:12px;
+            background:#f7edf5;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:40px;
+          ">💎</div>`
+        }
+
+        <div class="product-info">
+
+          <div class="product-name">
+            ${item.name || "Jewellery"}
+          </div>
+
+          <div>
+            Quantity:
+            ${quantity}
+          </div>
+
+          <div class="product-price">
+            ₹${price.toLocaleString("en-IN")}
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
+  main.innerHTML = `
+
+    <div class="checkout">
+
+      <div class="box">
+
+        <h2>📦 Delivery Details</h2>
+
+        <form id="orderForm">
+
+          <label>
+            Full Name
+          </label>
+
+          <input
+            id="customerName"
+            type="text"
+            placeholder="Your name"
+            required
+          >
+
+          <label>
+            Mobile Number
+          </label>
+
+          <input
+            id="phone"
+            type="tel"
+            placeholder="10 digit mobile number"
+            pattern="[0-9]{10}"
+            required
+          >
+
+          <label>
+            Address
+          </label>
+
+          <textarea
+            id="address"
+            placeholder="House / Village / Street"
+            required
+          ></textarea>
+
+          <label>
+            City
+          </label>
+
+          <input
+            id="city"
+            type="text"
+            placeholder="City"
+            required
+          >
+
+          <label>
+            State
+          </label>
+
+          <input
+            id="state"
+            type="text"
+            placeholder="State"
+            required
+          >
+
+          <label>
+            PIN Code
+          </label>
+
+          <input
+            id="pincode"
+            type="text"
+            placeholder="PIN code"
+            pattern="[0-9]{6}"
+            required
+          >
+
+          <label>
+            Payment Method
+          </label>
+
+          <select
+            id="payment"
+            style="
+              width:100%;
+              padding:12px;
+              border:1px solid #ddd;
+              border-radius:10px;
+              font-size:15px;
+            "
+          >
+
+            <option value="COD">
+              Cash on Delivery
+            </option>
+
+            <option value="UPI">
+              UPI
+            </option>
+
+          </select>
+
+          <div class="total">
+
+            Total:
+            ₹${total.toLocaleString("en-IN")}
+
+          </div>
+
+          <button
+            class="place"
+            type="submit"
+          >
+            🛍️ Place Order
+          </button>
+
+          <div
+            id="message"
+            class="message"
+          ></div>
+
+        </form>
+
+      </div>
+
+      <div class="box">
+
+        <h2>🛒 Your Order</h2>
+
+        ${productsHTML}
+
+        <div class="total">
+
+          Total:
+          ₹${total.toLocaleString("en-IN")}
+
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
+
+  document
+    .getElementById("orderForm")
+    .addEventListener(
+      "submit",
+      placeOrder
+    );
+
+}
+
+function placeOrder(event){
+
+  event.preventDefault();
+
+  const name =
+    document.getElementById(
+      "customerName"
+    ).value.trim();
+
+  const phone =
+    document.getElementById(
+      "phone"
+    ).value.trim();
+
+  const address =
+    document.getElementById(
+      "address"
+    ).value.trim();
+
+  const city =
+    document.getElementById(
+      "city"
+    ).value.trim();
+
+  const state =
+    document.getElementById(
+      "state"
+    ).value.trim();
+
+  const pincode =
+    document.getElementById(
+      "pincode"
+    ).value.trim();
+
+  const payment =
+    document.getElementById(
+      "payment"
+    ).value;
+
+  const cart = getCart();
+
+  const total =
+    cart.reduce(
+      (sum,item) =>
+        sum +
+        Number(item.price || 0) *
+        Number(item.quantity || 1),
+      0
+    );
+
+  const order = {
+
+    id:
+      "ZY" +
+      Date.now(),
+
+    customerName:name,
+
+    phone:phone,
+
+    address:address,
+
+    city:city,
+
+    state:state,
+
+    pincode:pincode,
+
+    payment:payment,
+
+    items:cart,
+
+    total:total,
+
+    status:"Pending",
+
+    createdAt:
+      new Date().toISOString()
+
+  };
+
+  /*
+    फिलहाल order browser में save होगा.
+    बाद में इसे Firebase Orders collection
+    में भी save किया जा सकता है.
+  */
+
+  const orders =
+    JSON.parse(
+      localStorage.getItem(
+        "ziyaOrders"
+      )
+    ) || [];
+
+  orders.push(order);
+
+  localStorage.setItem(
+    "ziyaOrders",
+    JSON.stringify(orders)
+  );
+
+  /*
+    Cart खाली करें
+  */
+
+  localStorage.removeItem(
+    "ziyaCart"
+  );
+
+  /*
+    Success message
+  */
+
+  const message =
+    document.getElementById(
+      "message"
+    );
+
+  message.style.display =
+    "block";
+
+  message.textContent =
+    "✓ Order placed successfully! Order ID: " +
+    order.id;
+
+  /*
+    1.5 sec बाद Orders page
+  */
+
+  setTimeout(
+    () => {
+
+      window.location.href =
+        "orders.html";
+
+    },
+    1500
+  );
+
+}
+
+render();
+
+</script>
+
+</body>
+</html>
