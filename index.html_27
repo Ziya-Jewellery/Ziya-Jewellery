@@ -402,3 +402,157 @@
 .social-card:active {
   transform: scale(.96);
 }
+const links={
+  whatsapp: whatsappNumber
+    ? getWhatsAppHref(
+        encodeURIComponent(
+          "Hello Ziya Jewellery, I need help."
+        )
+      )
+    : "#whatsapp-config",
+
+  instagram: cleanUrl(
+    siteSettings.instagram
+  ),
+
+  facebook: cleanUrl(
+    siteSettings.facebook
+  ),
+
+  youtube: cleanUrl(
+    siteSettings.youtube
+  ),
+
+  telegram: cleanUrl(
+    siteSettings.telegram
+  ),
+
+  x: cleanUrl(
+    siteSettings.x ||
+    siteSettings.twitter
+  )
+};
+<!-- =====================================================
+     DELIVERY PARTNERS
+     ===================================================== -->
+
+<section class="delivery-partners-section">
+
+  <div class="delivery-partners-title">
+    <span>📦</span>
+    <h2>Our Delivery Partners</h2>
+    <p>Trusted delivery support for your orders</p>
+  </div>
+
+  <div class="delivery-partners-scroll">
+
+    <div class="delivery-partner-card">
+      <span>🚚</span>
+      <strong>Blue Dart Express</strong>
+      <small>India</small>
+    </div>
+
+    <div class="delivery-partner-card">
+      <span>📦</span>
+      <strong>Ecom Express</strong>
+      <small>India</small>
+    </div>
+
+    <div class="delivery-partner-card">
+      <span>🚛</span>
+      <strong>Delhivery</strong>
+      <small>India</small>
+    </div>
+
+    <div class="delivery-partner-card">
+      <span>✈️</span>
+      <strong>Ship Global</strong>
+      <small>International</small>
+    </div>
+
+    <div class="delivery-partner-card">
+      <span>🌍</span>
+      <strong>Aramex</strong>
+      <small>International</small>
+    </div>
+
+    <div class="delivery-partner-card">
+      <span>🌐</span>
+      <strong>DHL Express</strong>
+      <small>International</small>
+    </div>
+
+  </div>
+
+</section>
+/* =====================================================
+   DELIVERY PARTNERS
+   ===================================================== */
+
+.delivery-partners-section {
+  width: 100%;
+  margin: 25px 0;
+  padding: 22px 0;
+  text-align: center;
+}
+
+.delivery-partners-title span {
+  font-size: 28px;
+}
+
+.delivery-partners-title h2 {
+  margin: 5px 0;
+  font-size: 22px;
+}
+
+.delivery-partners-title p {
+  margin: 0 0 15px;
+  font-size: 12px;
+  opacity: .7;
+}
+
+.delivery-partners-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 8px 15px 15px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.delivery-partners-scroll::-webkit-scrollbar {
+  height: 5px;
+}
+
+.delivery-partner-card {
+  flex: 0 0 145px;
+  min-height: 90px;
+  padding: 14px 10px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid #eee;
+  box-shadow: 0 3px 12px rgba(0,0,0,.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.delivery-partner-card span {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.delivery-partner-card strong {
+  font-size: 12px;
+}
+
+.delivery-partner-card small {
+  margin-top: 4px;
+  font-size: 10px;
+  opacity: .65;
+}
+
+.delivery-partner-card:active {
+  transform: scale(.96);
+}
