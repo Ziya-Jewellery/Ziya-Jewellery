@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Ziya Jewellery - Explore Gold, Silver and Other Metal jewellery including rings, earrings, necklaces, bracelets, bangles and more.">
+
+<title>Ziya Jewellery | Gold, Silver & Jewellery Collection</title>
+
+<style>
+*{
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#fff8fc;
+color:#29152e;
+}
+
+/* HEADER */
+
+header{
+background:linear-gradient(135deg,#8d1455,#5c1b9e);
+color:white;
+position:sticky;
+top:0;
+z-index:100;
+box-shadow:0 4px 18px #0002;
+}
+
+.nav{
+max-width:1200px;
+margin:auto;
+padding:14px 18px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+}
+
+.logo{
+font-size:25px;
+font-weight:800;
+white-space:nowrap;
+}
+
+.logo small{
+display:block;
+font-size:10px;
+font-weight:normal;
+opacity:.85;
+margin-top:3px;
+}
+
+.navlinks{
+display:flex;
+gap:7px;
+flex-wrap:wrap;
+justify-content:flex-end;
+}
+
+.navlinks a{
+color:white;
+text-decoration:none;
+padding:8px 11px;
+border-radius:18px;
+background:#ffffff1b;
+font-size:13px;
+}
+
+.navlinks a:hover{
+background:#ffffff30;
+}
+
+/* LIVE BAR */
+
+.livebar{
+background:#29152e;
+color:white;
+overflow:hidden;
+white-space:nowrap;
+}
+
+.live-track{
+display:inline-block;
+padding:9px 0;
+padding-left:100%;
+animation:scroll 22s linear infinite;
+font-size:13px;
+}
+
+@keyframes scroll{
+from{
+transform:translateX(0);
+}
+to{
+transform:translateX(-100%);
+}
+}
+
+/* HERO */
+
+.hero{
+background:
+linear-gradient(135deg,#ffe0ed,#eee1ff);
+padding:65px 20px;
+}
+
+.hero-inner{
+max-width:1150px;
+margin:auto;
+display:grid;
+grid-template-columns:1.3fr .7fr;
+align-items:center;
+gap:30px;
+}
+
+.hero h1{
+font-size:48px;
+margin:0;
+color:#6e1550;
+line-height:1.1;
+}
+
+.hero p{
+color:#604b62;
+font-size:17px;
+line-height:1.7;
+max-width:650px;
+}
+
+.hero-buttons{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-top:22px;
+}
+
+.hero-btn{
+display:inline-block;
+padding:13px 20px;
+border-radius:25px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.primary{
+background:linear-gradient(135deg,#e72b7b,#7025ed);
+color:white;
+}
+
+.secondary{
+background:white;
+color:#701650;
+}
+
+.hero-jewel{
+font-size:150px;
+text-align:center;
+filter:drop-shadow(0 15px 20px #6d165044);
+}
+
+/* CONTAINER */
+
+.container{
+max-width:1150px;
+margin:auto;
+padding:38px 18px;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:25px;
+}
+
+.section-title h2{
+margin:0 0 8px;
+font-size:30px;
+color:#701650;
+}
+
+.section-title p{
+margin:0;
+color:#777;
+}
+
+/* SEARCH */
+
+.search-box{
+max-width:700px;
+margin:0 auto 30px;
+display:flex;
+background:white;
+border-radius:30px;
+padding:5px;
+box-shadow:0 7px 25px #5a235018;
+}
+
+.search-box input{
+flex:1;
+border:0;
+outline:0;
+padding:13px 18px;
+font-size:15px;
+border-radius:25px;
+}
+
+.search-box button{
+border:0;
+border-radius:25px;
+padding:0 20px;
+background:#721550;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+/* METALS */
+
+.metal-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin-bottom:40px;
+}
+
+.metal-card{
+border:0;
+padding:20px;
+border-radius:18px;
+background:white;
+box-shadow:0 7px 25px #5a235018;
+cursor:pointer;
+text-align:left;
+transition:.2s;
+}
+
+.metal-card:hover{
+transform:translateY(-4px);
+}
+
+.metal-card.active{
+outline:3px solid #b82d79;
+}
+
+.metal-icon{
+font-size:35px;
+}
+
+.metal-card h3{
+margin:8px 0 5px;
+color:#701650;
+}
+
+.metal-card p{
+margin:0;
+font-size:13px;
+color:#777;
+}
+
+/* CATEGORY */
+
+.category-grid{
+display:grid;
+grid-template-columns:repeat(6,1fr);
+gap:12px;
+}
+
+.category{
+background:white;
+border-radius:15px;
+padding:17px 8px;
+text-align:center;
+cursor:pointer;
+box-shadow:0 6px 20px #5a235014;
+transition:.2s;
+}
+
+.category:hover{
+transform:translateY(-3px);
+}
+
+.category-icon{
+font-size:35px;
+}
+
+.category-name{
+margin-top:7px;
+font-weight:bold;
+font-size:13px;
+color:#701650;
+}
+
+/* PRODUCTS */
+
+.product-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px;
+}
+
+.product{
+background:white;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 8px 28px #5a235018;
+transition:.2s;
+}
+
+.product:hover{
+transform:translateY(-4px);
+box-shadow:0 13px 32px #5a235025;
+}
+
+.product-image{
+height:240px;
+background:#f8edf5;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+}
+
+.product-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.product-placeholder{
+font-size:70px;
+opacity:.5;
+}
+
+.save{
+position:absolute;
+right:10px;
+top:10px;
+width:38px;
+height:38px;
+border:0;
+border-radius:50%;
+background:white;
+color:#a00045;
+font-size:19px;
+cursor:pointer;
+box-shadow:0 3px 12px #0002;
+}
+
+.save.saved{
+background:#a00045;
+color:white;
+}
+
+.product-info{
+padding:14px;
+}
+
+.product-name{
+font-weight:bold;
+font-size:16px;
+min-height:38px;
+}
+
+.product-meta{
+font-size:12px;
+color:#777;
+line-height:1.6;
+margin-top:5px;
+}
+
+.product-price{
+font-size:20px;
+font-weight:bold;
+color:#a01762;
+margin:9px 0;
+}
+
+.product-actions{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:7px;
+}
+
+.product-actions button,
+.product-actions a{
+border:0;
+padding:9px 5px;
+border-radius:9px;
+font-size:12px;
+font-weight:bold;
+cursor:pointer;
+text-align:center;
+text-decoration:none;
+}
+
+.view{
+background:#eee4f2;
+color:#701650;
+}
+
+.add{
+background:#721550;
+color:white;
+}
+
+.buy{
+grid-column:1/-1;
+background:linear-gradient(135deg,#e72b7b,#7025ed);
+color:white;
+}
+
+.whatsapp{
+grid-column:1/-1;
+background:#e8fff0;
+color:#08743d;
+}
+
+/* INFO */
+
+.info-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin-top:45px;
+}
+
+.info-card{
+background:white;
+padding:22px;
+border-radius:18px;
+box-shadow:0 7px 25px #5a235014;
+text-align:center;
+}
+
+.info-card .icon{
+font-size:35px;
+}
+
+.info-card h3{
+color:#701650;
+margin:10px 0 6px;
+}
+
+.info-card p{
+font-size:13px;
+color:#777;
+line-height:1.6;
+margin:0;
+}
+
+/* EMPTY */
+
+.empty{
+text-align:center;
+background:white;
+padding:50px 20px;
+border-radius:20px;
+box-shadow:0 7px 25px #5a235018;
+}
+
+.empty-icon{
+font-size:65px;
+}
+
+/* FOOTER */
+
+footer{
+margin-top:50px;
+background:#29152e;
+color:white;
+padding:40px 20px;
+}
+
+.footer-inner{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+gap:30px;
+}
+
+.footer-title{
+font-size:23px;
+font-weight:bold;
+}
+
+footer h3{
+color:#fff;
+}
+
+footer a{
+display:block;
+color:#ddd;
+text-decoration:none;
+margin:8px 0;
+font-size:14px;
+}
+
+.footer-text{
+color:#ccc;
+line-height:1.7;
+font-size:14px;
+}
+
+.copyright{
+max-width:1100px;
+margin:30px auto 0;
+padding-top:20px;
+border-top:1px solid #ffffff20;
+text-align:center;
+font-size:12px;
+color:#aaa;
+}
+
+/* MOBILE */
+
+@media(max-width:950px){
+
+.product-grid{
+grid-template-columns:repeat(3,1fr);
+}
+
+.category-grid{
+grid-template-columns:repeat(4,1fr);
+}
+
+}
+
+@media(max-width:700px){
+
+.nav{
+flex-direction:column;
+}
+
+.navlinks{
+justify-content:center;
+}
+
+.hero-inner{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.hero h1{
+font-size:36px;
+}
+
+.hero p{
+margin-left:auto;
+margin-right:auto;
+}
+
+.hero-buttons{
+justify-content:center;
+}
+
+.hero-jewel{
+font-size:100px;
+}
+
+.metal-grid{
+grid-template-columns:1fr;
+}
+
+.category-grid{
+grid-template-columns:repeat(3,1fr);
+}
+
+.product-grid{
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+}
+
+.product-image{
+height:180px;
+}
+
+.info-grid{
+grid-template-columns:1fr;
+}
+
+.footer-inner{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:430px){
+
+.category-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.product-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.product-name{
+font-size:14px;
+}
+
+.product-price{
+font-size:17px;
+}
+
+.product-actions{
+grid-template-columns:1fr;
+}
+
+.buy,
+.whatsapp{
+grid-column:auto;
+}
+
+}
+
+/* PRODUCT LOADING / EMPTY STATE */
+.product-loading {
+  grid-column: 1 / -1;
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777;
+  font-size: 14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="nav">
+
+<div class="logo">
+✨ Ziya Jewellery
+<small>Elegant Jewellery Collection</small>
+</div>
+
+<div class="navlinks">
+
+<a href="index.html">🏠 Home</a>
+
+<a href="categories.html">Categories</a>
+
+<a href="wishlist.html">❤️ Saved</a>
+
+<a href="cart.html">🛒 Cart</a>
+
+<a href="orders.html">📦 Orders</a>
+
+</div>
+
+</div>
+
+</header>
+
+
+<div class="livebar">
+
+<div class="live-track">
+
+✨ Welcome to Ziya Jewellery • Gold • Silver • Other Metal •
+Explore our latest jewellery collection •
+💎 New products are added regularly •
+📦 Order information is available in My Orders •
+✨ Ziya Jewellery
+
+</div>
+
+</div>
+
+
+<section class="hero">
+
+<div class="hero-inner">
+
+<div>
+
+<h1>
+Jewellery That
+Feels Special ✨
+</h1>
+
+<p>
+Discover elegant jewellery collections including
+Gold, Silver and Other Metal designs for everyday
+wear, gifting and special occasions.
+</p>
+
+<div class="hero-buttons">
+
+<a
+class="hero-btn primary"
+href="#products"
+>
+Explore Collection
+</a>
+
+<a
+class="hero-btn secondary"
+href="categories.html"
+>
+View Categories
+</a>
+
+</div>
+
+</div>
+
+
+<div class="hero-jewel">
+💎
+</div>
+
+</div>
+
+</section>
+
+
+<main class="container">
+
+
+<!-- SEARCH -->
+
+<div style="margin-top:5px">
+
+<div class="search-box">
+
+<input
+id="search"
+type="search"
+placeholder="Search rings, earrings, gold, silver..."
+>
+
+<button
+id="searchBtn"
+>
+Search
+</button>
+
+</div>
+
+</div>
+
+
+<!-- METALS -->
+
+<section>
+
+<div class="section-title">
+
+<h2>Shop By Metal</h2>
+
+<p>
+Choose your preferred jewellery metal
+</p>
+
+</div>
+
+
+<div class="metal-grid">
+
+<button
+class="metal-card active"
+data-metal=""
+>
+
+<div class="metal-icon">
+✨
+</div>
+
+<h3>All Jewellery</h3>
+
+<p>
+View complete collection
+</p>
+
+</button>
+
+
+<button
+class="metal-card"
+data-metal="Gold"
+>
+
+<div class="metal-icon">
+🟡
+</div>
+
+<h3>Gold</h3>
+
+<p>
+Gold jewellery collection
+</p>
+
+</button>
+
+
+<button
+class="metal-card"
+data-metal="Silver"
+>
+
+<div class="metal-icon">
+⚪
+</div>
+
+<h3>Silver</h3>
+
+<p>
+Silver jewellery collection
+</p>
+
+</button>
+
+
+</div>
+
+</section>
+
+
+<!-- CATEGORIES -->
+
+<section>
+
+<div class="section-title">
+
+<h2>Popular Categories</h2>
+
+<p>
+Find the jewellery style you love
+</p>
+
+</div>
+
+
+<div class="category-grid">
+
+<div class="category" data-category="Rings">
+<div class="category-icon">💍</div>
+<div class="category-name">Rings</div>
+</div>
+
+<div class="category" data-category="Earrings">
+<div class="category-icon">✨</div>
+<div class="category-name">Earrings</div>
+</div>
+
+<div class="category" data-category="Necklaces">
+<div class="category-icon">📿</div>
+<div class="category-name">Necklaces</div>
+</div>
+
+<div class="category" data-category="Bracelets">
+<div class="category-icon">🔗</div>
+<div class="category-name">Bracelets</div>
+</div>
+
+<div class="category" data-category="Bangles">
+<div class="category-icon">⭕</div>
+<div class="category-name">Bangles</div>
+</div>
+
+<div class="category" data-category="Chains">
+<div class="category-icon">🔗</div>
+<div class="category-name">Chains</div>
+</div>
+
+<div class="category" data-category="Pendants">
+<div class="category-icon">💎</div>
+<div class="category-name">Pendants</div>
+</div>
+
+<div class="category" data-category="Bridal Jewellery">
+<div class="category-icon">👰</div>
+<div class="category-name">Bridal</div>
+</div>
+
+<div class="category" data-category="Men's Jewellery">
+<div class="category-icon">🧔</div>
+<div class="category-name">Men's</div>
+</div>
+
+<div class="category" data-category="Anklets">
+<div class="category-icon">✨</div>
+<div class="category-name">Anklets</div>
+</div>
+
+<div class="category" data-category="Nose Pins">
+<div class="category-icon">💎</div>
+<div class="category-name">Nose Pins</div>
+</div>
+
+<div class="category" data-category="Jewellery Sets">
+<div class="category-icon">👑</div>
+<div class="category-name">Sets</div>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+
+<section
+id="products"
+style="margin-top:50px"
+>
+
+<div class="section-title">
+
+<h2>✨ Jewellery Collection</h2>
+
+<p id="resultText" aria-live="polite"></p>
+
+</div>
+
+
+<div id="productGrid" class="product-grid"></div>
+
+</section>
+
+
+<!-- INFORMATION -->
+
+<section>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<div class="icon">
+🔒
+</div>
+
+<h3>Secure Orders</h3>
+
+<p>
+Your order information is securely
+processed through our order system.
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<div class="icon">
+📦
+</div>
+
+<h3>Delivery Information</h3>
+
+<p>
+Enter your delivery address during
+checkout to place an order.
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<div class="icon">
+💬
+</div>
+
+<h3>WhatsApp Inquiry</h3>
+
+<p>
+Have questions about a product?
+Contact us through WhatsApp.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+<div class="footer-inner">
+
+<div>
+
+<div class="footer-title">
+✨ Ziya Jewellery
+</div>
+
+<p class="footer-text">
+Explore Gold, Silver and Other Metal
+jewellery collections designed for
+different occasions.
+</p>
+
+</div>
+
+
+<div>
+
+<h3>Quick Links</h3>
+
+<a href="categories.html">
+Categories
+</a>
+
+<a href="wishlist.html">
+Saved Products
+</a>
+
+<a href="cart.html">
+Shopping Cart
+</a>
+
+<a href="orders.html">
+My Orders
+</a>
+
+</div>
+
+
+<div>
+
+<h3>Shop</h3>
+
+<a href="categories.html">
+Gold Jewellery
+</a>
+
+<a href="categories.html">
+Silver Jewellery
+</a>
+
+<a href="categories.html">
+Other Metal
+</a>
+
+</div>
+
+</div>
+
+
+<div class="copyright">
+
+© 2026 Ziya Jewellery. All rights reserved.
+
+</div>
+
+</footer>
+
+
+<script type="module">
+
+import {
+initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+getDocs
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+/* FIREBASE */
+
+const firebaseConfig={
+
+apiKey:
+"AIzaSyBmapJhIb0QixjcUbLqB1X9l7EuPMqEUEQ",
+
+authDomain:
+"ziya-jewellery-d420f.firebaseapp.com",
+
+projectId:
+"ziya-jewellery-d420f",
+
+storageBucket:
+"ziya-jewellery-d420f.firebasestorage.app",
+
+messagingSenderId:
+"292032564389",
+
+appId:
+"1:292032564389:web:69b11699d8f790db5c114c"
+
+};
+
+
+const app=
+initializeApp(firebaseConfig);
+
+const db=
+getFirestore(app);
+
+
+/* VARIABLES */
+
+let products=[];
+
+let currentMetal="";
+
+let currentCategory="";
+
+let currentSearch="";
+
+
+/* STORAGE */
+
+function getSaved(){
+
+try{
+
+return JSON.parse(
+localStorage.getItem(
+"ziyaWishlist"
+)
+)||[];
+
+}
+catch{
+
+return[];
+
+}
+
+}
+
+
+function getCart(){
+
+try{
+
+return JSON.parse(
+localStorage.getItem(
+"ziyaCart"
+)
+)||[];
+
+}
+catch{
+
+return[];
+
+}
+
+}
+
+
+function saveSaved(list){
+
+localStorage.setItem(
+"ziyaWishlist",
+JSON.stringify(list)
+);
+
+}
+
+
+function saveCart(cart){
+
+localStorage.setItem(
+"ziyaCart",
+JSON.stringify(cart)
+);
+
+}
+
+
+/* ESCAPE */
+
+function escapeHTML(value){
+
+return String(value??"")
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+
+/* LOAD PRODUCTS */
+
+async function loadProducts(){
+
+const grid=
+document.getElementById(
+"productGrid"
+);
+
+const result=
+document.getElementById(
+"resultText"
+);
+
+try{
+
+const snapshot=
+await getDocs(
+collection(
+db,
+"products"
+)
+);
+
+
+products=[];
+
+snapshot.forEach(
+docSnap=>{
+
+products.push({
+
+id:docSnap.id,
+
+...docSnap.data()
+
+});
+
+});
+
+
+/*
+Newest products first if
+createdAt exists.
+*/
+
+products.sort(
+(a,b)=>{
+
+const aTime=
+a.createdAt?.seconds||0;
+
+const bTime=
+b.createdAt?.seconds||0;
+
+return bTime-aTime;
+
+});
+
+
+applyFilters();
+
+}
+catch(error){
+
+console.error(error);
+
+result.textContent=
+"Products could not be loaded.";
+
+grid.innerHTML=`
+
+<div class="empty"
+style="grid-column:1/-1">
+
+<div class="empty-icon">
+💎
+</div>
+
+<h3>
+No products available right now
+</h3>
+
+<p>
+Please check again soon.
+</p>
+
+</div>
+
+`;
+
+}
+
+}
+
+
+/* FILTER */
+
+function applyFilters(){
+
+let filtered=
+[...products];
+
+
+if(currentMetal){
+
+filtered=
+filtered.filter(
+product=>
+String(
+product.metal||""
+).toLowerCase()
+===
+currentMetal.toLowerCase()
+);
+
+}
+
+
+if(currentCategory){
+
+filtered=
+filtered.filter(
+product=>
+String(
+product.category||""
+).toLowerCase()
+===
+currentCategory.toLowerCase()
+);
+
+}
+
+
+if(currentSearch){
+
+const search=
+currentSearch.toLowerCase();
+
+filtered=
+filtered.filter(
+product=>{
+
+const text=
+
+`${product.name||""}
+${product.metal||""}
+${product.category||""}
+${product.subcategory||""}
+${product.purity||""}
+${product.description||""}`
+
+.toLowerCase();
+
+return text.includes(search);
+
+});
+
+}
+
+
+renderProducts(filtered);
+
+}
+
+
+/* RENDER */
+
+function renderProducts(list){
+
+const grid=
+document.getElementById(
+"productGrid"
+);
+
+const result=
+document.getElementById(
+"resultText"
+);
+
+
+result.textContent=
+`${list.length} product${list.length===1?"":"s"} available`;
+
+
+if(!list.length){
+
+grid.innerHTML=`
+
+<div
+class="empty"
+style="grid-column:1/-1"
+>
+
+<div class="empty-icon">
+🔎
+</div>
+
+<h3>
+No matching jewellery found
+</h3>
+
+<p>
+Try another search or category.
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+grid.innerHTML="";
+
+
+const saved=
+getSaved();
+
+
+list.forEach(
+product=>{
+
+const card=
+document.createElement(
+"div"
+);
+
+card.className="product";
+
+
+const isSaved=
+saved.includes(
+product.id
+);
+
+
+const image=
+product.image
+?
+`
+<img
+src="${escapeHTML(product.image)}"
+alt="${escapeHTML(product.name||"Jewellery")}"
+onerror="
+this.style.display='none';
+this.nextElementSibling.style.display='block';
+"
+>
+
+<div
+class="product-placeholder"
+style="display:none"
+>
+💎
+</div>
+`
+:
+`
+<div class="product-placeholder">
+💎
+</div>
+`;
+
+
+const whatsappText=
+encodeURIComponent(
+
+`Hello Ziya Jewellery,
+
+I am interested in:
+
+${product.name||"Jewellery"}
+
+Metal:
+${product.metal||""}
+
+Purity:
+${product.purity||""}
+
+Price:
+₹${product.price||""}
+
+SKU:
+${product.sku||""}
+
+Please provide more details.`
+
+);
+
+
+card.innerHTML=`
+
+<div class="product-image">
+
+${image}
+
+<button
+class="save ${isSaved?"saved":""}"
+data-save="${escapeHTML(product.id)}"
+title="Save product"
+>
+${isSaved?"♥":"♡"}
+</button>
+
+</div>
+
+
+<div class="product-info">
+
+<div class="product-name">
+
+${escapeHTML(
+product.name||
+"Jewellery Product"
+)}
+
+</div>
+
+
+<div class="product-meta">
+
+${product.metal
+?
+"Metal: "+
+escapeHTML(product.metal)+"<br>"
+:""}
+
+${product.purity
+?
+"Purity: "+
+escapeHTML(product.purity)+"<br>"
+:""}
+
+${product.category
+?
+"Category: "+
+escapeHTML(product.category)
+:""}
+
+</div>
+
+
+<div class="product-price">
+
+₹${Number(
+product.price||0
+).toLocaleString(
+"en-IN"
+)}
+
+</div>
+
+
+<div class="product-actions">
+
+<a
+class="view"
+href="product.html?id=${encodeURIComponent(product.id)}"
+>
+View
+</a>
+
+<button
+class="add"
+data-cart="${escapeHTML(product.id)}"
+>
+🛒 Cart
+</button>
+
+<button
+class="buy"
+data-buy="${escapeHTML(product.id)}"
+>
+🛍️ Buy Now
+</button>
+
+<a
+class="whatsapp"
+target="_blank"
+href="https://wa.me/?text=${whatsappText}"
+>
+💬 WhatsApp Inquiry
+</a>
+
+</div>
+
+</div>
+
+`;
+
+
+grid.appendChild(card);
+
+});
+
+}
+
+
+/* FIND PRODUCT */
+
+function findProduct(id){
+
+return products.find(
+product=>
+product.id===id
+);
+
+}
+
+
+/* SAVE */
+
+document.addEventListener(
+"click",
+event=>{
+
+const saveButton=
+event.target.closest(
+"[data-save]"
+);
+
+if(!saveButton)return;
+
+
+const id=
+saveButton.dataset.save;
+
+
+let saved=
+getSaved();
+
+
+if(saved.includes(id)){
+
+saved=
+saved.filter(
+item=>item!==id
+);
+
+saveButton.classList.remove(
+"saved"
+);
+
+saveButton.textContent="♡";
+
+}
+else{
+
+saved.push(id);
+
+saveButton.classList.add(
+"saved"
+);
+
+saveButton.textContent="♥";
+
+}
+
+
+saveSaved(saved);
+
+});
+
+
+/* ADD CART */
+
+document.addEventListener(
+"click",
+event=>{
+
+const button=
+event.target.closest(
+"[data-cart]"
+);
+
+if(!button)return;
+
+
+const product=
+findProduct(
+button.dataset.cart
+);
+
+if(!product)return;
+
+
+let cart=
+getCart();
+
+
+const existing=
+cart.find(
+item=>
+item.id===product.id
+);
+
+
+if(existing){
+
+existing.quantity=
+Number(existing.quantity||1)+1;
+
+}
+else{
+
+cart.push({
+
+id:product.id,
+
+name:product.name||"Jewellery",
+
+price:Number(product.price||0),
+
+image:product.image||"",
+
+metal:product.metal||"",
+
+purity:product.purity||"",
+
+quantity:1
+
+});
+
+}
+
+
+saveCart(cart);
+
+
+button.textContent=
+"✓ Added";
+
+setTimeout(
+()=>{
+button.textContent="🛒 Cart"
+},
+1200
+);
+
+});
+
+
+/* BUY NOW */
+document.addEventListener("click", event => {
+  const button = event.target.closest("[data-buy]");
+  if (!button) return;
+
+  const product = findProduct(button.dataset.buy);
+  if (!product) return;
+
+  let cart = getCart();
+  const existing = cart.find(item => item.id === product.id);
+
+  if (existing) {
+    existing.quantity = 1;
+  } else {
+    cart.push({
+      id: product.id,
+      name: product.name || "Jewellery",
+      price: Number(product.price || 0),
+      image: product.image || "",
+      metal: product.metal || "",
+      purity: product.purity || "",
+      quantity: 1
+    });
+  }
+
+  saveCart(cart);
+  window.location.href = "cart.html";
+});
+
+
+/* SEARCH */
+
+
+document.getElementById("searchBtn")
+.addEventListener("click", () => {
+
+  currentSearch =
+    document.getElementById("search").value.trim();
+
+  applyFilters();
+
+});
+
+
+document.getElementById("search")
+.addEventListener("input", event => {
+
+  currentSearch = event.target.value.trim();
+
+  applyFilters();
+
+});
+
+
+/* METAL FILTER */
+
+document.addEventListener("click", event => {
+
+  const button =
+    event.target.closest("[data-metal]");
+
+  if (!button) return;
+
+  currentMetal =
+    button.dataset.metal || "";
+
+  currentCategory = "";
+
+  document.querySelectorAll(".metal-card")
+    .forEach(card => {
+      card.classList.remove("active");
+    });
+
+  button.classList.add("active");
+
+  applyFilters();
+
+});
+
+
+/* CATEGORY FILTER */
+
+document.addEventListener("click", event => {
+
+  const category =
+    event.target.closest("[data-category]");
+
+  if (!category) return;
+
+  currentCategory =
+    category.dataset.category || "";
+
+  applyFilters();
+
+});
+
+
+/* LOAD WEBSITE */
+
+loadProducts();
+
+</script>
+
+</body>
+</html>
