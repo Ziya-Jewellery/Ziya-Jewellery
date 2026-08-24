@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -20,7 +21,7 @@ body{
 }
 
 .container{
- max-width:1150px;
+ max-width:1200px;
  margin:auto;
  padding:20px
 }
@@ -79,7 +80,9 @@ body{
 }
 
 .logout,
-.delete{
+.delete,
+.cancelBtn,
+.statusBtn{
  border:0;
  border-radius:10px;
  padding:10px 15px;
@@ -126,6 +129,11 @@ textarea{
  resize:vertical
 }
 
+input[type="checkbox"]{
+ width:auto;
+ margin-right:7px
+}
+
 .add{
  width:100%;
  padding:14px;
@@ -143,19 +151,18 @@ textarea{
  border-bottom:1px solid #eaddea
 }
 
-.product img{
+.product-images{
+ display:flex;
+ gap:7px;
+ flex-wrap:wrap;
+ margin-bottom:10px
+}
+
+.product-images img{
  width:75px;
  height:75px;
  object-fit:cover;
- border-radius:10px;
- float:left;
- margin-right:12px
-}
-
-.product:after{
- content:"";
- display:block;
- clear:both
+ border-radius:10px
 }
 
 .delete{
@@ -191,61 +198,137 @@ textarea{
  color:#08743d
 }
 
-.preview{
- width:100%;
- max-height:220px;
- object-fit:contain;
- display:none;
+.preview-grid{
+ display:flex;
+ flex-wrap:wrap;
+ gap:8px;
+ margin-bottom:12px
+}
+
+.preview-grid img{
+ width:90px;
+ height:90px;
+ object-fit:cover;
  border-radius:12px;
- margin-bottom:10px
+ border:2px solid #eaddea
 }
 
 .order{
  background:#fff;
  border:1px solid #eaddea;
  border-radius:15px;
- padding:16px;
- margin-bottom:15px
+ padding:18px;
+ margin-bottom:18px
 }
 
 .order-title{
  font-size:18px;
  font-weight:bold;
- color:#d92878
+ color:#d92878;
+ margin-bottom:10px
 }
 
 .order-row{
- margin-top:7px;
- line-height:1.5
+ margin-top:8px;
+ line-height:1.6
+}
+
+.order-items{
+ margin-top:15px;
+ padding-top:12px;
+ border-top:1px solid #eee
+}
+
+.order-item{
+ display:flex;
+ gap:12px;
+ padding:10px 0;
+ border-bottom:1px solid #eee
+}
+
+.order-item img{
+ width:70px;
+ height:70px;
+ object-fit:cover;
+ border-radius:10px;
+ background:#f7edf5
+}
+
+.order-item-info{
+ flex:1
+}
+
+.status-badge,
+.payment-badge,
+.cancel-badge{
+ display:inline-block;
+ padding:6px 10px;
+ border-radius:8px;
+ font-weight:bold;
+ margin-top:5px
 }
 
 .status-badge{
- display:inline-block;
- padding:6px 10px;
- border-radius:8px;
  background:#fff0d9;
- color:#8a5100;
- font-weight:bold;
- margin-top:5px
+ color:#8a5100
 }
 
 .payment-badge{
- display:inline-block;
- padding:6px 10px;
- border-radius:8px;
  background:#e8fff0;
- color:#08743d;
- font-weight:bold;
- margin-top:5px
+ color:#08743d
 }
 
-.section-title{
- margin-top:0
+.cancel-badge{
+ background:#ffe5e9;
+ color:#a00038
+}
+
+.order-actions{
+ display:flex;
+ gap:8px;
+ flex-wrap:wrap;
+ margin-top:15px
+}
+
+.statusBtn{
+ background:#eee4f2;
+ color:#5c1b9e
+}
+
+.cancelBtn{
+ background:#ffe5e9;
+ color:#a00038
+}
+
+.attachment{
+ display:inline-block;
+ margin-top:8px;
+ padding:9px 12px;
+ background:#eee7ff;
+ color:#5c1b9e;
+ border-radius:9px;
+ text-decoration:none;
+ font-weight:bold
 }
 
 .empty{
  color:#777;
  padding:15px 0
+}
+
+.offer-box{
+ background:#fff0f7;
+ border:1px solid #f2c5dc;
+ padding:14px;
+ border-radius:12px;
+ margin:8px 0 15px
+}
+
+.sale-preview{
+ color:#a01762;
+ font-size:18px;
+ font-weight:bold;
+ margin-top:5px
 }
 
 @media(max-width:750px){
@@ -263,11 +346,14 @@ textarea{
   width:100%
  }
 
+ .order-item{
+  align-items:flex-start
+ }
+
 }
 
 </style>
 </head>
-
 
 <body>
 
@@ -295,11 +381,9 @@ textarea{
 </div>
 
 
-
 <!-- ADMIN PANEL -->
 
 <div id="panel" class="panel">
-
 
  <div class="header">
 
@@ -313,7 +397,6 @@ textarea{
 
   </div>
 
-
   <button id="logout" class="logout">
    Logout
   </button>
@@ -322,7 +405,6 @@ textarea{
 
 
  <div id="status" class="msg"></div>
-
 
 
  <div class="grid">
@@ -335,7 +417,6 @@ textarea{
    <h2>
     ➕ Add Jewellery
    </h2>
-
 
    <form id="productForm">
 
@@ -351,7 +432,6 @@ textarea{
     >
 
 
-
     <label>
      Metal Type
     </label>
@@ -362,20 +442,11 @@ textarea{
       Select Metal
      </option>
 
-     <option>
-      Gold
-     </option>
-
-     <option>
-      Silver
-     </option>
-
-     <option>
-      Other Metal
-     </option>
+     <option>Gold</option>
+     <option>Silver</option>
+     <option>Other Metal</option>
 
     </select>
-
 
 
     <label>
@@ -405,7 +476,6 @@ textarea{
     </select>
 
 
-
     <label>
      Main Category
     </label>
@@ -433,7 +503,6 @@ textarea{
      <option>Other</option>
 
     </select>
-
 
 
     <label>
@@ -509,19 +578,60 @@ textarea{
     </select>
 
 
-
     <label>
-     Price ₹
+     Original Price ₹
     </label>
 
     <input
      id="price"
      type="number"
      min="0"
-     placeholder="999"
+     placeholder="10000"
      required
     >
 
+
+    <!-- OFFER -->
+
+    <div class="offer-box">
+
+     <strong>
+      🏷️ Product Offer
+     </strong>
+
+     <label>
+      Discount %
+     </label>
+
+     <input
+      id="discountPercent"
+      type="number"
+      min="0"
+      max="100"
+      step="1"
+      value="0"
+      placeholder="30"
+     >
+
+     <label>
+
+      <input
+       id="offerActive"
+       type="checkbox"
+      >
+
+      Offer Active
+
+     </label>
+
+     <div
+      id="salePreview"
+      class="sale-preview"
+     >
+      Sale Price: ₹0
+     </div>
+
+    </div>
 
 
     <label>
@@ -534,7 +644,6 @@ textarea{
     >
 
 
-
     <label>
      Size / Variant
     </label>
@@ -543,7 +652,6 @@ textarea{
      id="size"
      placeholder="Example: 18 / 20 / Adjustable"
     >
-
 
 
     <label>
@@ -558,7 +666,6 @@ textarea{
     >
 
 
-
     <label>
      SKU
     </label>
@@ -569,34 +676,36 @@ textarea{
     >
 
 
-
     <label>
-     Product Photo
+     Product Photos
     </label>
 
     <input
      id="photo"
      type="file"
      accept="image/*"
+     multiple
     >
 
-    <img
-     id="preview"
-     class="preview"
-    >
+    <small>
+     You can select multiple photos at once.
+    </small>
 
+    <div
+     id="previewGrid"
+     class="preview-grid"
+    ></div>
 
 
     <label>
-     Image URL
+     Optional Image URL
     </label>
 
     <input
      id="imageUrl"
      type="url"
-     placeholder="https://example.com/image.jpg"
+     placeholder="Only if you don't upload a photo"
     >
-
 
 
     <label>
@@ -609,13 +718,11 @@ textarea{
     ></textarea>
 
 
-
     <label>
 
      <input
       id="featured"
       type="checkbox"
-      style="width:auto"
      >
 
      ⭐ Featured Product
@@ -623,14 +730,11 @@ textarea{
     </label>
 
 
-
     <button
      class="add"
      type="submit"
     >
-
      Add Product ✨
-
     </button>
 
    </form>
@@ -638,12 +742,11 @@ textarea{
   </div>
 
 
-
   <!-- PRODUCTS -->
 
   <div class="card">
 
-   <h2 class="section-title">
+   <h2>
     📦 Products
    </h2>
 
@@ -654,7 +757,6 @@ textarea{
   </div>
 
 
-
   <!-- ORDERS -->
 
   <div
@@ -662,7 +764,7 @@ textarea{
    style="grid-column:1/-1"
   >
 
-   <h2 class="section-title">
+   <h2>
     🛍️ Customer Orders
    </h2>
 
@@ -678,7 +780,6 @@ textarea{
 </div>
 
 </div>
-
 
 
 <script type="module">
@@ -711,11 +812,21 @@ import {
  getDocs,
  deleteDoc,
  doc,
+ updateDoc,
  serverTimestamp
 }
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
+
+import {
+ getStorage,
+ ref,
+ uploadBytes,
+ getDownloadURL
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-storage.js";
 
 
 /* FIREBASE CONFIG */
@@ -743,29 +854,26 @@ const firebaseConfig = {
 };
 
 
-
 const app =
 initializeApp(firebaseConfig);
-
 
 const auth =
 getAuth(app);
 
-
 const db =
 getFirestore(app);
 
+const storage =
+getStorage(app);
 
 const provider =
 new GoogleAuthProvider();
 
 
-
-/* ADMIN EMAIL */
+/* ADMIN */
 
 const ADMIN_EMAIL =
 "gifthamperlovers@gmail.com";
-
 
 
 /* ELEMENTS */
@@ -786,7 +894,6 @@ const status =
 document.getElementById("status");
 
 
-
 /* MESSAGE */
 
 function message(
@@ -795,19 +902,34 @@ function message(
  type
 ){
 
- el.textContent=text;
+ el.textContent =
+ text;
 
- el.className=
- "msg "+type;
+ el.className =
+ "msg " + type;
 
- el.style.display=
+ el.style.display =
  "block";
 
 }
 
 
+/* ESCAPE */
 
-/* GOOGLE LOGIN */
+function escapeHTML(value){
+
+ return String(value ?? "")
+
+ .replaceAll("&","&amp;")
+ .replaceAll("<","&lt;")
+ .replaceAll(">","&gt;")
+ .replaceAll('"',"&quot;")
+ .replaceAll("'","&#039;");
+
+}
+
+
+/* LOGIN */
 
 document
 .getElementById("loginBtn")
@@ -817,17 +939,15 @@ document
 
   try{
 
-   const result=
+   const result =
    await signInWithPopup(
     auth,
     provider
    );
 
-
-   const email=
-   (result.user.email||"")
+   const email =
+   (result.user.email || "")
    .toLowerCase();
-
 
    if(
     email !==
@@ -835,7 +955,6 @@ document
    ){
 
     await signOut(auth);
-
 
     message(
      document.getElementById(
@@ -852,12 +971,11 @@ document
 
    console.error(error);
 
-
    message(
     document.getElementById(
      "loginMsg"
     ),
-    "Login failed: "+
+    "Login failed: " +
     error.message,
     "error"
    );
@@ -868,8 +986,7 @@ document
 );
 
 
-
-/* LOGIN STATE */
+/* AUTH STATE */
 
 onAuthStateChanged(
  auth,
@@ -877,44 +994,40 @@ onAuthStateChanged(
 
   if(
    user &&
-   (user.email||"")
+   (user.email || "")
    .toLowerCase()
    ===
    ADMIN_EMAIL.toLowerCase()
   ){
 
-   loginBox.style.display=
+   loginBox.style.display =
    "none";
 
-   panel.style.display=
+   panel.style.display =
    "block";
-
 
    document.getElementById(
     "adminEmail"
-   ).textContent=
-   "Logged in: "+
+   ).textContent =
+   "Logged in: " +
    user.email;
 
-
    loadProducts();
-
    loadOrders();
 
   }
   else{
 
-   loginBox.style.display=
+   loginBox.style.display =
    "block";
 
-   panel.style.display=
+   panel.style.display =
    "none";
 
   }
 
  }
 );
-
 
 
 /* LOGOUT */
@@ -927,7 +1040,6 @@ document
 );
 
 
-
 /* PHOTO PREVIEW */
 
 document
@@ -936,30 +1048,122 @@ document
  "change",
  function(){
 
-  const file=
-  this.files[0];
-
-  if(!file)return;
-
-
-  const url=
-  URL.createObjectURL(file);
-
-
-  const preview=
+  const previewGrid =
   document.getElementById(
-   "preview"
+   "previewGrid"
   );
 
+  previewGrid.innerHTML = "";
 
-  preview.src=url;
+  const files =
+  Array.from(
+   this.files || []
+  );
 
-  preview.style.display=
-  "block";
+  files.forEach(
+   file=>{
+
+    const url =
+    URL.createObjectURL(
+     file
+    );
+
+    const img =
+    document.createElement(
+     "img"
+    );
+
+    img.src =
+    url;
+
+    img.alt =
+    "Preview";
+
+    previewGrid.appendChild(
+     img
+    );
+
+   }
+  );
 
  }
 );
 
+
+/* SALE PRICE PREVIEW */
+
+function updateSalePreview(){
+
+ const price =
+ Number(
+  document.getElementById(
+   "price"
+  ).value || 0
+ );
+
+ const discount =
+ Number(
+  document.getElementById(
+   "discountPercent"
+  ).value || 0
+ );
+
+ const active =
+ document.getElementById(
+  "offerActive"
+ ).checked;
+
+ let salePrice =
+ price;
+
+ if(
+  active &&
+  discount > 0
+ ){
+
+  salePrice =
+  price -
+  (
+   price * discount / 100
+  );
+
+ }
+
+ document.getElementById(
+  "salePreview"
+ ).textContent =
+ "Sale Price: ₹" +
+ Math.round(
+  salePrice
+ ).toLocaleString(
+  "en-IN"
+ );
+
+}
+
+
+document
+.getElementById("price")
+.addEventListener(
+ "input",
+ updateSalePreview
+);
+
+
+document
+.getElementById("discountPercent")
+.addEventListener(
+ "input",
+ updateSalePreview
+);
+
+
+document
+.getElementById("offerActive")
+.addEventListener(
+ "change",
+ updateSalePreview
+);
 
 
 /* ADD PRODUCT */
@@ -972,10 +1176,8 @@ document
 
   event.preventDefault();
 
-
-  const user=
+  const user =
   auth.currentUser;
-
 
   if(!user){
 
@@ -992,6 +1194,169 @@ document
 
   try{
 
+   const photoInput =
+   document.getElementById(
+    "photo"
+   );
+
+   const files =
+   Array.from(
+    photoInput.files || []
+   );
+
+
+   let images = [];
+
+
+   /*
+    UPLOAD MULTIPLE PHOTOS
+   */
+
+   if(files.length){
+
+    message(
+     status,
+     "Uploading " +
+     files.length +
+     " photo(s)...",
+     "success"
+    );
+
+
+    for(
+     let i = 0;
+     i < files.length;
+     i++
+    ){
+
+     const file =
+     files[i];
+
+
+     const safeName =
+     file.name
+     .replace(
+      /[^a-zA-Z0-9.-]/g,
+      "_"
+     );
+
+
+     const fileName =
+     Date.now() +
+     "_" +
+     i +
+     "_" +
+     safeName;
+
+
+     const storageRef =
+     ref(
+      storage,
+      "products/" +
+      fileName
+     );
+
+
+     await uploadBytes(
+      storageRef,
+      file
+     );
+
+
+     const url =
+     await getDownloadURL(
+      storageRef
+     );
+
+
+     images.push(
+      url
+     );
+
+    }
+
+   }
+
+
+   /*
+    OPTIONAL URL
+   */
+
+   const manualUrl =
+   document
+   .getElementById(
+    "imageUrl"
+   )
+   .value
+   .trim();
+
+
+   if(
+    manualUrl &&
+    !images.length
+   ){
+
+    images.push(
+     manualUrl
+    );
+
+   }
+
+
+   const price =
+   Number(
+    document
+    .getElementById(
+     "price"
+    )
+    .value || 0
+   );
+
+
+   const discountPercent =
+   Math.min(
+    100,
+    Math.max(
+     0,
+     Number(
+      document
+      .getElementById(
+       "discountPercent"
+      )
+      .value || 0
+     )
+    )
+   );
+
+
+   const offerActive =
+   document
+   .getElementById(
+    "offerActive"
+   )
+   .checked;
+
+
+   const salePrice =
+   offerActive &&
+   discountPercent > 0
+   ?
+   Math.round(
+    price -
+    (
+     price *
+     discountPercent /
+     100
+    )
+   )
+   :
+   price;
+
+
+   /*
+    FIRESTORE PRODUCT
+   */
+
    await addDoc(
     collection(
      db,
@@ -1000,69 +1365,96 @@ document
     {
 
      name:
-      document.getElementById(
-       "name"
-      ).value.trim(),
+      document
+      .getElementById("name")
+      .value
+      .trim(),
 
      metal:
-      document.getElementById(
-       "metal"
-      ).value,
+      document
+      .getElementById("metal")
+      .value,
 
      purity:
-      document.getElementById(
-       "purity"
-      ).value,
+      document
+      .getElementById("purity")
+      .value,
 
      category:
-      document.getElementById(
-       "category"
-      ).value,
+      document
+      .getElementById("category")
+      .value,
 
      subcategory:
-      document.getElementById(
-       "subcategory"
-      ).value,
+      document
+      .getElementById("subcategory")
+      .value,
 
      price:
-      document.getElementById(
-       "price"
-      ).value,
+      price,
+
+     discountPercent:
+      discountPercent,
+
+     offerActive:
+      offerActive,
+
+     salePrice:
+      salePrice,
 
      weight:
-      document.getElementById(
-       "weight"
-      ).value.trim(),
+      document
+      .getElementById("weight")
+      .value
+      .trim(),
 
      size:
-      document.getElementById(
-       "size"
-      ).value.trim(),
+      document
+      .getElementById("size")
+      .value
+      .trim(),
 
      stock:
-      document.getElementById(
-       "stock"
-      ).value,
+      Number(
+       document
+       .getElementById("stock")
+       .value || 0
+      ),
 
      sku:
-      document.getElementById(
-       "sku"
-      ).value.trim(),
+      document
+      .getElementById("sku")
+      .value
+      .trim(),
+
+     /*
+      First image kept for
+      compatibility with old pages.
+     */
 
      image:
-      document.getElementById(
-       "imageUrl"
-      ).value.trim(),
+      images[0] || "",
+
+     /*
+      All product images.
+     */
+
+     images:
+      images,
 
      description:
-      document.getElementById(
-       "description"
-      ).value.trim(),
+      document
+      .getElementById("description")
+      .value
+      .trim(),
 
      featured:
-      document.getElementById(
-       "featured"
-      ).checked,
+      document
+      .getElementById("featured")
+      .checked,
+
+     views:
+      0,
 
      createdBy:
       user.email,
@@ -1076,16 +1468,17 @@ document
 
    event.target.reset();
 
-
    document.getElementById(
-    "preview"
-   ).style.display=
-   "none";
+    "previewGrid"
+   ).innerHTML = "";
+
+
+   updateSalePreview();
 
 
    message(
     status,
-    "Product added successfully ✨",
+    "Product added successfully ✨ Photos and offer saved.",
     "success"
    );
 
@@ -1097,10 +1490,9 @@ document
 
    console.error(error);
 
-
    message(
     status,
-    "Product save failed: "+
+    "Product save failed: " +
     error.message,
     "error"
    );
@@ -1111,14 +1503,13 @@ document
 );
 
 
-
 /* LOAD PRODUCTS */
 
 async function loadProducts(){
 
  try{
 
-  const snap=
+  const snap =
   await getDocs(
    collection(
     db,
@@ -1129,7 +1520,7 @@ async function loadProducts(){
 
   if(snap.empty){
 
-   products.innerHTML=
+   products.innerHTML =
    "<p class='empty'>No products yet.</p>";
 
    return;
@@ -1137,98 +1528,185 @@ async function loadProducts(){
   }
 
 
-  products.innerHTML="";
+  products.innerHTML = "";
 
 
   snap.forEach(
    item=>{
 
-    const p=
+    const p =
     item.data();
 
 
-    const div=
+    const div =
     document.createElement(
      "div"
     );
 
-
-    div.className=
+    div.className =
     "product";
 
 
-    const img=
-    p.image
+    const images =
+    Array.isArray(
+     p.images
+    ) &&
+    p.images.length
     ?
-    `<img
-      src="${escapeHTML(p.image)}"
-      alt="${escapeHTML(
-       p.name||"Jewellery"
-      )}"
-     >`
+    p.images
     :
-    "";
+    (
+     p.image
+     ?
+     [p.image]
+     :
+     []
+    );
 
 
-    const shareText=
+    let imageHTML = "";
+
+
+    if(images.length){
+
+     imageHTML =
+     `<div class="product-images">` +
+     images
+     .map(
+      url=>
+      `<img
+       src="${escapeHTML(url)}"
+       alt="Jewellery"
+      >`
+     )
+     .join("") +
+     `</div>`;
+
+    }
+
+
+    const discount =
+    Number(
+     p.discountPercent || 0
+    );
+
+
+    const offer =
+    p.offerActive &&
+    discount > 0;
+
+
+    const sale =
+    Number(
+     p.salePrice ??
+     p.price ??
+     0
+    );
+
+
+    const shareText =
     encodeURIComponent(
      `✨ ${
-      p.name||
+      p.name ||
       "Ziya Jewellery Product"
      }
 
 Metal: ${
-      p.metal||""
+      p.metal || ""
      }
 
 Purity: ${
-      p.purity||""
+      p.purity || ""
      }
 
 Price: ₹${
-      p.price||""
+      offer
+      ?
+      sale
+      :
+      p.price || ""
+     }
+
+${
+      offer
+      ?
+      discount +
+      "% OFF"
+      :
+      ""
      }
 
 Ziya Jewellery`
     );
 
 
-    div.innerHTML=`
+    div.innerHTML = `
 
-     ${img}
+     ${imageHTML}
 
      <strong>
       ${escapeHTML(
-       p.name||"Product"
+       p.name ||
+       "Product"
       )}
      </strong>
 
      <br>
 
      <small>
+
       ${escapeHTML(
-       p.metal||""
+       p.metal || ""
       )}
+
       •
+      
       ${escapeHTML(
-       p.purity||""
+       p.purity || ""
       )}
-      • ₹
-      ${escapeHTML(
-       String(
-        p.price||""
-       )
-      )}
+
      </small>
 
      <br>
 
      <small>
+
       Category:
       ${escapeHTML(
-       p.category||""
+       p.category || ""
       )}
+
      </small>
+
+     <br>
+
+     <small>
+
+      Price:
+      ₹${Number(
+       p.price || 0
+      ).toLocaleString(
+       "en-IN"
+      )}
+
+     </small>
+
+     ${
+      offer
+      ?
+      `
+       <br>
+       <small>
+        🏷️ ${discount}% OFF
+        →
+        ₹${sale.toLocaleString(
+         "en-IN"
+        )}
+       </small>
+      `
+      :
+      ""
+     }
 
      <br>
 
@@ -1274,7 +1752,6 @@ Ziya Jewellery`
         )
        );
 
-
        loadProducts();
 
       }
@@ -1295,14 +1772,253 @@ Ziya Jewellery`
 
   console.error(error);
 
-
-  products.innerHTML=
-  "<p class='empty'>Unable to load products.</p>";
+  products.innerHTML =
+  "<p class='empty'>Unable to load products: " +
+  escapeHTML(
+   error.message
+  ) +
+  "</p>";
 
  }
 
 }
 
+
+/* ORDER STATUS */
+
+async function setOrderStatus(
+ orderId,
+ newStatus
+){
+
+ try{
+
+  await updateDoc(
+   doc(
+    db,
+    "orders",
+    orderId
+   ),
+   {
+
+    orderStatus:
+     newStatus,
+
+    updatedAt:
+     serverTimestamp()
+
+   }
+  );
+
+
+  loadOrders();
+
+ }
+ catch(error){
+
+  console.error(error);
+
+  alert(
+   "Status update failed: " +
+   error.message
+  );
+
+ }
+
+}
+
+
+/* CANCEL ORDER */
+
+async function cancelOrder(
+ orderId
+){
+
+ const reason =
+ prompt(
+  "Cancel reason:",
+  "Customer requested"
+ );
+
+
+ if(reason === null){
+  return;
+ }
+
+
+ try{
+
+  await updateDoc(
+   doc(
+    db,
+    "orders",
+    orderId
+   ),
+   {
+
+    orderStatus:
+     "Cancelled",
+
+    cancelReason:
+     reason.trim() ||
+     "Not specified",
+
+    cancelledAt:
+     serverTimestamp(),
+
+    updatedAt:
+     serverTimestamp()
+
+   }
+  );
+
+
+  loadOrders();
+
+ }
+ catch(error){
+
+  console.error(error);
+
+  alert(
+   "Order cancellation failed: " +
+   error.message
+  );
+
+ }
+
+}
+
+
+/* ORDER ITEM HTML */
+
+function renderOrderItems(
+ items
+){
+
+ if(
+  !Array.isArray(items) ||
+  !items.length
+ ){
+
+  return `
+   <p>
+    No item details available.
+   </p>
+  `;
+
+ }
+
+
+ return items
+ .map(
+  item=>{
+
+   const image =
+   item.image ||
+   (
+    Array.isArray(
+     item.images
+    )
+    ?
+    item.images[0]
+    :
+    ""
+   );
+
+
+   const qty =
+   Number(
+    item.quantity || 1
+   );
+
+
+   const price =
+   Number(
+    item.price || 0
+   );
+
+
+   return `
+
+    <div class="order-item">
+
+     ${
+      image
+      ?
+      `<img
+       src="${escapeHTML(image)}"
+       alt="Product"
+      >`
+      :
+      `<div
+       style="
+        width:70px;
+        height:70px;
+        border-radius:10px;
+        background:#f7edf5;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:35px;
+       "
+      >
+       💎
+      </div>`
+     }
+
+     <div class="order-item-info">
+
+      <strong>
+       ${escapeHTML(
+        item.name ||
+        "Jewellery"
+       )}
+      </strong>
+
+      <br>
+
+      <small>
+       Qty:
+       ${qty}
+      </small>
+
+      <br>
+
+      <small>
+       Price:
+       ₹${price.toLocaleString(
+        "en-IN"
+       )}
+      </small>
+
+      ${
+       item.discountPercent
+       ?
+       `
+        <br>
+        <small>
+         🏷️
+         ${Number(
+          item.discountPercent
+         )}% OFF
+        </small>
+       `
+       :
+       ""
+      }
+
+     </div>
+
+    </div>
+
+   `;
+
+  }
+ )
+ .join("");
+
+}
 
 
 /* LOAD ORDERS */
@@ -1311,7 +2027,7 @@ async function loadOrders(){
 
  try{
 
-  const snap=
+  const snap =
   await getDocs(
    collection(
     db,
@@ -1322,7 +2038,7 @@ async function loadOrders(){
 
   if(snap.empty){
 
-   orders.innerHTML=
+   orders.innerHTML =
    "<p class='empty'>No customer orders yet.</p>";
 
    return;
@@ -1330,43 +2046,105 @@ async function loadOrders(){
   }
 
 
-  orders.innerHTML="";
+  orders.innerHTML = "";
 
 
   snap.forEach(
    item=>{
 
-    const o=
+    const o =
     item.data();
 
 
-    const div=
+    const div =
     document.createElement(
      "div"
     );
 
-
-    div.className=
+    div.className =
     "order";
 
 
-    const customer=
+    const customer =
     o.customerName ||
-    o.customer?.name ||
+    (
+     o.customer &&
+     o.customer.name
+    ) ||
     "Not available";
 
 
-    const payment=
+    const phone =
+    o.phone ||
+    (
+     o.customer &&
+     o.customer.phone
+    ) ||
+    "";
+
+
+    const address =
+    o.address ||
+    (
+     o.customer &&
+     o.customer.address
+    ) ||
+    "";
+
+
+    const city =
+    o.city ||
+    "";
+
+
+    const state =
+    o.state ||
+    "";
+
+
+    const pincode =
+    o.pincode ||
+    "";
+
+
+    const payment =
+    o.payment ||
+    o.paymentMethod ||
     o.paymentStatus ||
     "Pending";
 
 
-    const orderStatus=
+    const orderStatus =
     o.orderStatus ||
+    o.status ||
     "New Order";
 
 
-    div.innerHTML=`
+    const total =
+    Number(
+     o.total || 0
+    );
+
+
+    const items =
+    o.items ||
+    o.products ||
+    [];
+
+
+    const attachment =
+    o.attachmentUrl ||
+    o.customerAttachment ||
+    o.attachment ||
+    "";
+
+
+    const cancelReason =
+    o.cancelReason ||
+    "";
+
+
+    div.innerHTML = `
 
      <div class="order-title">
 
@@ -1390,6 +2168,73 @@ async function loadOrders(){
       )}
 
      </div>
+
+
+     ${
+      phone
+      ?
+      `
+       <div class="order-row">
+
+        📱
+        <strong>
+         Mobile:
+        </strong>
+
+        ${escapeHTML(
+         phone
+        )}
+
+       </div>
+      `
+      :
+      ""
+     }
+
+
+     ${
+      address
+      ?
+      `
+       <div class="order-row">
+
+        📍
+        <strong>
+         Address:
+        </strong>
+
+        ${escapeHTML(
+         address
+        )}
+
+        ${
+         city ||
+         state ||
+         pincode
+         ?
+         `<br>
+          ${escapeHTML(city)}
+          ${city && state ? ", " : ""}
+          ${escapeHTML(state)}
+          ${
+           pincode
+           ?
+           " - " +
+           escapeHTML(
+            pincode
+           )
+           :
+           ""
+          }`
+         :
+         ""
+        }
+
+       </div>
+      `
+      :
+      ""
+     }
 
 
      <div class="order-row">
@@ -1421,7 +2266,14 @@ async function loadOrders(){
 
       <br>
 
-      <span class="status-badge">
+      <span class="${
+       orderStatus ===
+       "Cancelled"
+       ?
+       "cancel-badge"
+       :
+       "status-badge"
+      }">
 
        ${escapeHTML(
         orderStatus
@@ -1432,47 +2284,179 @@ async function loadOrders(){
      </div>
 
 
-     <button
-      class="delete"
-      data-order="${item.id}"
-     >
+     ${
+      cancelReason
+      ?
+      `
+       <div class="order-row">
 
-      🗑️ Delete Test Order
+        ❌
+        <strong>
+         Cancel Reason:
+        </strong>
 
-     </button>
+        ${escapeHTML(
+         cancelReason
+        )}
+
+       </div>
+      `
+      :
+      ""
+     }
+
+
+     <div class="order-items">
+
+      <strong>
+       🛍️ Ordered Items
+      </strong>
+
+      ${renderOrderItems(
+       items
+      )}
+
+     </div>
+
+
+     <div class="order-row">
+
+      💰
+      <strong>
+       Total:
+      </strong>
+
+      ₹${total.toLocaleString(
+       "en-IN"
+      )}
+
+     </div>
+
+
+     ${
+      attachment
+      ?
+      `
+       <div class="order-row">
+
+        📎
+        <strong>
+         Customer Attachment:
+        </strong>
+
+        <br>
+
+        <a
+         class="attachment"
+         href="${escapeHTML(
+          attachment
+         )}"
+         target="_blank"
+         rel="noopener"
+        >
+         🖼️ View Attachment
+        </a>
+
+       </div>
+      `
+      :
+      ""
+     }
+
+
+     <div class="order-actions">
+
+      <button
+       class="statusBtn"
+       data-status="Confirmed"
+      >
+       ✅ Confirm
+      </button>
+
+      <button
+       class="statusBtn"
+       data-status="Processing"
+      >
+       ⚙️ Processing
+      </button>
+
+      <button
+       class="statusBtn"
+       data-status="Shipped"
+      >
+       🚚 Shipped
+      </button>
+
+      <button
+       class="statusBtn"
+       data-status="Delivered"
+      >
+       📦 Delivered
+      </button>
+
+      ${
+       orderStatus !==
+       "Cancelled"
+       ?
+       `
+        <button
+         class="cancelBtn"
+        >
+         ❌ Cancel Order
+        </button>
+       `
+       :
+       ""
+      }
+
+     </div>
 
     `;
 
 
     div
-    .querySelector(
-     ".delete"
+    .querySelectorAll(
+     "[data-status]"
     )
-    .addEventListener(
-     "click",
-     async()=>{
+    .forEach(
+     button=>{
 
-      if(
-       confirm(
-        "Delete this order?"
-       )
-      ){
+      button.addEventListener(
+       "click",
+       ()=>{
 
-       await deleteDoc(
-        doc(
-         db,
-         "orders",
-         item.id
-        )
-       );
+        setOrderStatus(
+         item.id,
+         button.dataset.status
+        );
 
-
-       loadOrders();
-
-      }
+       }
+      );
 
      }
     );
+
+
+    const cancelButton =
+    div.querySelector(
+     ".cancelBtn"
+    );
+
+
+    if(cancelButton){
+
+     cancelButton.addEventListener(
+      "click",
+      ()=>{
+
+       cancelOrder(
+        item.id
+       );
+
+      }
+     );
+
+    }
 
 
     orders.appendChild(
@@ -1487,48 +2471,14 @@ async function loadOrders(){
 
   console.error(error);
 
-
-  orders.innerHTML=
-  "<p class='empty'>Unable to load orders.</p>";
+  orders.innerHTML =
+  "<p class='empty'>Unable to load orders: " +
+  escapeHTML(
+   error.message
+  ) +
+  "</p>";
 
  }
-
-}
-
-
-
-/* ESCAPE HTML */
-
-function escapeHTML(
- value
-){
-
- return String(value)
-
-  .replaceAll(
-   "&",
-   "&amp;"
-  )
-
-  .replaceAll(
-   "<",
-   "&lt;"
-  )
-
-  .replaceAll(
-   ">",
-   "&gt;"
-  )
-
-  .replaceAll(
-   '"',
-   "&quot;"
-  )
-
-  .replaceAll(
-   "'",
-   "&#039;"
-  );
 
 }
 
