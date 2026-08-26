@@ -4,340 +4,1531 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>My Orders | Ziya Jewellery</title>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#fff6fb,#f1eaff);color:#29152e}
-header{background:linear-gradient(135deg,#8d1455,#5c1b9e);color:white;padding:17px 20px}
-.nav{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:15px}
-.logo{font-size:25px;font-weight:bold}.navlinks{display:flex;gap:8px;flex-wrap:wrap}
-.navlinks a{color:white;text-decoration:none;padding:9px 12px;border-radius:18px;background:#ffffff1c;font-size:13px}
-.container{max-width:1000px;margin:30px auto;padding:0 18px}h1{color:#701650}
-.login-card,.order-card,.empty{background:white;border-radius:20px;padding:22px;box-shadow:0 10px 35px #5b245018;margin-bottom:20px}
-input{width:100%;padding:13px;border:1px solid #ddd2df;border-radius:10px;margin-top:8px;font-size:15px}
-button{border:0;padding:13px 18px;border-radius:10px;background:linear-gradient(135deg,#e72b7b,#7025ed);color:white;font-weight:bold;cursor:pointer;margin-top:12px}
-button:disabled{opacity:.6;cursor:not-allowed}
-.order-head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-bottom:1px solid #eee;padding-bottom:15px}
-.order-id{font-weight:bold;color:#721550}.status{padding:7px 12px;border-radius:20px;background:#f7e7ef;color:#721550;font-weight:bold;font-size:13px}
-.item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid #eee}.item img{width:70px;height:70px;object-fit:cover;border-radius:10px;background:#f6edf4}
-.item-info{flex:1}.item-name{font-weight:bold}.price{color:#a01762;font-weight:bold;margin-top:5px}
-.total{text-align:right;font-size:20px;font-weight:bold;color:#721550;margin-top:15px}
-.address{margin-top:15px;padding:14px;background:#faf5fa;border-radius:12px;font-size:14px;line-height:1.6}
-.buy-again{display:inline-block;margin-top:15px;padding:11px 15px;border-radius:10px;background:#f0e3f3;color:#701650;text-decoration:none;font-weight:bold}
-.empty{text-align:center;padding:55px 20px}.empty-icon{font-size:65px}
-.shop{display:inline-block;margin-top:15px;padding:12px 20px;border-radius:22px;background:#721550;color:white;text-decoration:none}
-.note{font-size:13px;color:#777;line-height:1.5}
-.tracking{margin-top:18px;padding:16px;background:#fff8fc;border:1px solid #eaddea;border-radius:16px}
-.tracking-title{font-weight:800;margin-bottom:14px;color:#701650}
-.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.step{text-align:center;font-size:12px;color:#999}.step .dot{width:34px;height:34px;margin:0 auto 7px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#eee;color:#777;font-weight:bold}
-.step.done,.step.current{color:#701650;font-weight:bold}.step.done .dot,.step.current .dot{background:linear-gradient(135deg,#e72b7b,#7025ed);color:white}
-.step.cancelled{color:#b42318;font-weight:bold}.step.cancelled .dot{background:#fde8e7;color:#b42318}
-.order-meta{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:15px}.meta-box{background:#faf5fa;padding:11px 12px;border-radius:10px;font-size:13px}.meta-box b{display:block;color:#555;margin-bottom:4px}
-.delivery-box{margin-top:15px;padding:14px;background:#f6f0ff;border:1px solid #e3d6ff;border-radius:12px}
-.delivery-date{font-weight:bold;color:#701650;margin-top:5px}
-@media(max-width:650px){.timeline{grid-template-columns:repeat(2,1fr);row-gap:14px}.order-meta{grid-template-columns:1fr}.nav{flex-direction:column}.item{align-items:flex-start}.order-head{flex-direction:column}}
+
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:linear-gradient(135deg,#fff6fb,#f1eaff);
+color:#29152e
+}
+
+header{
+background:linear-gradient(135deg,#8d1455,#5c1b9e);
+color:white;
+padding:17px 20px
+}
+
+.nav{
+max-width:1100px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px
+}
+
+.logo{
+font-size:25px;
+font-weight:bold
+}
+
+.navlinks{
+display:flex;
+gap:8px;
+flex-wrap:wrap
+}
+
+.navlinks a{
+color:white;
+text-decoration:none;
+padding:9px 12px;
+border-radius:18px;
+background:#ffffff1c;
+font-size:13px
+}
+
+.container{
+max-width:1000px;
+margin:30px auto;
+padding:0 18px
+}
+
+h1{
+color:#701650
+}
+
+.login-card,
+.order-card,
+.empty{
+background:white;
+border-radius:20px;
+padding:22px;
+box-shadow:0 10px 35px #5b245018;
+margin-bottom:20px
+}
+
+input{
+width:100%;
+padding:13px;
+border:1px solid #ddd2df;
+border-radius:10px;
+margin-top:8px;
+font-size:15px
+}
+
+button{
+border:0;
+padding:13px 18px;
+border-radius:10px;
+background:linear-gradient(135deg,#e72b7b,#7025ed);
+color:white;
+font-weight:bold;
+cursor:pointer;
+margin-top:12px
+}
+
+button:disabled{
+opacity:.6;
+cursor:not-allowed
+}
+
+.order-head{
+display:flex;
+justify-content:space-between;
+gap:10px;
+flex-wrap:wrap;
+border-bottom:1px solid #eee;
+padding-bottom:15px
+}
+
+.order-id{
+font-weight:bold;
+color:#721550
+}
+
+.status{
+padding:7px 12px;
+border-radius:20px;
+background:#f7e7ef;
+color:#721550;
+font-weight:bold;
+font-size:13px
+}
+
+.item{
+display:flex;
+gap:12px;
+padding:14px 0;
+border-bottom:1px solid #eee
+}
+
+.item img{
+width:70px;
+height:70px;
+object-fit:cover;
+border-radius:10px;
+background:#f6edf4
+}
+
+.item-info{
+flex:1
+}
+
+.item-name{
+font-weight:bold
+}
+
+.price{
+color:#a01762;
+font-weight:bold;
+margin-top:5px
+}
+
+.total{
+text-align:right;
+font-size:20px;
+font-weight:bold;
+color:#721550;
+margin-top:15px
+}
+
+.address{
+margin-top:15px;
+padding:14px;
+background:#faf5fa;
+border-radius:12px;
+font-size:14px;
+line-height:1.6
+}
+
+.buy-again{
+display:inline-block;
+margin-top:15px;
+padding:11px 15px;
+border-radius:10px;
+background:#f0e3f3;
+color:#701650;
+text-decoration:none;
+font-weight:bold
+}
+
+.empty{
+text-align:center;
+padding:55px 20px
+}
+
+.empty-icon{
+font-size:65px
+}
+
+.shop{
+display:inline-block;
+margin-top:15px;
+padding:12px 20px;
+border-radius:22px;
+background:#721550;
+color:white;
+text-decoration:none
+}
+
+.note{
+font-size:13px;
+color:#777;
+line-height:1.5
+}
+
+.tracking{
+margin-top:18px;
+padding:16px;
+background:#fff8fc;
+border:1px solid #eaddea;
+border-radius:16px
+}
+
+.tracking-title{
+font-weight:800;
+margin-bottom:14px;
+color:#701650
+}
+
+.timeline{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:8px
+}
+
+.step{
+text-align:center;
+font-size:12px;
+color:#999
+}
+
+.step .dot{
+width:34px;
+height:34px;
+margin:0 auto 7px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#eee;
+color:#777;
+font-weight:bold
+}
+
+.step.done,
+.step.current{
+color:#701650;
+font-weight:bold
+}
+
+.step.done .dot,
+.step.current .dot{
+background:linear-gradient(135deg,#e72b7b,#7025ed);
+color:white
+}
+
+.step.cancelled{
+color:#b42318;
+font-weight:bold
+}
+
+.step.cancelled .dot{
+background:#fde8e7;
+color:#b42318
+}
+
+.order-meta{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-top:15px
+}
+
+.meta-box{
+background:#faf5fa;
+padding:11px 12px;
+border-radius:10px;
+font-size:13px
+}
+
+.meta-box b{
+display:block;
+color:#555;
+margin-bottom:4px
+}
+
+.delivery-box{
+margin-top:15px;
+padding:14px;
+background:#f6f0ff;
+border:1px solid #e3d6ff;
+border-radius:12px
+}
+
+.delivery-date{
+font-weight:bold;
+color:#701650;
+margin-top:5px
+}
+
+.success-box{
+background:#edfff4;
+border:1px solid #b9e8ca;
+color:#176b36;
+padding:14px;
+border-radius:12px;
+margin-bottom:15px
+}
+
+.error-box{
+background:#fff0f0;
+border:1px solid #f0bcbc;
+color:#9d2020;
+padding:14px;
+border-radius:12px;
+margin-bottom:15px
+}
+
+@media(max-width:650px){
+
+.timeline{
+grid-template-columns:repeat(2,1fr);
+row-gap:14px
+}
+
+.order-meta{
+grid-template-columns:1fr
+}
+
+.nav{
+flex-direction:column
+}
+
+.item{
+align-items:flex-start
+}
+
+.order-head{
+flex-direction:column
+}
+
+}
 </style>
 </head>
+
 <body>
-<header><div class="nav">
-<div class="logo">✨ Ziya Jewellery</div>
+
+<header>
+<div class="nav">
+
+<div class="logo">
+✨ Ziya Jewellery
+</div>
+
 <div class="navlinks">
-<a href="index.html">🏠 Home</a><a href="categories.html">Categories</a><a href="wishlist.html">❤️ Saved</a><a href="cart.html">🛒 Cart</a>
-</div></div></header>
+
+<a href="index.html">🏠 Home</a>
+
+<a href="categories.html">
+Categories
+</a>
+
+<a href="wishlist.html">
+❤️ Saved
+</a>
+
+<a href="cart.html">
+🛒 Cart
+</a>
+
+</div>
+
+</div>
+</header>
+
 
 <main class="container">
+
 <h1>📦 My Orders</h1>
+
+
 <div class="login-card">
+
 <h2>Find Your Orders</h2>
-<p class="note">Enter the 10-digit mobile number used while placing your order. You can also search directly using your Order ID.</p>
-<input id="phone" type="tel" inputmode="numeric" maxlength="10" placeholder="Enter 10 digit mobile number">
-<input id="orderId" type="text" maxlength="80" placeholder="Optional: Enter Order ID directly">
-<button id="searchBtn">🔎 View My Orders</button>
+
+<p class="note">
+Enter the 10-digit mobile number used while placing your order.
+You can also search directly using your Order ID.
+</p>
+
+<input
+id="phone"
+type="tel"
+inputmode="numeric"
+maxlength="10"
+placeholder="Enter 10 digit mobile number"
+>
+
+<input
+id="orderId"
+type="text"
+maxlength="80"
+placeholder="Optional: Enter Order ID directly"
+>
+
+<button id="searchBtn">
+🔎 View My Orders
+</button>
+
 </div>
-<div id="message"></div><div id="orders"></div>
+
+
+<div id="message"></div>
+
+<div id="orders"></div>
+
 </main>
 
+
 <script type="module">
-import {initializeApp} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-import {getFirestore,collection,query,where,getDocs} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+import {
+initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+
+import {
+getFirestore,
+collection,
+query,
+where,
+getDocs
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
 
 const firebaseConfig={
-apiKey:"AIzaSyBmapJhIb0QixjcUbLqB1X9l7EuPMqEUEQ",
-authDomain:"ziya-jewellery-d420f.firebaseapp.com",
-projectId:"ziya-jewellery-d420f",
-storageBucket:"ziya-jewellery-d420f.firebasestorage.app",
-messagingSenderId:"292032564389",
-appId:"1:292032564389:web:69b11699d8f790db5c114c"
+
+apiKey:
+"AIzaSyBmapJhIb0QixjcUbLqB1X9l7EuPMqEUEQ",
+
+authDomain:
+"ziya-jewellery-d420f.firebaseapp.com",
+
+projectId:
+"ziya-jewellery-d420f",
+
+storageBucket:
+"ziya-jewellery-d420f.firebasestorage.app",
+
+messagingSenderId:
+"292032564389",
+
+appId:
+"1:292032564389:web:69b11699d8f790db5c114c"
+
 };
 
+
 const app=initializeApp(firebaseConfig);
+
 const db=getFirestore(app);
 
-function escapeHTML(v){
-return String(v??"")
+
+/* =========================================================
+   SAFE HTML
+   ========================================================= */
+
+function escapeHTML(value){
+
+return String(value ?? "")
+
 .replaceAll("&","&amp;")
 .replaceAll("<","&lt;")
 .replaceAll(">","&gt;")
 .replaceAll('"',"&quot;")
 .replaceAll("'","&#039;");
+
 }
 
-function money(v){
-return Number(v||0).toLocaleString("en-IN",{maximumFractionDigits:2});
+
+/* =========================================================
+   MONEY
+   ========================================================= */
+
+function money(value){
+
+return Number(value || 0)
+.toLocaleString(
+"en-IN",
+{
+maximumFractionDigits:2
+}
+);
+
 }
 
-function formatDate(v){
-if(!v)return "";
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+function formatDate(value){
+
+if(!value) return "";
+
 try{
-if(typeof v.toDate==="function")return v.toDate().toLocaleString("en-IN");
-const d=new Date(v);
-return isNaN(d)?String(v):d.toLocaleString("en-IN");
-}catch{return "";}
+
+if(
+typeof value.toDate === "function"
+){
+
+return value
+.toDate()
+.toLocaleString("en-IN");
+
 }
+
+const date=new Date(value);
+
+if(isNaN(date.getTime())){
+
+return String(value);
+
+}
+
+return date.toLocaleString("en-IN");
+
+}catch{
+
+return "";
+
+}
+
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
 
 function normalizeStatus(status){
-const s=String(status||"").trim().toLowerCase();
-if(s==="new"||s==="new order"||s==="confirmed")return "New Order";
-if(s==="processing")return "Processing";
-if(s==="shipped")return "Shipped";
-if(s==="delivered")return "Delivered";
-if(s==="cancelled"||s==="canceled")return "Cancelled";
+
+const s=
+String(status || "")
+.trim()
+.toLowerCase();
+
+
+if(
+s==="new" ||
+s==="new order" ||
+s==="confirmed"
+){
+
 return "New Order";
+
 }
+
+
+if(s==="processing"){
+
+return "Processing";
+
+}
+
+
+if(s==="shipped"){
+
+return "Shipped";
+
+}
+
+
+if(s==="delivered"){
+
+return "Delivered";
+
+}
+
+
+if(
+s==="cancelled" ||
+s==="canceled"
+){
+
+return "Cancelled";
+
+}
+
+
+return "New Order";
+
+}
+
+
+/* =========================================================
+   TRACKING
+   ========================================================= */
 
 function trackingHTML(status){
-const current=normalizeStatus(status);
+
+const current=
+normalizeStatus(status);
+
 
 if(current==="Cancelled"){
-return `<div class="tracking">
-<div class="tracking-title">📦 Order Tracking</div>
-<div class="step cancelled"><div class="dot">✕</div>Cancelled</div>
-<div class="note" style="margin-top:10px">This order has been cancelled.</div>
-</div>`;
-}
 
-const steps=[["New Order","🆕"],["Processing","⚙️"],["Shipped","🚚"],["Delivered","✓"]];
-const currentIndex=steps.findIndex(x=>x[0]===current);
+return `
 
-return `<div class="tracking">
-<div class="tracking-title">📦 Order Tracking</div>
-<div class="timeline">
-${steps.map((s,i)=>`
-<div class="step ${i<currentIndex?"done":i===currentIndex?"current":""}">
-<div class="dot">${i<=currentIndex?"✓":s[1]}</div>
-${s[0]}
-</div>`).join("")}
+<div class="tracking">
+
+<div class="tracking-title">
+📦 Order Tracking
 </div>
-</div>`;
+
+<div class="step cancelled">
+
+<div class="dot">
+✕
+</div>
+
+Cancelled
+
+</div>
+
+<div
+class="note"
+style="margin-top:10px"
+>
+
+This order has been cancelled.
+
+</div>
+
+</div>
+
+`;
+
 }
 
-/*
-Supports both the OLD order structure and the NEW checkout structure.
-*/
+
+const steps=[
+
+["New Order","🆕"],
+
+["Processing","⚙️"],
+
+["Shipped","🚚"],
+
+["Delivered","✓"]
+
+];
+
+
+const currentIndex=
+steps.findIndex(
+item=>item[0]===current
+);
+
+
+return `
+
+<div class="tracking">
+
+<div class="tracking-title">
+📦 Order Tracking
+</div>
+
+<div class="timeline">
+
+${
+
+steps.map(
+(step,index)=>`
+
+<div
+class="step ${
+index<currentIndex
+?"done"
+:
+index===currentIndex
+?"current"
+:
+""
+}"
+>
+
+<div class="dot">
+
+${
+index<=currentIndex
+?
+"✓"
+:
+step[1]
+}
+
+</div>
+
+${step[0]}
+
+</div>
+
+`
+).join("")
+
+}
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+/* =========================================================
+   CUSTOMER
+   Supports old + new checkout structure
+   ========================================================= */
+
 function getCustomer(order){
-const c=order.customer||{};
+
+const customer=
+order.customer || {};
+
 
 return {
-name:order.customerName||c.name||order.name||"",
-phone:order.phone||c.phone||"",
-address:order.address||c.address||c.house||"",
-area:order.area||c.area||"",
-city:order.city||c.city||"",
-state:order.state||c.state||"",
-pincode:order.pincode||c.pin||c.pincode||"",
-landmark:order.landmark||c.landmark||""
+
+name:
+order.customerName ||
+customer.name ||
+order.name ||
+"",
+
+phone:
+order.phone ||
+customer.phone ||
+order.mobile ||
+"",
+
+address:
+order.address ||
+customer.address ||
+customer.house ||
+"",
+
+area:
+order.area ||
+customer.area ||
+"",
+
+city:
+order.city ||
+customer.city ||
+"",
+
+state:
+order.state ||
+customer.state ||
+"",
+
+pincode:
+order.pincode ||
+order.pin ||
+customer.pin ||
+customer.pincode ||
+"",
+
+landmark:
+order.landmark ||
+customer.landmark ||
+""
+
 };
+
 }
+
+
+/* =========================================================
+   ITEMS
+   ========================================================= */
 
 function getItems(order){
-if(Array.isArray(order.items))return order.items;
-if(Array.isArray(order.products))return order.products;
-if(order.product)return [order.product];
-return [];
+
+if(
+Array.isArray(order.items)
+){
+
+return order.items;
+
 }
+
+
+if(
+Array.isArray(order.products)
+){
+
+return order.products;
+
+}
+
+
+if(order.product){
+
+return [order.product];
+
+}
+
+
+return [];
+
+}
+
+
+/* =========================================================
+   TOTAL
+   ========================================================= */
 
 function getTotal(order){
-if(order.total!==undefined&&order.total!==null)return Number(order.total)||0;
-if(order.grandTotal!==undefined)return Number(order.grandTotal)||0;
-if(order.amount!==undefined)return Number(order.amount)||0;
 
-return getItems(order).reduce(
-(sum,item)=>sum+(Number(item.price)||0)*(Number(item.quantity)||1),0
-);
+if(
+order.finalTotal !== undefined &&
+order.finalTotal !== null
+){
+
+return Number(order.finalTotal) || 0;
+
 }
+
+
+if(
+order.total !== undefined &&
+order.total !== null
+){
+
+return Number(order.total) || 0;
+
+}
+
+
+if(
+order.grandTotal !== undefined &&
+order.grandTotal !== null
+){
+
+return Number(order.grandTotal) || 0;
+
+}
+
+
+if(
+order.totalAmount !== undefined &&
+order.totalAmount !== null
+){
+
+return Number(order.totalAmount) || 0;
+
+}
+
+
+if(
+order.amount !== undefined &&
+order.amount !== null
+){
+
+return Number(order.amount) || 0;
+
+}
+
+
+return getItems(order)
+.reduce(
+
+(sum,item)=>{
+
+return sum +
+
+(
+Number(item.price) || 0
+)
+*
+(
+Number(item.quantity) || 1
+);
+
+},
+
+0
+
+);
+
+}
+
+
+/* =========================================================
+   PAYMENT
+   ========================================================= */
 
 function getPayment(order){
-if(typeof order.payment==="string")return order.payment;
-return order.paymentMethod||order.payment?.method||"Not specified";
+
+if(
+typeof order.payment === "string"
+){
+
+return order.payment;
+
 }
 
-function getPaymentStatus(order){
-if(order.paymentStatus)return order.paymentStatus;
-if(typeof order.payment==="object"&&order.payment.status)return order.payment.status;
-return "Pending";
+
+if(
+order.paymentMethod
+){
+
+return order.paymentMethod;
+
 }
+
+
+if(
+order.payment &&
+typeof order.payment === "object" &&
+order.payment.method
+){
+
+return order.payment.method;
+
+}
+
+
+return "Not specified";
+
+}
+
+
+/* =========================================================
+   PAYMENT STATUS
+   ========================================================= */
+
+function getPaymentStatus(order){
+
+if(
+order.paymentStatus
+){
+
+return order.paymentStatus;
+
+}
+
+
+if(
+order.payment &&
+typeof order.payment === "object" &&
+order.payment.status
+){
+
+return order.payment.status;
+
+}
+
+
+return "Pending";
+
+}
+
+
+/* =========================================================
+   SEARCH BY PHONE
+   ========================================================= */
 
 async function findByPhone(phone){
 
-/*
-NEW checkout:
-phone is saved at the top level.
+const results=
+new Map();
 
-OLD checkout:
-customer.phone is used.
-
-Both are searched.
-*/
-
-const newQuery=query(
-collection(db,"orders"),
-where("phone","==",phone)
-);
-
-const oldQuery=query(
-collection(db,"orders"),
-where("customer.phone","==",phone)
-);
-
-const [newSnap,oldSnap]=await Promise.all([
-getDocs(newQuery),
-getDocs(oldQuery)
-]);
-
-const map=new Map();
-
-newSnap.forEach(d=>map.set(d.id,{id:d.id,...d.data()}));
-oldSnap.forEach(d=>map.set(d.id,{id:d.id,...d.data()}));
-
-return Array.from(map.values());
-}
-
-async function findByOrderId(id){
-
-let orders=[];
-
-const q1=query(
-collection(db,"orders"),
-where("orderId","==",id)
-);
-
-const snap1=await getDocs(q1);
-
-snap1.forEach(d=>{
-orders.push({id:d.id,...d.data()});
-});
-
-if(!orders.length){
 
 /*
-If the entered ID is actually the Firebase document ID.
+Top-level phone
 */
+
 try{
-const q2=query(
+
+const q=
+query(
+
 collection(db,"orders"),
-where("__name__","==",id)
+
+where(
+"phone",
+"==",
+phone
+)
+
 );
 
-const snap2=await getDocs(q2);
+const snapshot=
+await getDocs(q);
 
-snap2.forEach(d=>{
-orders.push({id:d.id,...d.data()});
-});
-}catch{}
+
+snapshot.forEach(
+document=>{
+
+results.set(
+
+document.id,
+
+{
+id:document.id,
+...document.data()
 }
 
-return orders;
+);
+
 }
+);
+
+}catch(error){
+
+console.error(
+"Top-level phone search:",
+error
+);
+
+}
+
+
+/*
+customer.phone
+*/
+
+try{
+
+const q=
+query(
+
+collection(db,"orders"),
+
+where(
+"customer.phone",
+"==",
+phone
+)
+
+);
+
+const snapshot=
+await getDocs(q);
+
+
+snapshot.forEach(
+document=>{
+
+results.set(
+
+document.id,
+
+{
+id:document.id,
+...document.data()
+}
+
+);
+
+}
+);
+
+}catch(error){
+
+console.error(
+"Nested phone search:",
+error
+);
+
+}
+
+
+/*
+mobile
+*/
+
+try{
+
+const q=
+query(
+
+collection(db,"orders"),
+
+where(
+"mobile",
+"==",
+phone
+)
+
+);
+
+const snapshot=
+await getDocs(q);
+
+
+snapshot.forEach(
+document=>{
+
+results.set(
+
+document.id,
+
+{
+id:document.id,
+...document.data()
+}
+
+);
+
+}
+);
+
+}catch(error){
+
+console.error(
+"Mobile search:",
+error
+);
+
+}
+
+
+return Array.from(
+results.values()
+);
+
+}
+
+
+/* =========================================================
+   SEARCH BY ORDER ID
+   ========================================================= */
+
+async function findByOrderId(orderId){
+
+const results=
+new Map();
+
+
+/*
+orderId field
+*/
+
+try{
+
+const q=
+query(
+
+collection(db,"orders"),
+
+where(
+"orderId",
+"==",
+orderId
+)
+
+);
+
+const snapshot=
+await getDocs(q);
+
+
+snapshot.forEach(
+document=>{
+
+results.set(
+
+document.id,
+
+{
+id:document.id,
+...document.data()
+}
+
+);
+
+}
+);
+
+}catch(error){
+
+console.error(
+"Order ID field search:",
+error
+);
+
+}
+
+
+/*
+Firebase document ID
+*/
+
+if(!results.size){
+
+try{
+
+const q=
+query(
+
+collection(db,"orders"),
+
+where(
+"__name__",
+"==",
+orderId
+)
+
+);
+
+const snapshot=
+await getDocs(q);
+
+
+snapshot.forEach(
+document=>{
+
+results.set(
+
+document.id,
+
+{
+id:document.id,
+...document.data()
+}
+
+);
+
+}
+);
+
+}catch(error){
+
+console.error(
+"Document ID search:",
+error
+);
+
+}
+
+}
+
+
+return Array.from(
+results.values()
+);
+
+}
+
+
+/* =========================================================
+   SHOW MESSAGE
+   ========================================================= */
+
+function showMessage(
+text,
+type="error"
+){
+
+const className=
+type==="success"
+?
+"success-box"
+:
+"error-box";
+
+
+document.getElementById(
+"message"
+).innerHTML=
+
+`
+
+<div class="${className}">
+
+${escapeHTML(text)}
+
+</div>
+
+`;
+
+}
+
+
+/* =========================================================
+   LOAD ORDERS
+   ========================================================= */
 
 async function loadOrders(){
 
-const phone=document.getElementById("phone").value.trim();
-const orderId=document.getElementById("orderId").value.trim();
+const phone=
+document.getElementById(
+"phone"
+).value
+.trim();
 
-const button=document.getElementById("searchBtn");
+
+const orderId=
+document.getElementById(
+"orderId"
+).value
+.trim();
+
+
+const button=
+document.getElementById(
+"searchBtn"
+);
+
+
+const ordersBox=
+document.getElementById(
+"orders"
+);
+
 
 button.disabled=true;
-button.textContent="Loading...";
+
+button.textContent=
+"Loading...";
+
+
+ordersBox.innerHTML="";
+
+document.getElementById(
+"message"
+).innerHTML="";
+
 
 try{
 
 let orders=[];
 
+
+/*
+Order ID has priority
+*/
+
 if(orderId){
 
-orders=await findByOrderId(orderId);
+orders=
+await findByOrderId(
+orderId
+);
 
 }else{
 
-if(!/^[0-9]{10}$/.test(phone)){
 
-showMessage("Please enter a valid 10 digit mobile number.");
+if(
+!/
+^[0-9]{10}$
+/
+.test(phone)
+){
+
+showMessage(
+"Please enter a valid 10 digit mobile number."
+);
 
 return;
 
 }
 
-orders=await findByPhone(phone);
+
+orders=
+await findByPhone(
+phone
+);
 
 }
 
-const ordersBox=document.getElementById("orders");
-ordersBox.innerHTML="";
+
+/*
+No orders
+*/
 
 if(!orders.length){
 
-ordersBox.innerHTML=`
+ordersBox.innerHTML=
+
+`
+
 <div class="empty">
-<div class="empty-icon">📦</div>
-<h2>No orders found</h2>
-<p>We couldn't find an order with the entered details.</p>
-<a class="shop" href="index.html">Continue Shopping</a>
-</div>`;
+
+<div class="empty-icon">
+📦
+</div>
+
+<h2>
+No orders found
+</h2>
+
+<p>
+We couldn't find an order with the entered details.
+</p>
+
+<a
+class="shop"
+href="index.html"
+>
+Continue Shopping
+</a>
+
+</div>
+
+`;
 
 return;
+
 }
 
-orders.sort((a,b)=>{
 
-const at=a.createdAt?.seconds||0;
-const bt=b.createdAt?.seconds||0;
+/*
+Newest first
+*/
+
+orders.sort(
+
+(a,b)=>{
+
+const at=
+a.createdAt?.seconds ||
+0;
+
+const bt=
+b.createdAt?.seconds ||
+0;
 
 return bt-at;
 
-});
+}
 
-orders.forEach(order=>{
+);
 
-const c=getCustomer(order);
-const items=getItems(order);
-const total=getTotal(order);
-const status=normalizeStatus(order.status);
+
+/*
+Render orders
+*/
+
+orders.forEach(
+order=>{
+
+
+const customer=
+getCustomer(order);
+
+
+const items=
+getItems(order);
+
+
+const total=
+getTotal(order);
+
+
+const status=
+normalizeStatus(
+
+order.orderStatus ||
+order.status ||
+"New Order"
+
+);
+
 
 let itemsHTML="";
 
+
 if(!items.length){
 
-itemsHTML=`
-<div class="note" style="padding:15px 0">
+itemsHTML=
+
+`
+
+<div
+class="note"
+style="padding:15px 0"
+>
+
 No item details available for this order.
-</div>`;
+
+</div>
+
+`;
 
 }else{
 
-items.forEach(item=>{
 
-const quantity=Number(item.quantity)||1;
-const price=Number(item.price)||0;
+items.forEach(
+item=>{
 
-itemsHTML+=`
+const quantity=
+Number(item.quantity) || 1;
+
+
+const price=
+Number(item.price) || 0;
+
+
+itemsHTML+=
+
+`
+
 <div class="item">
 
 ${
 item.image
+
 ?
-`<img src="${escapeHTML(item.image)}" alt="Jewellery">`
+
+`
+
+<img
+src="${escapeHTML(item.image)}"
+alt="Jewellery"
+>
+
+`
+
 :
-`<div style="
+
+`
+
+<div
+style="
 width:70px;
 height:70px;
 display:flex;
@@ -346,172 +1537,550 @@ justify-content:center;
 background:#f6edf4;
 border-radius:10px;
 font-size:35px;
-">💎</div>`
+"
+>
+💎
+</div>
+
+`
 }
 
 <div class="item-info">
 
 <div class="item-name">
-${escapeHTML(item.name||"Jewellery")}
+
+${escapeHTML(
+item.name ||
+"Jewellery"
+)}
+
 </div>
+
 
 <div class="price">
-₹${money(price*quantity)}
+
+₹${money(
+price * quantity
+)}
+
 </div>
 
+
 <div class="note">
-Quantity: ${quantity}
+
+Quantity:
+${quantity}
+
 </div>
+
+</div>
+
+</div>
+
+`;
+
+}
+);
+
+}
+
+
+/*
+Delivery date
+*/
+
+const delivery=
+order.deliveryDate ||
+order.expectedDeliveryDate ||
+"";
+
+
+const deliveryHTML=
+
+delivery
+
+?
+
+`
+
+<div class="delivery-box">
+
+🚚 <b>
+Expected Delivery
+</b>
+
+<div class="delivery-date">
+
+${escapeHTML(
+formatDate(delivery)
+)}
+
+</div>
+
+</div>
+
+`
+
+:
+
+`<div class="delivery-box">
+
+🚚 <b>Delivery Information</b>
+
+<div class="note">
+
+Delivery date will be shown after admin confirmation.
 
 </div>
 
 </div>`;
-});
 
+
+/*
+Voucher
+*/
+
+const voucherHTML=
+order.voucherCode
+?
+
+`
+
+<div class="meta-box">
+
+<b>🎟️ Voucher</b>
+
+${escapeHTML(
+order.voucherCode
+)}
+
+</div>
+
+`
+
+:
+
+"";
+
+
+/*
+Voucher discount
+*/
+
+const voucherDiscount=
+Number(
+order.voucherDiscount ||
+order.discountAmount ||
+0
+);
+
+
+const discountHTML=
+voucherDiscount > 0
+
+?
+
+`
+
+<div class="meta-box">
+
+<b>🏷️ Voucher Discount</b>
+
+₹${money(
+voucherDiscount
+)}
+
+</div>
+
+`
+
+:
+
+"";
+
+
+/*
+Product discount
+*/
+
+const productDiscount=
+Number(
+order.productDiscount ||
+order.offerDiscount ||
+order.saleDiscount ||
+0
+);
+
+
+const productDiscountHTML=
+productDiscount > 0
+
+?
+
+`
+
+<div class="meta-box">
+
+<b>🏷️ Product Offer Discount</b>
+
+₹${money(
+productDiscount
+)}
+
+</div>
+
+`
+
+:
+
+"";
+
+
+/*
+Address
+*/
+
+const addressHTML=
+
+`
+
+<b>
+Delivery Address
+</b>
+
+<br>
+
+${escapeHTML(
+customer.name
+)}
+
+${customer.name
+?
+"<br>"
+:
+""}
+
+${escapeHTML(
+customer.address
+)}
+
+${customer.address
+?
+"<br>"
+:
+""}
+
+${customer.area
+?
+escapeHTML(customer.area)+"<br>"
+:
+""}
+
+${escapeHTML(
+customer.city
+)}
+
+${customer.city
+?
+", "
+:
+""}
+
+${escapeHTML(
+customer.state
+)}
+
+${
+customer.pincode
+?
+" - "+
+escapeHTML(
+customer.pincode
+)
+:
+""
 }
 
-const delivery=order.deliveryDate||"";
-
-const deliveryHTML=delivery
+${
+customer.landmark
 ?
-`<div class="delivery-box">
-🚚 <b>Expected Delivery</b>
-<div class="delivery-date">
-${escapeHTML(formatDate(delivery))}
-</div>
-</div>`
-:"";
 
-const addressHTML=`
-<b>Delivery Address</b><br>
-${escapeHTML(c.name)}
-${c.name?"<br>":""}
-${escapeHTML(c.address)}
-${c.address?"<br>":""}
-${c.area?escapeHTML(c.area)+"<br>":""}
-${escapeHTML(c.city)}
-${c.city?", ":""}
-${escapeHTML(c.state)}
-${c.pincode?" - "+escapeHTML(c.pincode):""}
-${c.landmark?`<br>Landmark: ${escapeHTML(c.landmark)}`:""}
-${c.phone?`<br>Mobile: ${escapeHTML(c.phone)}`:""}
+`
+
+<br>
+Landmark:
+${escapeHTML(
+customer.landmark
+)}
+
+`
+
+:
+
+""
+}
+
+${
+customer.phone
+?
+
+`
+
+<br>
+📱 Mobile:
+${escapeHTML(
+customer.phone
+)}
+
+`
+
+:
+
+""
+}
+
 `;
 
-const card=document.createElement("div");
-card.className="order-card";
 
-card.innerHTML=`
+/*
+Order card
+*/
+
+const card=
+document.createElement(
+"div"
+);
+
+
+card.className=
+"order-card";
+
+
+card.innerHTML=
+
+`
 
 <div class="order-head">
 
 <div>
 
 <div class="order-id">
+
 Order ID:
-${escapeHTML(order.orderId||order.id)}
+
+${escapeHTML(
+order.orderId ||
+order.id
+)}
+
 </div>
+
 
 <div class="note">
-${escapeHTML(formatDate(order.createdAt))}
+
+${escapeHTML(
+formatDate(
+order.createdAt
+)
+)}
+
 </div>
 
 </div>
+
 
 <div class="status">
-${escapeHTML(status)}
+
+${escapeHTML(
+status
+)}
+
 </div>
 
 </div>
+
 
 <div>
+
 ${itemsHTML}
+
 </div>
 
+
 <div class="total">
-Total: ₹${money(total)}
+
+Total:
+₹${money(total)}
+
 </div>
+
 
 <div class="order-meta">
 
-<div class="meta-box">
-<b>💳 Payment</b>
-${escapeHTML(getPayment(order))}
-</div>
 
 <div class="meta-box">
-<b>💰 Payment Status</b>
-${escapeHTML(getPaymentStatus(order))}
-</div>
 
-${
-order.voucherCode
-?
-`<div class="meta-box">
-<b>🎟️ Voucher</b>
-${escapeHTML(order.voucherCode)}
-</div>`
-:""
-}
+<b>
+💳 Payment
+</b>
 
-${
-order.voucherDiscount
-?
-`<div class="meta-box">
-<b>🏷️ Discount</b>
-₹${money(order.voucherDiscount)}
-</div>`
-:""
-}
+${escapeHTML(
+getPayment(order)
+)}
 
 </div>
 
-${trackingHTML(status)}
+
+<div class="meta-box">
+
+<b>
+💰 Payment Status
+</b>
+
+${escapeHTML(
+getPaymentStatus(order)
+)}
+
+</div>
+
+
+${productDiscountHTML}
+
+
+${voucherHTML}
+
+
+${discountHTML}
+
+
+</div>
+
+
+${trackingHTML(
+status
+)}
+
 
 ${deliveryHTML}
 
+
 <div class="address">
+
 ${addressHTML}
+
 </div>
 
-<a class="buy-again" href="index.html">
+
+<a
+class="buy-again"
+href="index.html"
+>
+
 🛍️ Buy Again
+
 </a>
 
 `;
 
-ordersBox.appendChild(card);
+
+ordersBox.appendChild(
+card
+);
 
 });
 
-}catch(error){
-
-console.error(error);
 
 showMessage(
-"Unable to load orders. Please try again. Error: "+error.message
+orders.length +
+(
+orders.length===1
+?
+" order found."
+:
+" orders found."
+),
+"success"
 );
+
+
+}catch(error){
+
+console.error(
+"Orders load error:",
+error
+);
+
+
+showMessage(
+
+"Unable to load orders. Please try again. Error: " +
+error.message
+
+);
+
 
 }finally{
 
 button.disabled=false;
-button.textContent="🔎 View My Orders";
+
+button.textContent=
+"🔎 View My Orders";
 
 }
 
 }
 
-function showMessage(text){
 
-document.getElementById("message").innerHTML=`
-<div class="login-card">
-${escapeHTML(text)}
-</div>`;
-
-}
+/* =========================================================
+   BUTTON
+   ========================================================= */
 
 document
-.getElementById("searchBtn")
-.addEventListener("click",loadOrders);
+.getElementById(
+"searchBtn"
+)
+.addEventListener(
+"click",
+loadOrders
+);
+
+
+/* =========================================================
+   ENTER KEY
+   ========================================================= */
+
+document
+.getElementById(
+"phone"
+)
+.addEventListener(
+"keydown",
+event=>{
+
+if(event.key==="Enter"){
+
+loadOrders();
+
+}
+
+});
+
+
+document
+.getElementById(
+"orderId"
+)
+.addEventListener(
+"keydown",
+event=>{
+
+if(event.key==="Enter"){
+
+loadOrders();
+
+}
+
+});
 
 </script>
 
