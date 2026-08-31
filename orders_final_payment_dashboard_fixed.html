@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>My Orders | Ziya Jewellery</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:linear-gradient(135deg,#fff6fb,#f1eaff);
+color:#29152e;
+}
+
+header{
+background:linear-gradient(135deg,#8d1455,#5c1b9e);
+color:white;
+padding:17px 20px;
+}
+
+.nav{
+max-width:1100px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+}
+
+.logo{
+font-size:25px;
+font-weight:bold;
+}
+
+.navlinks{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+}
+
+.navlinks a{
+color:white;
+text-decoration:none;
+padding:9px 12px;
+border-radius:18px;
+background:#ffffff1c;
+font-size:13px;
+}
+
+.container{
+max-width:1000px;
+margin:30px auto;
+padding:0 18px;
+}
+
+h1{
+color:#701650;
+}
+
+.login-card,
+.order-card,
+.empty{
+background:white;
+border-radius:20px;
+padding:22px;
+box-shadow:0 10px 35px #5b245018;
+margin-bottom:20px;
+}
+
+input{
+width:100%;
+padding:13px;
+border:1px solid #ddd2df;
+border-radius:10px;
+margin-top:8px;
+font-size:15px;
+}
+
+button{
+border:0;
+padding:13px 18px;
+border-radius:10px;
+background:linear-gradient(135deg,#e72b7b,#7025ed);
+color:white;
+font-weight:bold;
+cursor:pointer;
+margin-top:12px;
+}
+
+.order-head{
+display:flex;
+justify-content:space-between;
+gap:10px;
+flex-wrap:wrap;
+border-bottom:1px solid #eee;
+padding-bottom:15px;
+}
+
+.order-id{
+font-weight:bold;
+color:#721550;
+}
+
+.status{
+padding:7px 12px;
+border-radius:20px;
+background:#f7e7ef;
+color:#721550;
+font-weight:bold;
+font-size:13px;
+}
+
+.item{
+display:flex;
+gap:12px;
+padding:14px 0;
+border-bottom:1px solid #eee;
+}
+
+.item img{
+width:70px;
+height:70px;
+object-fit:cover;
+border-radius:10px;
+background:#f6edf4;
+}
+
+.item-info{
+flex:1;
+}
+
+.item-name{
+font-weight:bold;
+}
+
+.price{
+color:#a01762;
+font-weight:bold;
+margin-top:5px;
+}
+
+.total{
+text-align:right;
+font-size:20px;
+font-weight:bold;
+color:#721550;
+margin-top:15px;
+}
+
+.address{
+margin-top:15px;
+padding:14px;
+background:#faf5fa;
+border-radius:12px;
+font-size:14px;
+line-height:1.6;
+}
+
+.buy-again{
+display:inline-block;
+margin-top:15px;
+padding:11px 15px;
+border-radius:10px;
+background:#f0e3f3;
+color:#701650;
+text-decoration:none;
+font-weight:bold;
+}
+
+.empty{
+text-align:center;
+padding:55px 20px;
+}
+
+.empty-icon{
+font-size:65px;
+}
+
+.shop{
+display:inline-block;
+margin-top:15px;
+padding:12px 20px;
+border-radius:22px;
+background:#721550;
+color:white;
+text-decoration:none;
+}
+
+.note{
+font-size:13px;
+color:#777;
+line-height:1.5;
+}
+
+
+.tracking{
+  margin-top:18px;
+  padding:16px;
+  background:#fff8fc;
+  border:1px solid #eaddea;
+  border-radius:16px;
+}
+.tracking-title{
+  font-weight:800;
+  margin-bottom:14px;
+  color:#701650;
+}
+.timeline{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+}
+.step{
+  position:relative;
+  text-align:center;
+  font-size:12px;
+  color:#999;
+}
+.step .dot{
+  width:34px;
+  height:34px;
+  margin:0 auto 7px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#eee;
+  color:#777;
+  font-weight:bold;
+}
+.step.done,
+.step.current{
+  color:#701650;
+  font-weight:bold;
+}
+.step.done .dot,
+.step.current .dot{
+  background:linear-gradient(135deg,#e72b7b,#7025ed);
+  color:white;
+}
+.step.cancelled{
+  color:#b42318;
+  font-weight:bold;
+}
+.step.cancelled .dot{
+  background:#fde8e7;
+  color:#b42318;
+}
+.order-meta{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:15px;
+}
+.meta-box{
+  background:#faf5fa;
+  padding:11px 12px;
+  border-radius:10px;
+  font-size:13px;
+}
+.meta-box b{
+  display:block;
+  color:#555;
+  margin-bottom:4px;
+}
+@media(max-width:650px){
+  .timeline{grid-template-columns:repeat(2,1fr);row-gap:14px}
+  .order-meta{grid-template-columns:1fr}
+}
+
+@media(max-width:650px){
+
+.nav{
+flex-direction:column;
+}
+
+.item{
+align-items:flex-start;
+}
+
+.order-head{
+flex-direction:column;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="nav">
+
+<div class="logo">
+✨ Ziya Jewellery
+</div>
+
+<div class="navlinks">
+
+<a href="index.html">🏠 Home</a>
+
+<a href="categories.html">Categories</a>
+
+<a href="wishlist.html">❤️ Saved</a>
+
+<a href="cart.html">🛒 Cart</a>
+
+</div>
+
+</div>
+
+</header>
+
+
+<main class="container">
+
+<h1>📦 My Orders</h1>
+
+
+<div class="login-card">
+
+<h2>Find Your Orders</h2>
+
+<p class="note">
+Enter the 10-digit mobile number used while placing your order. Your order details and live status will appear securely below.
+</p>
+
+<input
+id="phone"
+type="tel"
+inputmode="numeric"
+maxlength="10"
+placeholder="Enter 10 digit mobile number"
+>
+
+<input
+id="orderId"
+type="text"
+maxlength="80"
+placeholder="Optional: Enter Order ID directly"
+>
+
+<button id="searchBtn">
+🔎 View My Orders
+</button>
+
+</div>
+
+
+<div id="message"></div>
+
+<div id="orders"></div>
+
+</main>
+
+
+<script type="module">
+
+import {
+initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+query,
+where,
+getDocs,
+orderBy
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+const firebaseConfig={
+
+apiKey:
+"AIzaSyBmapJhIb0QixjcUbLqB1X9l7EuPMqEUEQ",
+
+authDomain:
+"ziya-jewellery-d420f.firebaseapp.com",
+
+projectId:
+"ziya-jewellery-d420f",
+
+storageBucket:
+"ziya-jewellery-d420f.firebasestorage.app",
+
+messagingSenderId:
+"292032564389",
+
+appId:
+"1:292032564389:web:69b11699d8f790db5c114c"
+
+};
+
+
+const app=
+initializeApp(firebaseConfig);
+
+const db=
+getFirestore(app);
+
+
+function escapeHTML(value){
+
+return String(value??"")
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+
+function showMessage(text){
+
+document.getElementById(
+"message"
+).innerHTML=`
+
+<div class="login-card">
+${escapeHTML(text)}
+</div>
+
+`;
+
+}
+
+
+function formatDate(timestamp){
+
+if(!timestamp)return "";
+
+try{
+
+return timestamp
+.toDate()
+.toLocaleString("en-IN");
+
+}
+catch{
+
+return "";
+
+}
+
+}
+
+
+
+function normalizeStatus(status){
+  const s = String(status || "").trim().toLowerCase();
+  if(s === "new" || s === "new order" || s === "confirmed") return "New Order";
+  if(s === "processing") return "Processing";
+  if(s === "shipped") return "Shipped";
+  if(s === "delivered") return "Delivered";
+  if(s === "cancelled" || s === "canceled") return "Cancelled";
+  return "New Order";
+}
+
+function trackingHTML(status){
+  const current = normalizeStatus(status);
+
+  if(current === "Cancelled"){
+    return `
+      <div class="tracking">
+        <div class="tracking-title">📦 Order Tracking</div>
+        <div class="step cancelled">
+          <div class="dot">✕</div>
+          Cancelled
+        </div>
+        <div class="note" style="margin-top:10px">
+          This order has been cancelled.
+        </div>
+      </div>
+    `;
+  }
+
+  const steps = [
+    ["New Order","🆕"],
+    ["Processing","⚙️"],
+    ["Shipped","🚚"],
+    ["Delivered","✓"]
+  ];
+  const currentIndex = steps.findIndex(x => x[0] === current);
+
+  return `
+    <div class="tracking">
+      <div class="tracking-title">📦 Order Tracking</div>
+      <div class="timeline">
+        ${steps.map((step, i) => `
+          <div class="step ${i < currentIndex ? "done" : (i === currentIndex ? "current" : "")}">
+            <div class="dot">${i <= currentIndex ? "✓" : step[1]}</div>
+            ${step[0]}
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
+async function loadOrders(){
+
+const phone=
+document.getElementById(
+"phone"
+).value.trim();
+
+
+if(!/^[0-9]{10}$/.test(phone)){
+
+showMessage(
+"Please enter a valid 10 digit mobile number."
+);
+
+return;
+
+}
+
+
+const button=
+document.getElementById(
+"searchBtn"
+);
+
+button.disabled=true;
+button.textContent="Loading...";
+
+
+try{
+
+/*
+IMPORTANT:
+Firestore query only searches orders
+with the exact customer phone number.
+*/
+
+const q=
+query(
+collection(db,"orders"),
+where(
+"customer.phone",
+"==",
+phone
+)
+);
+
+
+const snapshot=
+await getDocs(q);
+
+
+const ordersBox=
+document.getElementById(
+"orders"
+);
+
+ordersBox.innerHTML="";
+
+
+if(snapshot.empty){
+
+ordersBox.innerHTML=`
+
+<div class="empty">
+
+<div class="empty-icon">
+📦
+</div>
+
+<h2>No orders found</h2>
+
+<p>
+We couldn't find an order for this mobile number.
+</p>
+
+<a
+class="shop"
+href="index.html"
+>
+Continue Shopping
+</a>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+const orders=[];
+
+snapshot.forEach(
+docSnap=>{
+
+orders.push({
+id:docSnap.id,
+...docSnap.data()
+});
+
+});
+
+
+/*
+Newest orders first.
+*/
+
+orders.sort(
+(a,b)=>{
+
+const aTime=
+a.createdAt?.seconds||0;
+
+const bTime=
+b.createdAt?.seconds||0;
+
+return bTime-aTime;
+
+});
+
+
+orders.forEach(
+order=>{
+
+const card=
+document.createElement(
+"div"
+);
+
+card.className="order-card";
+
+
+const status=
+normalizeStatus(
+order.orderStatus||
+order.status||
+"New Order"
+);
+
+
+let itemsHTML="";
+
+
+(order.items||[])
+.forEach(
+item=>{
+
+const quantity=
+Number(item.quantity)||1;
+
+const price=
+Number(item.price)||0;
+
+
+itemsHTML+=`
+
+<div class="item">
+
+${
+item.image
+?
+`
+<img
+src="${escapeHTML(item.image)}"
+alt=""
+>
+`
+:
+`
+<div
+style="
+width:70px;
+height:70px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#f6edf4;
+border-radius:10px;
+font-size:35px;
+"
+>
+💎
+</div>
+`
+}
+
+<div class="item-info">
+
+<div class="item-name">
+${escapeHTML(
+item.name||"Jewellery"
+)}
+</div>
+
+<div class="price">
+₹${(
+price*quantity
+).toLocaleString("en-IN")}
+</div>
+
+<div class="note">
+Quantity: ${quantity}
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+
+const c=
+order.customer||{};
+
+
+const address=`
+
+<b>Delivery Address</b><br>
+
+${escapeHTML(c.name)}<br>
+
+${escapeHTML(c.house)} ,
+${escapeHTML(c.area)}<br>
+
+${escapeHTML(c.city)},
+${escapeHTML(c.state)}
+-
+${escapeHTML(c.pin)}
+
+${c.landmark
+?
+`<br>Landmark:
+${escapeHTML(c.landmark)}`
+:""}
+
+<br>
+
+Mobile:
+${escapeHTML(c.phone)}
+
+`;
+
+
+card.innerHTML=`
+
+<div class="order-head">
+
+<div>
+
+<div class="order-id">
+Order ID:
+${escapeHTML(
+order.orderId||order.id
+)}
+</div>
+
+<div class="note">
+${formatDate(order.createdAt)}
+</div>
+
+</div>
+
+<div class="status">
+${escapeHTML(status)}
+</div>
+
+</div>
+
+
+<div>
+${itemsHTML}
+</div>
+
+
+<div class="total">
+Total:
+₹${Number(
+order.total||0
+).toLocaleString("en-IN")}
+</div>
+
+${(() => {
+  const paymentObject =
+    (order.payment && typeof order.payment === "object")
+      ? order.payment
+      : {};
+
+  const paymentMethod =
+    order.paymentMethod ||
+    paymentObject.method ||
+    order.method ||
+    "Not specified";
+
+  const paymentStatus =
+    order.paymentStatus ||
+    paymentObject.status ||
+    (typeof order.payment === "string" ? order.payment : "") ||
+    "Pending";
+
+  const totalAmount =
+    Number(order.total ?? order.totalAmount ?? 0) || 0;
+
+  const paidAmount =
+    Number(
+      order.paidAmount ??
+      order.amountPaid ??
+      paymentObject.paidAmount ??
+      paymentObject.amountPaid ??
+      order.paid ??
+      0
+    ) || 0;
+
+  const pendingAmount =
+    Math.max(
+      0,
+      Number(
+        order.remainingAmount ??
+        order.amountPending ??
+        paymentObject.remainingAmount ??
+        paymentObject.amountPending ??
+        (totalAmount - paidAmount)
+      ) || 0
+    );
+
+  return `
+    <div class="order-meta">
+      <div class="meta-box">
+        <b>💳 Payment</b>
+        ${escapeHTML(paymentMethod)}
+      </div>
+      <div class="meta-box">
+        <b>💰 Payment Status</b>
+        ${escapeHTML(paymentStatus)}
+      </div>
+      <div class="meta-box">
+        <b>💵 Paid Amount</b>
+        ₹${paidAmount.toLocaleString("en-IN")}
+      </div>
+      <div class="meta-box">
+        <b>⏳ Pending Amount</b>
+        ₹${pendingAmount.toLocaleString("en-IN")}
+      </div>
+    </div>
+  `;
+})()}
+
+${trackingHTML(status)}
+
+<div class="address">
+${address}
+</div>
+
+
+<a
+class="buy-again"
+href="index.html"
+>
+🛍️ Buy Again
+</a>
+
+`;
+
+
+ordersBox.appendChild(card);
+
+});
+
+}
+catch(error){
+
+console.error(error);
+
+showMessage(
+"Unable to load orders. Please try again."
+);
+
+}
+finally{
+
+button.disabled=false;
+button.textContent=
+"🔎 View My Orders";
+
+}
+
+}
+
+
+document
+.getElementById("searchBtn")
+.addEventListener(
+"click",
+loadOrders
+);
+
+</script>
+
+</body>
+</html>
