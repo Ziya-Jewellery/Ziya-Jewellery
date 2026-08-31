@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ziya Jewellery | Cart</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#faf7fb;color:#26202a}.nav{display:flex;justify-content:space-between;align-items:center;padding:16px 5%;background:#17121c;color:#fff}.logo{font-weight:800;font-size:22px}.nav a{color:#fff;text-decoration:none;margin-left:18px}.wrap{max-width:1000px;margin:28px auto;padding:0 16px}.box{background:#fff;border-radius:18px;padding:20px;box-shadow:0 8px 28px rgba(0,0,0,.08)}h1{margin-top:0}.item{display:grid;grid-template-columns:90px 1fr auto;gap:16px;align-items:center;border-bottom:1px solid #eee;padding:14px 0}.item:last-child{border-bottom:0}.item img,.ph{width:90px;height:90px;border-radius:12px;object-fit:cover;background:#f4eaf5;display:flex;align-items:center;justify-content:center;font-size:36px}.name{font-weight:800;font-size:17px}.meta{color:#777;font-size:13px;margin:5px 0}.price{font-weight:800;font-size:18px}.old{color:#888;text-decoration:line-through;font-size:13px;margin-right:6px}.badge{display:inline-block;background:#d63384;color:#fff;border-radius:999px;padding:3px 8px;font-size:11px;font-weight:800;margin-right:6px}.qty{display:flex;align-items:center;gap:8px;margin-top:8px}.qty button,.remove,.checkout{border:0;border-radius:9px;padding:8px 12px;cursor:pointer}.qty button{background:#eee}.remove{background:#f7dce8;color:#8a174d}.summary{margin-top:18px;border-top:1px solid #eee;padding-top:18px}.row{display:flex;justify-content:space-between;margin:8px 0}.total{font-size:22px;font-weight:900;margin-top:12px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.checkout{background:#7b2b83;color:#fff;text-decoration:none;display:inline-block}.secondary{background:#eee;color:#222;text-decoration:none}.empty{text-align:center;padding:40px}.notice{font-size:13px;color:#666;margin-bottom:12px}@media(max-width:650px){.item{grid-template-columns:70px 1fr}.item>div:last-child{grid-column:2}.item img,.ph{width:70px;height:70px}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="logo">✨ Ziya Jewellery</div><nav><a href="index.html">🏠 Home</a><a href="categories.html">Categories</a><a href="orders.html">📦 Orders</a></nav></header>
+<main class="wrap"><div class="box"><h1>🛒 Your Cart</h1><div id="notice" class="notice">Checking latest product offers…</div><div id="cart"></div><div id="summary" class="summary" style="display:none"><div class="row"><span>Subtotal</span><strong id="subtotal">₹0</strong></div><div class="row"><span>Items</span><strong id="count">0</strong></div><div class="row total"><span>Total</span><strong id="total">₹0</strong></div><div class="actions"><a class="checkout" href="checkout.html">Proceed to Checkout</a><a class="secondary" href="index.html">Continue Shopping</a><button id="clear" class="remove">Clear Cart</button></div></div></div></main>
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+import{getFirestore,collection,getDocs}from"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+const firebaseConfig={apiKey:"AIzaSyBmapJhIb0QxNQQLbB1X9l7EuPMqEUEQ",authDomain:"ziya-jewellery-d420f.firebaseapp.com",projectId:"ziya-jewellery-d420f",storageBucket:"ziya-jewellery-d420f.firebasestorage.app",messagingSenderId:"292032564389",appId:"1:292032564389:web:69b11699d8f790db5c114c"};
+// The public Firebase config is intentionally the same project config used by the existing Ziya site.
+const app=initializeApp(firebaseConfig),db=getFirestore(app);
+const money=n=>Number(n||0).toLocaleString("en-IN");
+const esc=v=>String(v??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
+function getCart(){try{return JSON.parse(localStorage.getItem("ziyaCart"))||[]}catch{return[]}}
+function saveCart(c){localStorage.setItem("ziyaCart",JSON.stringify(c))}
+function pricing(p){const original=Number(p.originalPrice??p.price??0)||0;const discount=Math.max(0,Math.min(100,Number(p.discountPercent??0)||0));const active=p.offerActive===true&&discount>0;const stored=Number(p.salePrice??0)||0;const sale=active?Math.max(0,stored>0?stored:original-(original*discount/100)):original;return{original,discount,active,sale}}
+async function syncOffers(){
+ let cart=getCart();
+ if(!cart.length){render([]);return}
+ try{
+  const snap=await getDocs(collection(db,"products"));const products=new Map();snap.forEach(d=>products.set(d.id,{id:d.id,...d.data()}));
+  cart=cart.map(item=>{const p=products.get(item.id);if(!p)return item;const x=pricing(p);return{...item,price:x.sale,originalPrice:x.original,discountPercent:x.discount,offerActive:x.active,salePrice:x.sale,name:p.name||item.name,image:p.image||item.image,metal:p.metal||item.metal,purity:p.purity||item.purity}});
+  saveCart(cart);document.getElementById("notice").textContent="Latest Admin Panel prices and offers are applied to your cart.";
+ }catch(e){console.error(e);document.getElementById("notice").textContent="Cart loaded. Latest offer sync was unavailable."}
+ render(cart);
+}
+function render(cart){const box=document.getElementById("cart"),sum=document.getElementById("summary");if(!cart.length){box.innerHTML='<div class="empty"><div style="font-size:60px">🛒</div><h2>Your cart is empty</h2><p>Add jewellery from the website.</p><a class="checkout" href="index.html">Continue Shopping</a></div>';sum.style.display="none";return}sum.style.display="block";let subtotal=0,count=0;box.innerHTML=cart.map((item,i)=>{const q=Math.max(1,Number(item.quantity||1));const price=Number(item.price||0);const original=Number(item.originalPrice||0);const active=item.offerActive===true&&Number(item.discountPercent||0)>0;subtotal+=price*q;count+=q;return `<div class="item"><div>${item.image?`<img src="${esc(item.image)}" alt="${esc(item.name)}">`:'<div class="ph">💎</div>'}</div><div><div class="name">${esc(item.name||"Jewellery")}</div><div class="meta">${esc(item.metal||"")} ${item.purity?"• "+esc(item.purity):""}</div><div>${active?`<span class="badge">${Number(item.discountPercent)}% OFF</span><span class="old">₹${money(original)}</span>`:""}<span class="price">₹${money(price)}</span></div><div class="qty"><button data-minus="${i}">−</button><strong>${q}</strong><button data-plus="${i}">+</button></div></div><div><button class="remove" data-remove="${i}">Remove</button></div></div>`}).join("");document.getElementById("subtotal").textContent="₹"+money(subtotal);document.getElementById("total").textContent="₹"+money(subtotal);document.getElementById("count").textContent=count}
+document.addEventListener("click",e=>{const cart=getCart();let changed=false;const m=e.target.closest("[data-minus]"),p=e.target.closest("[data-plus]"),r=e.target.closest("[data-remove]");if(m){const i=Number(m.dataset.minus);cart[i].quantity=Math.max(1,Number(cart[i].quantity||1)-1);changed=true}if(p){const i=Number(p.dataset.plus);cart[i].quantity=Number(cart[i].quantity||1)+1;changed=true}if(r){cart.splice(Number(r.dataset.remove),1);changed=true}if(changed){saveCart(cart);render(cart)}});
+document.getElementById("clear").addEventListener("click",()=>{saveCart([]);render([])});
+syncOffers();
+</script>
+</body></html>
