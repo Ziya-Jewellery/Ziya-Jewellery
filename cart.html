@@ -127,6 +127,28 @@ font-size:18px;
 margin-top:8px;
 }
 
+.old-price{
+text-decoration:line-through;
+color:#888;
+margin-right:7px;
+}
+
+.offer-price{
+font-weight:bold;
+color:#a01762;
+}
+
+.offer-badge{
+display:inline-block;
+margin-left:7px;
+padding:2px 7px;
+border-radius:10px;
+background:#f7e8f1;
+color:#b00045;
+font-weight:bold;
+font-size:12px;
+}
+
 .qty{
 display:flex;
 align-items:center;
@@ -275,21 +297,13 @@ padding-left:75px;
 
 <div class="navlinks">
 
-<a href="index.html">
-🏠 Home
-</a>
+<a href="index.html">🏠 Home</a>
 
-<a href="categories.html">
-Categories
-</a>
+<a href="categories.html">Categories</a>
 
-<a href="wishlist.html">
-❤️ Saved
-</a>
+<a href="wishlist.html">❤️ Saved</a>
 
-<a href="orders.html">
-📦 Orders
-</a>
+<a href="orders.html">📦 Orders</a>
 
 </div>
 
@@ -353,6 +367,170 @@ return String(value)
 }
 
 
+/* ==========================================
+   OFFER / DISCOUNT PRICE CALCULATION
+   Supports:
+   price
+   originalPrice
+   salePrice
+   discountPercent
+   discount
+   offerActive
+========================================== */
+
+function getItemPricing(item){
+
+const fallbackPrice=
+Number(item.price)||0;
+
+const originalPrice=
+Number(item.originalPrice)||
+fallbackPrice;
+
+const discountPercent=
+Number(item.discountPercent)||
+Number(item.discount)||
+0;
+
+const rawSalePrice=
+Number(item.salePrice)||0;
+
+const offerActive=
+item.offerActive===true||
+item.offerActive==="true"||
+item.offerActive===1||
+item.offerActive==="1";
+
+
+let finalPrice=
+originalPrice;
+
+let activeDiscount=0;
+
+
+/* Use saved sale price */
+
+if(
+offerActive &&
+rawSalePrice>0 &&
+(
+originalPrice<=0 ||
+rawSalePrice<originalPrice
+)
+){
+
+finalPrice=rawSalePrice;
+
+if(discountPercent>0){
+
+activeDiscount=discountPercent;
+
+}
+else if(originalPrice>0){
+
+activeDiscount=
+Math.round(
+(
+(originalPrice-finalPrice)/
+originalPrice
+)*100
+);
+
+}
+
+}
+
+
+/* Calculate price from discount percentage */
+
+else if(
+offerActive &&
+discountPercent>0 &&
+originalPrice>0
+){
+
+activeDiscount=
+Math.min(
+Math.max(discountPercent,0),
+100
+);
+
+finalPrice=
+originalPrice*
+(
+1-activeDiscount/100
+);
+
+}
+
+
+/* Compatibility for old cart items */
+
+else if(
+rawSalePrice>0 &&
+originalPrice>0 &&
+rawSalePrice<originalPrice
+){
+
+finalPrice=rawSalePrice;
+
+activeDiscount=
+discountPercent>0
+?
+discountPercent
+:
+Math.round(
+(
+(originalPrice-finalPrice)/
+originalPrice
+)*100
+);
+
+}
+
+
+return{
+
+originalPrice:
+Number(
+originalPrice.toFixed(2)
+),
+
+finalPrice:
+Number(
+finalPrice.toFixed(2)
+),
+
+discountPercent:
+Number(
+activeDiscount.toFixed(2)
+),
+
+hasOffer:
+finalPrice<originalPrice
+
+};
+
+}
+
+
+function formatMoney(amount){
+
+return Number(amount||0)
+.toLocaleString(
+"en-IN",
+{
+maximumFractionDigits:2
+}
+);
+
+}
+
+
+/* ==========================================
+   RENDER CART
+========================================== */
+
 function renderCart(){
 
 const cart=getCart();
@@ -393,16 +571,19 @@ return;
 let subtotal=0;
 
 
+/* Calculate discounted subtotal */
+
 cart.forEach(item=>{
 
-const price=
-Number(item.price)||0;
+const pricing=
+getItemPricing(item);
 
 const quantity=
 Number(item.quantity)||1;
 
 subtotal+=
-price*quantity;
+pricing.finalPrice*
+quantity;
 
 });
 
@@ -437,7 +618,7 @@ ${cart.length}
 <span>Subtotal</span>
 
 <strong>
-₹${subtotal.toLocaleString("en-IN")}
+₹${formatMoney(subtotal)}
 </strong>
 
 </div>
@@ -454,7 +635,7 @@ Calculated at checkout
 
 <div class="total">
 
-Total: ₹${subtotal.toLocaleString("en-IN")}
+Total: ₹${formatMoney(subtotal)}
 
 </div>
 
@@ -491,8 +672,17 @@ cart.forEach(
 const quantity=
 Number(item.quantity)||1;
 
+
+/* Get offer price */
+
+const pricing=
+getItemPricing(item);
+
 const price=
-Number(item.price)||0;
+pricing.finalPrice;
+
+const originalPrice=
+pricing.originalPrice;
 
 
 const div=
@@ -529,6 +719,42 @@ style="display:none"
 `;
 
 
+/* Display Original + Offer Price */
+
+const priceHTML=
+pricing.hasOffer
+?
+`
+<span class="old-price">
+₹${formatMoney(originalPrice)}
+</span>
+
+<span class="offer-price">
+₹${formatMoney(price)}
+</span>
+
+${pricing.discountPercent>0
+?
+`
+<span class="offer-badge">
+${formatMoney(pricing.discountPercent)}% OFF
+</span>
+`
+:""}
+`
+:
+`
+₹${formatMoney(price)}
+`;
+
+
+/* Quantity × discounted price */
+
+const itemTotal=
+price*
+quantity;
+
+
 div.innerHTML=`
 
 ${imageHTML}
@@ -536,9 +762,11 @@ ${imageHTML}
 <div>
 
 <div class="name">
+
 ${escapeHTML(
 item.name||"Jewellery Product"
 )}
+
 </div>
 
 <div class="meta">
@@ -554,16 +782,15 @@ ${item.purity
 :""}
 
 Price:
-₹${price.toLocaleString("en-IN")}
+
+${priceHTML}
 
 </div>
 
 
 <div class="price">
 
-₹${(
-price*quantity
-).toLocaleString("en-IN")}
+₹${formatMoney(itemTotal)}
 
 </div>
 
@@ -614,7 +841,9 @@ itemsBox.appendChild(div);
 }
 
 
-/* BUTTON ACTIONS */
+/* ==========================================
+   BUTTON ACTIONS
+========================================== */
 
 document.addEventListener(
 "click",
@@ -641,6 +870,8 @@ getCart();
 if(!cart[index])return;
 
 
+/* Increase Quantity */
+
 if(action==="plus"){
 
 cart[index].quantity=
@@ -648,6 +879,8 @@ cart[index].quantity=
 
 }
 
+
+/* Decrease Quantity */
 
 if(action==="minus"){
 
@@ -663,6 +896,8 @@ cart[index].quantity=1;
 }
 
 
+/* Remove Item */
+
 if(action==="remove"){
 
 cart.splice(index,1);
@@ -676,6 +911,8 @@ renderCart();
 
 });
 
+
+/* Initial Load */
 
 renderCart();
 
